@@ -75,6 +75,7 @@
       scroll-behavior: smooth;
       font-size: var(--base-font-size);
       background-color: var(--bg-page);
+      overflow-x: clip;
     }
 
     body {
@@ -83,11 +84,13 @@
       background-color: var(--bg-page);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
     }
 
     a {
       color: var(--accent);
       text-decoration: none;
+      overflow-wrap: anywhere;
     }
 
     a:hover {
@@ -117,6 +120,13 @@
       border: 1px solid var(--border-default);
       border-radius: 4px;
       padding: 2px 6px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    pre code {
+      overflow-wrap: normal;
+      word-break: normal;
     }
 
     .container {
@@ -176,6 +186,36 @@
       gap: 14px;
     }
 
+    .header-nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .mobile-tools-toggle {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-muted);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 7px 11px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .mobile-tools-toggle.open {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
     .nav-links {
       display: flex;
       align-items: center;
@@ -190,6 +230,7 @@
       padding: 7px 12px;
       border-radius: var(--radius-sm);
       text-decoration: none;
+      white-space: nowrap;
       transition: background 0.15s ease, color 0.15s ease;
     }
 
@@ -403,6 +444,18 @@
       align-items: start;
     }
 
+    .hero-grid > *,
+    .two-col > *,
+    .sim-grid > *,
+    .runbook-grid > *,
+    .module-cols > *,
+    .reports-layout > *,
+    .role-strip > *,
+    .signoff-grid > *,
+    .sim-steps-grid > * {
+      min-width: 0;
+    }
+
     @media (min-width: 1024px) {
       .hero-grid {
         grid-template-columns: 1.4fr 0.6fr;
@@ -419,7 +472,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(1.85rem, 2.8vw, 2.5rem);
+      font-size: clamp(1.6rem, 2.8vw, 2.5rem);
       font-weight: 800;
       line-height: 1.2;
       letter-spacing: -0.02em;
@@ -436,7 +489,7 @@
 
     .role-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
       gap: 16px;
       margin-bottom: 28px;
     }
@@ -864,7 +917,7 @@
 
     .module-cols {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
       gap: 24px;
     }
 
@@ -915,8 +968,14 @@
 
     .sim-steps-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 12px;
+    }
+
+    @media (min-width: 480px) {
+      .sim-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (min-width: 640px) {
@@ -967,7 +1026,7 @@
        ========================================================================== */
     .runbook-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
       gap: 24px;
     }
 
@@ -981,6 +1040,8 @@
       font-weight: 600;
       color: var(--text-primary);
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
       line-height: 1.6;
       margin-top: 14px;
     }
@@ -1040,7 +1101,7 @@
 
     .signoff-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
       gap: 20px;
       margin-top: 28px;
     }
@@ -1064,6 +1125,7 @@
       padding: 28px 40px;
       flex-direction: column;
       justify-content: space-between;
+      overflow-y: auto;
     }
 
     .slide-overlay.active {
@@ -1346,6 +1408,343 @@
       color: var(--text-secondary);
     }
 
+    .mobile-toc-toggle {
+      display: none;
+      margin-top: 10px;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-surface);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
+       ========================================================================== */
+    @media (max-width: 1023px) {
+      .sticky-header {
+        padding: 8px 0;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+
+      .header-nav-row {
+        width: 100%;
+      }
+
+      .nav-links {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-link {
+        font-size: 0.84rem;
+        padding: 6px 10px;
+        flex-shrink: 0;
+      }
+
+      .mobile-tools-toggle {
+        display: inline-flex;
+      }
+
+      .header-controls {
+        display: none;
+        width: 100%;
+        padding-top: 8px;
+        border-top: 1px solid var(--border-light);
+        justify-content: space-between;
+      }
+
+      .header-controls.mobile-open {
+        display: flex;
+      }
+
+      .mobile-toc-toggle {
+        display: inline-flex;
+      }
+
+      .reports-sidebar .toc-group {
+        display: none;
+      }
+
+      .reports-sidebar.mobile-toc-open .toc-group {
+        display: block;
+      }
+
+      .reading-now-box {
+        margin-bottom: 0;
+      }
+
+      .reports-sidebar.mobile-toc-open .reading-now-box {
+        margin-bottom: 14px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      :root {
+        --base-font-size: 16px;
+      }
+
+      .container {
+        padding: 0 16px;
+      }
+
+      .top-bar {
+        padding: 10px 0;
+        font-size: 0.82rem;
+      }
+
+      .top-bar-links {
+        gap: 10px 14px;
+        font-size: 0.8rem;
+      }
+
+      .hero {
+        padding: 26px 0 24px;
+      }
+
+      .hero-grid {
+        gap: 24px;
+      }
+
+      .hero h1 {
+        font-size: 1.55rem;
+      }
+
+      .hero-lead {
+        font-size: 0.98rem;
+        margin-bottom: 20px;
+      }
+
+      .section {
+        padding: 32px 0;
+        scroll-margin-top: 68px;
+      }
+
+      .section-head {
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+      }
+
+      .section-title {
+        font-size: 1.35rem;
+      }
+
+      .card,
+      .report-doc-card,
+      .summary-panel,
+      .signoff-card {
+        padding: 18px 16px;
+      }
+
+      .tier-card {
+        padding: 16px;
+      }
+
+      .module-trigger {
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .module-heading {
+        font-size: 1.04rem;
+      }
+
+      .module-content {
+        padding: 16px;
+      }
+
+      .module-col-box {
+        padding: 16px;
+      }
+
+      .tab-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 12px;
+        margin-bottom: 18px;
+      }
+
+      .tab-button {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 8px 13px;
+        font-size: 0.86rem;
+      }
+
+      .report-filter-bar {
+        padding: 12px;
+      }
+
+      .report-pills {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        padding-bottom: 4px;
+      }
+
+      .report-pill {
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+
+      .report-search-wrap {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+        min-width: 0 !important;
+      }
+
+      .data-table {
+        min-width: 540px;
+      }
+
+      .data-table th,
+      .data-table td {
+        padding: 10px;
+        font-size: 0.85rem;
+      }
+
+      .data-table td code {
+        white-space: nowrap;
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+
+      /* Responsive Card Layout for Handover Checklist Table on Mobile */
+      .checklist-table,
+      .checklist-table thead,
+      .checklist-table tbody,
+      .checklist-table th,
+      .checklist-table td,
+      .checklist-table tr {
+        display: block;
+        width: 100%;
+      }
+
+      .checklist-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      .checklist-table tr {
+        padding: 14px 16px;
+        border-bottom: 2px solid var(--border-default);
+      }
+
+      .checklist-table tr:last-child {
+        border-bottom: none;
+      }
+
+      .checklist-table td {
+        padding: 6px 0;
+        border-bottom: none;
+      }
+
+      .checklist-table td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--text-secondary);
+        margin-bottom: 4px;
+      }
+
+      .checklist-table td:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .checklist-table td:first-child::before {
+        margin-bottom: 0;
+      }
+
+      /* Slide Deck Mobile Adjustments */
+      .slide-overlay {
+        padding: 14px;
+        gap: 12px;
+      }
+
+      .slide-card {
+        padding: 22px 18px;
+      }
+
+      .slide-bullets {
+        font-size: 1rem;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .slide-hint-keys {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .summary-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .summary-val {
+        text-align: left;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn-primary,
+      .hero-actions .btn-secondary {
+        width: 100%;
+      }
+
+      .timer-widget {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .zoom-group {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .header-controls .btn-primary {
+        width: 100%;
+      }
+    }
+
     @media print {
       .sticky-header, .slide-overlay, .sim-grid {
         display: none !important;
@@ -1379,17 +1778,23 @@
   <!-- STICKY NAVIGATION & ACCESSIBILITY CONTROLS -->
   <header class="sticky-header">
     <div class="container header-inner">
-      <nav class="nav-links" id="mainStickyNav" aria-label="Workshop sections">
-        <a href="#rbac" class="nav-link" data-section="rbac">1. Staff Onboarding</a>
-        <a href="#console" class="nav-link" data-section="console">2. Instructor Panel</a>
-        <a href="#curriculum" class="nav-link" data-section="curriculum">3. Workshop Schedule</a>
-        <a href="#simulators" class="nav-link" data-section="simulators">4. System Workflows</a>
-        <a href="#runbook" class="nav-link" data-section="runbook">5. SQL & Git Runbook</a>
-        <a href="#reports" class="nav-link" data-section="reports">6. Technical Reports</a>
-        <a href="#handover" class="nav-link" data-section="handover">7. Handover Checklist</a>
-      </nav>
+      <div class="header-nav-row">
+        <nav class="nav-links" id="mainStickyNav" aria-label="Workshop sections">
+          <a href="#rbac" class="nav-link" data-section="rbac">1. Staff Onboarding</a>
+          <a href="#console" class="nav-link" data-section="console">2. Instructor Panel</a>
+          <a href="#curriculum" class="nav-link" data-section="curriculum">3. Workshop Schedule</a>
+          <a href="#simulators" class="nav-link" data-section="simulators">4. System Workflows</a>
+          <a href="#runbook" class="nav-link" data-section="runbook">5. SQL & Git Runbook</a>
+          <a href="#reports" class="nav-link" data-section="reports">6. Technical Reports</a>
+          <a href="#handover" class="nav-link" data-section="handover">7. Handover Checklist</a>
+        </nav>
+        <button class="mobile-tools-toggle" id="mobileToolsBtn" onclick="toggleMobileTools()" aria-expanded="false" aria-controls="headerControlsDrawer">
+          <span>Tools &amp; Timer</span>
+          <span id="mobileToolsIcon">&#9662;</span>
+        </button>
+      </div>
 
-      <div class="header-controls">
+      <div class="header-controls" id="headerControlsDrawer">
         <div class="zoom-group" role="group" aria-label="Text size">
           <span class="zoom-label">Text Size</span>
           <button class="zoom-btn" onclick="setFontScale(16, this)" title="Standard 16px">A-</button>
@@ -1444,7 +1849,7 @@
             </div>
           </div>
 
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <div class="hero-actions" style="display:flex;gap:12px;flex-wrap:wrap;">
             <button class="btn-primary" onclick="openSlides()">Open Presentation Slides</button>
             <a href="#reports" onclick="jumpToReport('rep-full')" class="btn-secondary">Read Parsed Technical Reports</a>
             <a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer" class="btn-secondary">View Live Student Showcase</a>
@@ -2125,7 +2530,7 @@ cd .. && rm -rf temp_sync</pre>
           <button class="report-pill" data-rep-pill="rep-08" onclick="filterParsedReports('rep-08', this)">08. Troubleshooting</button>
           <button class="report-pill" data-rep-pill="rep-readme" onclick="filterParsedReports('rep-readme', this)">README Overview</button>
         </div>
-        <div style="min-width:240px;flex:0 1 280px;">
+        <div class="report-search-wrap" style="min-width:240px;flex:0 1 280px;">
           <input type="search" id="reportSearchInput" class="text-input" style="padding:7px 12px;font-size:0.86rem;font-family:var(--font-sans);font-weight:500;" placeholder="Filter report sections..." oninput="searchParsedReports(this.value)" aria-label="Filter report sections">
         </div>
       </div>
@@ -2136,6 +2541,10 @@ cd .. && rm -rf temp_sync</pre>
           <div class="reading-now-box">
             <div class="reading-now-label">Active Section on Scroll</div>
             <div class="reading-now-title" id="readingNowTitle">01. Pedagogical Framework</div>
+            <button type="button" class="mobile-toc-toggle" id="mobileTocBtn" onclick="toggleMobileToc()" aria-expanded="false">
+              <span id="mobileTocBtnText">Browse All 27 Chapters</span>
+              <span id="mobileTocBtnIcon">&#9662;</span>
+            </button>
           </div>
 
           <div class="toc-group">
@@ -3402,52 +3811,52 @@ open docs/index.html   # or browse markdown files directly in docs/</pre>
             </thead>
             <tbody>
               <tr>
-                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
-                <td><strong>1. Departmental Super Admin</strong><br><code>softwareng@futminna.edu.ng</code></td>
-                <td>Confirm <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a> signs into SWE-MLAB with <code>super_admin</code> privileges and global course visibility.</td>
-                <td><input type="text" class="text-input ho-input" value="softwareng@futminna.edu.ng" oninput="saveHandoverState()"></td>
+                <td data-label="Verification Status"><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td data-label="Subsystem / Asset"><strong>1. Departmental Super Admin</strong><br><code>softwareng@futminna.edu.ng</code></td>
+                <td data-label="Verification Requirement">Confirm <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a> signs into SWE-MLAB with <code>super_admin</code> privileges and global course visibility.</td>
+                <td data-label="Designated Custodian"><input type="text" class="text-input ho-input" value="softwareng@futminna.edu.ng" oninput="saveHandoverState()"></td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
-                <td><strong>2. Staff Domain Onboarding</strong><br><code>*@futminna.edu.ng</code></td>
-                <td>Confirm lecturers with verified <code>@futminna.edu.ng</code> emails on GitHub automatically receive the <code>instructor</code> role.</td>
-                <td><input type="text" class="text-input ho-input" value="Departmental Academic Staff" oninput="saveHandoverState()"></td>
+                <td data-label="Verification Status"><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td data-label="Subsystem / Asset"><strong>2. Staff Domain Onboarding</strong><br><code>*@futminna.edu.ng</code></td>
+                <td data-label="Verification Requirement">Confirm lecturers with verified <code>@futminna.edu.ng</code> emails on GitHub automatically receive the <code>instructor</code> role.</td>
+                <td data-label="Designated Custodian"><input type="text" class="text-input ho-input" value="Departmental Academic Staff" oninput="saveHandoverState()"></td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
-                <td><strong>3. GitHub Organization & OAuth App</strong><br><a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer">github.com/software-engineering-futminna</a></td>
-                <td>Verify Organization Owner access, OAuth App credentials (<code>GITHUB_CLIENT_ID</code> / <code>SECRET</code>), and repository transfer rights.</td>
-                <td><input type="text" class="text-input ho-input" value="software-engineering-futminna" oninput="saveHandoverState()"></td>
+                <td data-label="Verification Status"><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td data-label="Subsystem / Asset"><strong>3. GitHub Organization & OAuth App</strong><br><a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer">github.com/software-engineering-futminna</a></td>
+                <td data-label="Verification Requirement">Verify Organization Owner access, OAuth App credentials (<code>GITHUB_CLIENT_ID</code> / <code>SECRET</code>), and repository transfer rights.</td>
+                <td data-label="Designated Custodian"><input type="text" class="text-input ho-input" value="software-engineering-futminna" oninput="saveHandoverState()"></td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
-                <td><strong>4. Neon Serverless PostgreSQL</strong><br><code>DATABASE_URL</code></td>
-                <td>Confirm database project access and backup procedures with <code>softwareng@futminna.edu.ng</code>.</td>
-                <td><input type="text" class="text-input ho-input" placeholder="Database Custodian" oninput="saveHandoverState()"></td>
+                <td data-label="Verification Status"><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td data-label="Subsystem / Asset"><strong>4. Neon Serverless PostgreSQL</strong><br><code>DATABASE_URL</code></td>
+                <td data-label="Verification Requirement">Confirm database project access and backup procedures with <code>softwareng@futminna.edu.ng</code>.</td>
+                <td data-label="Designated Custodian"><input type="text" class="text-input ho-input" placeholder="Database Custodian" oninput="saveHandoverState()"></td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
-                <td><strong>5. Gemini AI & Lecture RAG</strong><br><code>GEMINI_API_KEY</code></td>
-                <td>Verify AI Activity Generator, AI Project Generator, AI Grader, and PDF/DOCX Lecture Note indexing.</td>
-                <td><input type="text" class="text-input ho-input" placeholder="System Custodian" oninput="saveHandoverState()"></td>
+                <td data-label="Verification Status"><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td data-label="Subsystem / Asset"><strong>5. Gemini AI & Lecture RAG</strong><br><code>GEMINI_API_KEY</code></td>
+                <td data-label="Verification Requirement">Verify AI Activity Generator, AI Project Generator, AI Grader, and PDF/DOCX Lecture Note indexing.</td>
+                <td data-label="Designated Custodian"><input type="text" class="text-input ho-input" placeholder="System Custodian" oninput="saveHandoverState()"></td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
-                <td><strong>6. Cloud Hosting & Environment</strong><br><code>Production .env</code></td>
-                <td>Transfer hosting dashboard access, <code>JWT_SECRET</code>, <code>GITHUB_WEBHOOK_SECRET</code>, and deployment settings.</td>
-                <td><input type="text" class="text-input ho-input" placeholder="DevOps Custodian" oninput="saveHandoverState()"></td>
+                <td data-label="Verification Status"><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td data-label="Subsystem / Asset"><strong>6. Cloud Hosting & Environment</strong><br><code>Production .env</code></td>
+                <td data-label="Verification Requirement">Transfer hosting dashboard access, <code>JWT_SECRET</code>, <code>GITHUB_WEBHOOK_SECRET</code>, and deployment settings.</td>
+                <td data-label="Designated Custodian"><input type="text" class="text-input ho-input" placeholder="DevOps Custodian" oninput="saveHandoverState()"></td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
-                <td><strong>7. Error Monitoring & Telemetry</strong><br><code>SENTRY_DSN</code></td>
-                <td>Verify backend error alert notifications are routed to <code>softwareng@futminna.edu.ng</code>.</td>
-                <td><input type="text" class="text-input ho-input" value="softwareng@futminna.edu.ng" oninput="saveHandoverState()"></td>
+                <td data-label="Verification Status"><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td data-label="Subsystem / Asset"><strong>7. Error Monitoring & Telemetry</strong><br><code>SENTRY_DSN</code></td>
+                <td data-label="Verification Requirement">Verify backend error alert notifications are routed to <code>softwareng@futminna.edu.ng</code>.</td>
+                <td data-label="Designated Custodian"><input type="text" class="text-input ho-input" value="softwareng@futminna.edu.ng" oninput="saveHandoverState()"></td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
-                <td><strong>8. Showcase & Technical Documentation</strong><br><a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer">Live Showcase</a> • <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">swemlab-docs</a></td>
-                <td>Verify access to the public showcase and the 8-chapter documentation repository (<a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer"><code>swemlab-docs</code></a>).</td>
-                <td><input type="text" class="text-input ho-input" placeholder="Course Coordinator" oninput="saveHandoverState()"></td>
+                <td data-label="Verification Status"><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td data-label="Subsystem / Asset"><strong>8. Showcase & Technical Documentation</strong><br><a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer">Live Showcase</a> • <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">swemlab-docs</a></td>
+                <td data-label="Verification Requirement">Verify access to the public showcase and the 8-chapter documentation repository (<a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer"><code>swemlab-docs</code></a>).</td>
+                <td data-label="Designated Custodian"><input type="text" class="text-input ho-input" placeholder="Course Coordinator" oninput="saveHandoverState()"></td>
               </tr>
             </tbody>
           </table>
@@ -3489,7 +3898,7 @@ open docs/index.html   # or browse markdown files directly in docs/</pre>
           <button class="timer-btn" onclick="resetTimer(60)">60m</button>
           <button class="timer-btn" onclick="playTimerSound('chime')" title="Test notification chime">Test Sound</button>
         </div>
-        <span style="font-size:0.88rem;color:var(--text-secondary);">Use Left / Right Arrow Keys</span>
+        <span class="slide-hint-keys" style="font-size:0.88rem;color:var(--text-secondary);">Use Left / Right Arrow Keys</span>
         <button class="btn-secondary" onclick="closeSlides()">Exit Presentation (ESC)</button>
       </div>
     </div>
@@ -3498,7 +3907,7 @@ open docs/index.html   # or browse markdown files directly in docs/</pre>
       <div class="slide-card" id="slideFrame"></div>
     </div>
 
-    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1120px;width:100%;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1120px;width:100%;margin:0 auto;flex-wrap:wrap;gap:10px;">
       <span id="slidePager" style="font-family:var(--font-mono);font-size:0.95rem;font-weight:700;color:var(--text-primary);">Slide 01 / 12</span>
       <div style="display:flex;gap:12px;">
         <button class="btn-secondary" onclick="stepSlide(-1)">Previous Slide</button>
@@ -3734,7 +4143,7 @@ open docs/index.html   # or browse markdown files directly in docs/</pre>
           </div>
           <div>
             <h4 style="font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-secondary);margin-bottom:14px;">Backend API Endpoints</h4>
-            <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow:hidden;">
+            <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;-webkit-overflow-scrolling:touch;">
               <table class="data-table">
                 <thead>
                   <tr>
@@ -4264,10 +4673,38 @@ open docs/index.html   # or browse markdown files directly in docs/</pre>
       updateScrollSpy();
     }
 
+    function toggleMobileTools() {
+      const drawer = document.getElementById('headerControlsDrawer');
+      const btn = document.getElementById('mobileToolsBtn');
+      const icon = document.getElementById('mobileToolsIcon');
+      if (!drawer || !btn) return;
+      const open = drawer.classList.toggle('mobile-open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      if (icon) icon.innerHTML = open ? '&#9652;' : '&#9662;';
+    }
+
+    function toggleMobileToc(forceState) {
+      const sidebar = document.getElementById('reportsTocSidebar');
+      const btn = document.getElementById('mobileTocBtn');
+      const txt = document.getElementById('mobileTocBtnText');
+      const icon = document.getElementById('mobileTocBtnIcon');
+      if (!sidebar || !btn) return;
+      const open = typeof forceState === 'boolean'
+        ? sidebar.classList.toggle('mobile-toc-open', forceState)
+        : sidebar.classList.toggle('mobile-toc-open');
+      btn.setAttribute('aria-expanded', String(open));
+      if (txt) txt.textContent = open ? 'Hide Chapters' : 'Browse All 27 Chapters';
+      if (icon) icon.innerHTML = open ? '&#9652;' : '&#9662;';
+    }
+
     function jumpToReport(reportId) {
       const targetCard = document.getElementById(reportId);
       if (targetCard && targetCard.style.display === 'none') {
         filterParsedReports('all');
+      }
+      if (window.innerWidth < 1024) {
+        toggleMobileToc(false);
       }
       setTimeout(() => {
         const el = document.getElementById(reportId);
@@ -4279,6 +4716,9 @@ open docs/index.html   # or browse markdown files directly in docs/</pre>
       const parentCard = document.getElementById(reportId);
       if (parentCard && parentCard.style.display === 'none') {
         filterParsedReports('all');
+      }
+      if (window.innerWidth < 1024) {
+        toggleMobileToc(false);
       }
       setTimeout(() => {
         const el = document.getElementById(subId);
@@ -4321,9 +4761,15 @@ open docs/index.html   # or browse markdown files directly in docs/</pre>
         }
       }
 
+      const mainNav = document.getElementById('mainStickyNav');
       document.querySelectorAll('#mainStickyNav .nav-link').forEach(link => {
         const isMatch = link.getAttribute('data-section') === currentMain;
+        const wasActive = link.classList.contains('active');
         link.classList.toggle('active', isMatch);
+        if (isMatch && !wasActive && mainNav && mainNav.scrollWidth > mainNav.clientWidth) {
+          const targetLeft = link.offsetLeft - (mainNav.clientWidth / 2) + (link.clientWidth / 2);
+          mainNav.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+        }
       });
 
       // 2. Reports sidebar TOC scroll-spy
@@ -4357,7 +4803,7 @@ open docs/index.html   # or browse markdown files directly in docs/</pre>
         const isActive = link.getAttribute('data-toc-target') === activeTocId;
         const wasActive = link.classList.contains('active');
         link.classList.toggle('active', isActive);
-        if (isActive && !wasActive && sidebar) {
+        if (isActive && !wasActive && sidebar && window.innerWidth >= 1024) {
           const linkTop = link.offsetTop;
           const sideScroll = sidebar.scrollTop;
           const sideH = sidebar.clientHeight;
