@@ -1,0 +1,2699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SWE-MLAB Staff Onboarding & System Handover — FUTMinna</title>
+  <meta name="description" content="Official staff onboarding and system handover documentation for SWE-MLAB at the Department of Software Engineering, Federal University of Technology Minna.">
+  <meta name="theme-color" content="#FFFFFF">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CLEAN, PROFESSIONAL, HIGH-CONTRAST LIGHT THEME
+       Optimized for senior stakeholders & glasses wearers — zero visual clutter
+       ========================================================================== */
+    :root {
+      --base-font-size: 18px;
+
+      /* Clean Light Surfaces */
+      --bg-page: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-muted: #F1F5F9;
+
+      /* High-Contrast Ink (WCAG AAA on white) */
+      --text-primary: #0F172A;   /* 17.4:1 contrast */
+      --text-body: #1E293B;      /* 13.6:1 contrast */
+      --text-secondary: #334155; /* 10.4:1 contrast */
+
+      /* Refined Borders */
+      --border-light: #E2E8F0;
+      --border-default: #CBD5E1;
+      --border-strong: #94A3B8;
+
+      /* Brand & Semantic Accents */
+      --accent: #1D4ED8;
+      --accent-hover: #1E40AF;
+      --accent-soft: #EFF6FF;
+      --accent-border: #BFDBFE;
+
+      --success: #047857;
+      --success-soft: #ECFDF5;
+      --success-border: #A7F3D0;
+
+      --warning: #B45309;
+      --warning-soft: #FFFBEB;
+
+      --danger: #BE123C;
+      --danger-soft: #FFF1F2;
+
+      /* Balanced Professional Border Radii */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+
+      /* Subtle Elevation */
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
+
+      /* Fonts */
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: var(--base-font-size);
+      background-color: var(--bg-page);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      background-color: var(--bg-page);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button, input, select {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.88em;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: var(--bg-muted);
+      border: 1px solid var(--border-default);
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .top-bar {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-default);
+      padding: 12px 0;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .top-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .top-bar-title {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .top-bar-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom: 1px solid var(--border-default);
+      padding: 12px 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-body);
+      padding: 7px 12px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      background: var(--bg-muted);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Text Size Switcher for Accessibility */
+    .zoom-group {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-muted);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: 2px;
+    }
+
+    .zoom-label {
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .zoom-btn {
+      background: transparent;
+      color: var(--text-primary);
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .zoom-btn:hover {
+      background: var(--border-light);
+    }
+
+    .zoom-btn.active {
+      background: var(--accent);
+      color: #FFFFFF;
+    }
+
+    /* Presentation Timer with Audio Notification State */
+    .timer-widget {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-muted);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: 4px 8px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .timer-widget.warn {
+      background: var(--warning-soft);
+      border-color: var(--warning);
+    }
+
+    .timer-widget.done {
+      background: var(--danger-soft);
+      border-color: var(--danger);
+    }
+
+    .timer-readout {
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      padding: 0 6px;
+      min-width: 58px;
+      text-align: center;
+    }
+
+    .timer-widget.warn .timer-readout {
+      color: var(--warning);
+    }
+
+    .timer-widget.done .timer-readout {
+      color: var(--danger);
+    }
+
+    .timer-btn {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-default);
+      border-radius: 4px;
+      padding: 4px 9px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: all 0.12s ease;
+    }
+
+    .timer-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .timer-btn.primary-action {
+      background: var(--text-primary);
+      color: #FFFFFF;
+      border-color: var(--text-primary);
+    }
+
+    .timer-btn.primary-action:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .timer-btn.sound-on {
+      background: var(--success-soft);
+      color: var(--success);
+      border-color: var(--success-border);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #FFFFFF;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 9px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 9px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-muted);
+      border-color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      padding: 44px 0 36px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1.4fr 0.6fr;
+      }
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.85rem, 2.8vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .hero-lead {
+      font-size: 1.06rem;
+      color: var(--text-body);
+      line-height: 1.72;
+      margin-bottom: 28px;
+    }
+
+    .role-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .role-item {
+      background: var(--bg-page);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+    }
+
+    .role-item-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .role-item-value {
+      font-family: var(--font-mono);
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    .role-item-desc {
+      font-size: 0.88rem;
+      color: var(--text-body);
+      margin-top: 6px;
+      line-height: 1.45;
+    }
+
+    .summary-panel {
+      background: var(--bg-page);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .summary-panel h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-default);
+      margin-bottom: 16px;
+    }
+
+    .summary-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .summary-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.95rem;
+    }
+
+    .summary-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .summary-key {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .summary-val {
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       SECTIONS & TYPOGRAPHY
+       ========================================================================== */
+    .section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border-light);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-body);
+      margin-top: 6px;
+      max-width: 820px;
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 28px;
+    }
+
+    /* ==========================================================================
+       SECTION 1: DOMAIN ONBOARDING & ROLE SIMULATOR
+       ========================================================================== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    @media (min-width: 1024px) {
+      .two-col {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    .tier-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tier-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tier-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .tier-card p {
+      font-size: 0.96rem;
+      color: var(--text-body);
+      margin-bottom: 14px;
+    }
+
+    .clean-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: var(--text-body);
+    }
+
+    .clean-list li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .clean-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .preset-btn {
+      background: var(--bg-muted);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .preset-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .text-input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .oauth-result {
+      margin-top: 16px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      font-size: 0.95rem;
+    }
+
+    .callout-note {
+      margin-top: 20px;
+      padding: 16px 18px;
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-sm);
+      font-size: 0.94rem;
+      color: var(--text-body);
+    }
+
+    /* ==========================================================================
+       SECTION 2: 7-TAB INSTRUCTOR PANEL GUIDE
+       ========================================================================== */
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .tab-button {
+      padding: 10px 16px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-body);
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .tab-button:hover {
+      background: var(--bg-muted);
+      color: var(--text-primary);
+    }
+
+    .tab-button.active {
+      background: var(--accent);
+      color: #FFFFFF;
+      border-color: var(--accent);
+    }
+
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.98rem;
+      color: var(--text-body);
+    }
+
+    .step-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .data-table th {
+      background: var(--bg-muted);
+      color: var(--text-primary);
+      font-weight: 700;
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .data-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-body);
+      vertical-align: top;
+    }
+
+    /* ==========================================================================
+       SECTION 3: 6-MODULE WORKSHOP SCHEDULE
+       ========================================================================== */
+    .module-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .module-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .module-trigger {
+      width: 100%;
+      background: var(--bg-surface);
+      border: none;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .module-trigger:hover {
+      background: var(--bg-page);
+    }
+
+    .module-meta {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .module-heading {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 4px;
+    }
+
+    .module-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-muted);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .module-content {
+      display: none;
+      padding: 24px;
+      border-top: 1px solid var(--border-light);
+      background: var(--bg-page);
+    }
+
+    .module-item.open .module-content {
+      display: block;
+    }
+
+    .module-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .module-col-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .module-col-box h4 {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    /* ==========================================================================
+       SECTION 4: PIPELINE SIMULATORS
+       ========================================================================== */
+    .sim-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    @media (min-width: 1024px) {
+      .sim-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .sim-status-bar {
+      margin: 16px 0;
+      padding: 12px 16px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .sim-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .sim-steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .sim-step {
+      background: var(--bg-page);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .sim-step.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .sim-step.done {
+      background: var(--success-soft);
+      border-color: var(--success);
+    }
+
+    .sim-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .sim-step-title {
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 4px 0;
+    }
+
+    .sim-step-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       SECTION 5: SQL & GIT RUNBOOK
+       ========================================================================== */
+    .runbook-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 24px;
+    }
+
+    .code-block {
+      background: var(--bg-page);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      overflow-x: auto;
+      line-height: 1.6;
+      margin-top: 14px;
+    }
+
+    /* ==========================================================================
+       SECTION 6: HANDOVER CHECKLIST
+       ========================================================================== */
+    .progress-track {
+      height: 12px;
+      background: var(--bg-muted);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-default);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--success);
+      transition: width 0.25s ease;
+    }
+
+    .checklist-wrap {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .checklist-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .checklist-table th {
+      background: var(--bg-muted);
+      color: var(--text-primary);
+      font-weight: 700;
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .checklist-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-body);
+      vertical-align: middle;
+    }
+
+    .checklist-table tr.done-row {
+      background: var(--success-soft);
+    }
+
+    .signoff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .signoff-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 22px;
+    }
+
+    /* ==========================================================================
+       PRESENTATION SLIDE OVERLAY
+       ========================================================================== */
+    .slide-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--bg-page);
+      padding: 28px 40px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide-overlay.active {
+      display: flex;
+    }
+
+    .slide-card {
+      max-width: 1120px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 48px 56px;
+    }
+
+    .slide-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 28px;
+      font-size: 1.25rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .slide-bullets li {
+      position: relative;
+      padding-left: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .slide-bullets li:last-child {
+      border-bottom: none;
+    }
+
+    .slide-bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    footer {
+      padding: 36px 0;
+      background: var(--bg-surface);
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    @media print {
+      .sticky-header, .slide-overlay, .sim-grid {
+        display: none !important;
+      }
+      .module-content {
+        display: block !important;
+      }
+      body {
+        background: #FFFFFF !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP INSTITUTIONAL BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-title">
+        Department of Software Engineering, SICT — Federal University of Technology Minna
+      </div>
+      <div class="top-bar-links">
+        <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">Full Technical Documentation</a>
+        <a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer">Live Academic Showcase</a>
+        <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer">Department GitHub Organization</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVIGATION & ACCESSIBILITY CONTROLS -->
+  <header class="sticky-header">
+    <div class="container header-inner">
+      <nav class="nav-links" aria-label="Workshop sections">
+        <a href="#rbac" class="nav-link">1. Staff Onboarding</a>
+        <a href="#console" class="nav-link">2. Instructor Panel</a>
+        <a href="#curriculum" class="nav-link">3. Workshop Schedule</a>
+        <a href="#simulators" class="nav-link">4. System Workflows</a>
+        <a href="#runbook" class="nav-link">5. SQL & Git Runbook</a>
+        <a href="#handover" class="nav-link">6. Handover Checklist</a>
+      </nav>
+
+      <div class="header-controls">
+        <div class="zoom-group" role="group" aria-label="Text size">
+          <span class="zoom-label">Text Size</span>
+          <button class="zoom-btn" onclick="setFontScale(16, this)" title="Standard 16px">A-</button>
+          <button class="zoom-btn active" onclick="setFontScale(18, this)" title="Default 18px">A</button>
+          <button class="zoom-btn" onclick="setFontScale(20, this)" title="Large 20px">A+</button>
+          <button class="zoom-btn" onclick="setFontScale(22, this)" title="Extra Large 22px">A++</button>
+        </div>
+
+        <div class="timer-widget" id="headerTimerWidget" role="region" aria-label="Presentation Timer">
+          <span class="timer-readout" id="timerText">45:00</span>
+          <button class="timer-btn primary-action" id="timerBtn" onclick="toggleTimer()">Start</button>
+          <button class="timer-btn" onclick="resetTimer(15)" title="15 Minute Session">15m</button>
+          <button class="timer-btn" onclick="resetTimer(45)" title="45 Minute Module">45m</button>
+          <button class="timer-btn" onclick="resetTimer(60)" title="60 Minute Module">60m</button>
+          <button class="timer-btn sound-on" id="soundToggleBtn" onclick="toggleTimerSound()" title="Toggle timer sound notifications">Sound: On</button>
+        </div>
+
+        <button class="btn-primary" onclick="openSlides()">Presentation Mode (12 Slides)</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Staff Onboarding & System Handover Manual</div>
+          <h1>SWE-MLAB Operations, Instructor Console & Departmental Governance</h1>
+          <p class="hero-lead">
+            This guide provides the <strong>Head of Department</strong>, <strong>Academic Instructors</strong>, and <strong>Laboratory Staff</strong> with everything required to manage the Software Engineering Machine Laboratory (SWE-MLAB). Any staff member with a verified <code>@futminna.edu.ng</code> email on GitHub is automatically onboarded as an <strong>Instructor</strong>, while global departmental administration is anchored under <code>softwareng@futminna.edu.ng</code> and <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer">github.com/software-engineering-futminna</a>.
+          </p>
+
+          <div class="role-strip">
+            <div class="role-item">
+              <div class="role-item-label">Super Admin Custody</div>
+              <div class="role-item-value">softwareng@futminna.edu.ng</div>
+              <div class="role-item-desc">GitHub: <strong>software-engineering-futminna</strong>. Full access to all courses, teams, and leaderboards.</div>
+            </div>
+            <div class="role-item">
+              <div class="role-item-label">Staff Instructor</div>
+              <div class="role-item-value">*@futminna.edu.ng</div>
+              <div class="role-item-desc">Automatically assigned the <strong>instructor</strong> role upon GitHub sign-in (excludes <code>@st.</code>).</div>
+            </div>
+            <div class="role-item">
+              <div class="role-item-label">Undergraduate Student</div>
+              <div class="role-item-value">*@st.futminna.edu.ng</div>
+              <div class="role-item-desc">Automatically assigned the <strong>student</strong> role. Non-university emails are declined.</div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn-primary" onclick="openSlides()">Open Presentation Slides</button>
+            <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer" class="btn-secondary">Full Technical Docs</a>
+            <a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer" class="btn-secondary">View Live Student Showcase</a>
+            <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Department GitHub Profile</a>
+            <button class="btn-secondary" onclick="window.print()">Print Handover Guide</button>
+          </div>
+        </div>
+
+        <aside class="summary-panel">
+          <h2>Departmental Platform Summary</h2>
+          <ul class="summary-list">
+            <li>
+              <span class="summary-key">Full Documentation</span>
+              <span class="summary-val"><a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">swemlab-docs Repository</a></span>
+            </li>
+            <li>
+              <span class="summary-key">Department GitHub Org</span>
+              <span class="summary-val"><a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer">software-engineering-futminna</a></span>
+            </li>
+            <li>
+              <span class="summary-key">Live Showcase Portal</span>
+              <span class="summary-val"><a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer">View Live Showcase</a></span>
+            </li>
+            <li>
+              <span class="summary-key">Super Admin Email</span>
+              <span class="summary-val"><code>softwareng@futminna.edu.ng</code></span>
+            </li>
+            <li>
+              <span class="summary-key">Instructor Console</span>
+              <span class="summary-val">7 Integrated Modules (<code>/instructor</code>)</span>
+            </li>
+            <li>
+              <span class="summary-key">Pilot Milestone</span>
+              <span class="summary-val">20 Teams, 75+ Students (SWE 221)</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: DOMAIN RBAC & LIVE OAUTH TESTER -->
+  <section id="rbac" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Section 01 — Institutional Authentication</div>
+          <h2 class="section-title">Automatic Domain-Based Onboarding</h2>
+          <p class="section-desc">
+            When a user signs in with GitHub, SWE-MLAB inspects all verified email addresses linked to their GitHub profile (primary or secondary) and automatically assigns their institutional role.
+          </p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="tier-list">
+          <div class="tier-card">
+            <h3>1. Departmental Super Admin (<code>role = "super_admin"</code>)</h3>
+            <p>
+              Assigned automatically to the departmental GitHub account (<a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a>) or any GitHub account with a verified <code>softwareng@futminna.edu.ng</code> address.
+            </p>
+            <ul class="clean-list">
+              <li>Views and manages all courses across all lecturers in the department</li>
+              <li>Full access to all course leaderboards and Senate CSV grade exports</li>
+              <li>Custodian of the <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a> GitHub Organization</li>
+            </ul>
+          </div>
+
+          <div class="tier-card">
+            <h3>2. Academic Staff & Instructors (<code>role = "instructor"</code>)</h3>
+            <p>
+              Assigned automatically to any lecturer or staff member who has a verified <code>@futminna.edu.ng</code> email (excluding <code>@st.futminna.edu.ng</code>) attached to their GitHub account. Staff may keep their personal email as primary on GitHub—SWE-MLAB detects verified secondary university emails automatically.
+            </p>
+            <ul class="clean-list">
+              <li>Immediate access to the 7-tab Instructor Panel at <code>/instructor</code></li>
+              <li>Creates and manages courses, weekly coding activities, and project topics</li>
+              <li>Uploads PDF/DOCX lecture notes for the student RAG AI Tutor</li>
+              <li>Launches and migrates student team repositories into the Department GitHub Organization</li>
+            </ul>
+          </div>
+
+          <div class="tier-card">
+            <h3>3. Undergraduate Students (<code>role = "student"</code>)</h3>
+            <p>
+              Assigned automatically to students with a verified <code>@st.futminna.edu.ng</code> email on GitHub. Accounts without a verified FUTMinna email are declined with <code>/?error=institutional_email_required</code>.
+            </p>
+            <ul class="clean-list">
+              <li>Enrolls in courses and launches GitHub Codespaces ("Open Forge")</li>
+              <li>Forms project teams, invites classmates, and queries the AI Course Tutor</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size:1.2rem;font-weight:700;color:var(--text-primary);">Interactive Role Assignment Tester</h3>
+          <p style="font-size:0.95rem;color:var(--text-body);margin-top:6px;">
+            Select a sample identity below or type any email address / GitHub username to preview how <code>backend/pkg/api/auth.go</code> assigns permissions:
+          </p>
+
+          <div class="preset-row">
+            <button class="preset-btn" onclick="testOAuth('softwareng@futminna.edu.ng')">softwareng@futminna.edu.ng</button>
+            <button class="preset-btn" onclick="testOAuth('software-engineering-futminna')">software-engineering-futminna</button>
+            <button class="preset-btn" onclick="testOAuth('lecturer.swe@futminna.edu.ng')">lecturer.swe@futminna.edu.ng</button>
+            <button class="preset-btn" onclick="testOAuth('student.m22@st.futminna.edu.ng')">student.m22@st.futminna.edu.ng</button>
+            <button class="preset-btn" onclick="testOAuth('external@gmail.com')">external@gmail.com</button>
+          </div>
+
+          <label for="oauthInput" style="display:block;font-size:0.84rem;font-weight:700;margin-bottom:6px;color:var(--text-secondary);">
+            Verified GitHub Email or Username
+          </label>
+          <input type="text" id="oauthInput" class="text-input" value="softwareng@futminna.edu.ng" oninput="evaluateOAuthInput()">
+
+          <div class="oauth-result" id="oauthResultBox"></div>
+
+          <div class="callout-note">
+            <strong style="display:block;color:var(--text-primary);margin-bottom:4px;">3-Step Staff Onboarding Procedure:</strong>
+            1. Open <code>github.com/settings/emails</code> and add your <code>@futminna.edu.ng</code> email address.<br>
+            2. Click the verification link sent to your university staff inbox.<br>
+            3. Sign in to SWE-MLAB with GitHub to access the Instructor Panel automatically.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: INTERACTIVE 7-TAB INSTRUCTOR PANEL GUIDE -->
+  <section id="console" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Section 02 — Instructor Console Reference</div>
+          <h2 class="section-title">The 7-Tab Instructor Panel (<code>/instructor</code>)</h2>
+          <p class="section-desc">
+            Select any of the 7 tabs below to review the step-by-step lecturer workflow and the corresponding backend endpoints.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="tab-bar" role="tablist">
+          <button class="tab-button active" onclick="selectConsoleTab(0, this)">1. My Courses</button>
+          <button class="tab-button" onclick="selectConsoleTab(1, this)">2. Weekly Activities</button>
+          <button class="tab-button" onclick="selectConsoleTab(2, this)">3. Grade Submissions</button>
+          <button class="tab-button" onclick="selectConsoleTab(3, this)">4. Leaderboard & CSV</button>
+          <button class="tab-button" onclick="selectConsoleTab(4, this)">5. Lecture Notes (AI Tutor)</button>
+          <button class="tab-button" onclick="selectConsoleTab(5, this)">6. Teams & Projects</button>
+          <button class="tab-button" onclick="selectConsoleTab(6, this)">7. Results Moderation</button>
+        </div>
+
+        <div id="consoleTabStage"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: 6-MODULE WORKSHOP SCHEDULE -->
+  <section id="curriculum" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Section 03 — Training Curriculum</div>
+          <h2 class="section-title">6-Module Onboarding Workshop Schedule</h2>
+          <p class="section-desc">
+            Structured full-day onboarding schedule for Departmental Leadership, Academic Instructors, and Laboratory Technologists.
+          </p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn-secondary" onclick="filterModules('all')">All Staff</button>
+          <button class="btn-secondary" onclick="filterModules('super')">HOD & Super Admin</button>
+          <button class="btn-secondary" onclick="filterModules('instructor')">Instructors</button>
+          <button class="btn-secondary" onclick="filterModules('ta')">Lab Staff & TAs</button>
+          <button class="btn-primary" onclick="toggleAllModules(true)">Expand All</button>
+          <button class="btn-secondary" onclick="toggleAllModules(false)">Collapse All</button>
+        </div>
+      </div>
+
+      <div class="module-list">
+        <!-- Module 1 -->
+        <div class="module-item open" data-mod-roles="super instructor ta">
+          <button class="module-trigger" onclick="toggleModCard(this)">
+            <div>
+              <div class="module-meta">Module 01 • 09:00 – 09:45 (45 Mins) • All Stakeholders</div>
+              <div class="module-heading">Platform Architecture, Automatic Staff Onboarding & Live Showcase Tour</div>
+            </div>
+            <span class="module-icon">−</span>
+          </button>
+          <div class="module-content">
+            <div class="module-cols">
+              <div class="module-col-box">
+                <h4>Architecture & Governance Overview</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">1</span><span><strong>System Stack:</strong> Go 1.22 (Gin + GORM) API, React 18 SPA, Neon Serverless PostgreSQL database, and GitHub REST API v60 integration.</span></li>
+                  <li><span class="step-num">2</span><span><strong>Domain Role Mapping:</strong> <code>softwareng@futminna.edu.ng</code> / <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a> maps to <strong>Super Admin</strong>; <code>*@futminna.edu.ng</code> maps to <strong>Instructor</strong>; <code>*@st.futminna.edu.ng</code> maps to <strong>Student</strong>.</span></li>
+                  <li><span class="step-num">3</span><span><strong>Live Academic Showcase:</strong> Review the 20 student teams and deployed projects at <a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer">software-engineering-futminna.github.io/showcase</a>.</span></li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>Hands-On Staff Onboarding Exercise</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">A</span><span>Each lecturer opens <code>github.com/settings/emails</code> and adds their official <code>@futminna.edu.ng</code> email address.</span></li>
+                  <li><span class="step-num">B</span><span>Verify the confirmation email sent by GitHub inside FUTMinna staff webmail.</span></li>
+                  <li><span class="step-num">C</span><span>Sign in to SWE-MLAB with GitHub and confirm immediate access to the Instructor Panel (<code>/instructor</code>).</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="module-item open" data-mod-roles="instructor ta">
+          <button class="module-trigger" onclick="toggleModCard(this)">
+            <div>
+              <div class="module-meta">Module 02 • 09:45 – 10:45 (60 Mins) • Instructors & Lab Staff</div>
+              <div class="module-heading">Course Setup, Weekly Activities, AI Lab Generation & GitHub Codespaces</div>
+            </div>
+            <span class="module-icon">−</span>
+          </button>
+          <div class="module-content">
+            <div class="module-cols">
+              <div class="module-col-box">
+                <h4>Course & Weekly Activity Creation</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">1</span><span><strong>Create Course (Tab 1):</strong> Enter Title, Course Code, and Semester. Add at least one activity immediately so the empty-course safeguard is not triggered.</span></li>
+                  <li><span class="step-num">2</span><span><strong>AI Activity Generator (Tab 2):</strong> Click <code>AI Generate</code>, provide Topic, Learning Objectives, Programming Language, and optional Lecture Excerpt, then apply the generated specification to the form.</span></li>
+                  <li><span class="step-num">3</span><span><strong>Plan Semester Bulk Tool:</strong> Use <code>Plan Semester</code> to generate 12 weekly slots in one operation.</span></li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>Publishing & Student Cloud IDE ("Open Forge")</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">A</span><span><strong>Draft vs. Live Status:</strong> New activities default to <code>Draft</code> (hidden from students). Toggle to <code>Live</code> when ready for class.</span></li>
+                  <li><span class="step-num">B</span><span><strong>GitHub Codespaces Provisioning:</strong> Starting an activity automatically creates the student's repository with <code>.devcontainer/devcontainer.json</code> and <code>.github/workflows/autograde.yml</code>.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="module-item" data-mod-roles="instructor ta">
+          <button class="module-trigger" onclick="toggleModCard(this)">
+            <div>
+              <div class="module-meta">Module 03 • 11:00 – 12:00 (60 Mins) • Instructors & Lab Staff</div>
+              <div class="module-heading">Lecture Notes Upload, RAG Indexing & Student AI Course Tutor</div>
+            </div>
+            <span class="module-icon">+</span>
+          </button>
+          <div class="module-content">
+            <div class="module-cols">
+              <div class="module-col-box">
+                <h4>Uploading & Indexing Course Material (Tab 5)</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">1</span><span><strong>PDF & DOCX Upload (Max 20 MB):</strong> Upload weekly lecture handouts in Tab 5 (<code>Lecture Notes</code>).</span></li>
+                  <li><span class="step-num">2</span><span><strong>Background Text Extraction:</strong> Backend validates file headers (<code>%PDF</code> or <code>PK\x03\x04</code>), extracts text asynchronously, and stores indexed <code>LectureChunk</code> records in PostgreSQL.</span></li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>Verifying the Student AI Tutor</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">A</span><span>Confirm the note status transitions from <code>Processing</code> to <code>Ready</code> and the chunk counter increments.</span></li>
+                  <li><span class="step-num">B</span><span>Test the Student AI Tutor on <code>/dashboard</code> to verify that answers cite the uploaded lecture notes.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="module-item" data-mod-roles="instructor ta">
+          <button class="module-trigger" onclick="toggleModCard(this)">
+            <div>
+              <div class="module-meta">Module 04 • 12:00 – 13:00 (60 Mins) • Instructors & Lab Staff</div>
+              <div class="module-heading">Team Projects, Repository Launch & 1-Click Migration to Department GitHub Org</div>
+            </div>
+            <span class="module-icon">+</span>
+          </button>
+          <div class="module-content">
+            <div class="module-cols">
+              <div class="module-col-box">
+                <h4>Project Specification & Team Formation (Tab 6)</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">1</span><span><strong>Create Project Topic:</strong> Define project requirements manually or via the AI Project Generator, and set maximum team size (2–6 students).</span></li>
+                  <li><span class="step-num">2</span><span><strong>Student Team Rosters:</strong> Team Leads create teams and invite classmates by GitHub username or Matric Number.</span></li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>Launch Repo vs. Migrate to Org</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">A</span><span><strong>Launch Repo (<code>/teams/:id/launch-repo</code>):</strong> Creates a new repository directly inside <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a>.</span></li>
+                  <li><span class="step-num">B</span><span><strong>Migrate to Org (<code>/teams/:id/migrate-repo</code>):</strong> Transfers an existing personal student repository into <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a>, sets it to Public, and re-invites all team members as collaborators.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="module-item" data-mod-roles="super instructor">
+          <button class="module-trigger" onclick="toggleModCard(this)">
+            <div>
+              <div class="module-meta">Module 05 • 13:00 – 13:45 (45 Mins) • HOD, Instructors & Exam Officers</div>
+              <div class="module-heading">Grading Workflows, Results Moderation, CSV Export & Showcase Updates</div>
+            </div>
+            <span class="module-icon">+</span>
+          </button>
+          <div class="module-content">
+            <div class="module-cols">
+              <div class="module-col-box">
+                <h4>Three-Mode Assessment & Moderation</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">1</span><span><strong>Automated & AI Grading (Tab 3):</strong> Combine GitHub Actions webhook autograding (100% pass / 50% partial) with Gemini AI qualitative feedback and manual instructor scoring.</span></li>
+                  <li><span class="step-num">2</span><span><strong>Results Moderation (Tab 7):</strong> Toggle <code>Hide Results from Students</code> during grading moderation and use <code>+ Add Result</code> to enter or override scores by GitHub username.</span></li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>Senate CSV Export & Public Showcase</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">A</span><span><strong>Export CSV (Tab 4):</strong> Download ranked course results with Matric Numbers for departmental examination records.</span></li>
+                  <li><span class="step-num">B</span><span><strong>Showcase Publication:</strong> Add top student projects to <a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer">software-engineering-futminna.github.io/showcase</a> for accreditation visibility.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="module-item" data-mod-roles="super instructor">
+          <button class="module-trigger" onclick="toggleModCard(this)">
+            <div>
+              <div class="module-meta">Module 06 • 13:45 – 14:30 (45 Mins) • HOD & System Custodians</div>
+              <div class="module-heading">Super Admin Custody Transfer, Production Credentials & Sign-Off</div>
+            </div>
+            <span class="module-icon">+</span>
+          </button>
+          <div class="module-content">
+            <div class="module-cols">
+              <div class="module-col-box">
+                <h4>Super Admin Verification</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">1</span><span>Sign in using the departmental GitHub account (<a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a> / <code>softwareng@futminna.edu.ng</code>).</span></li>
+                  <li><span class="step-num">2</span><span>Verify global visibility across all departmental courses, activities, teams, and leaderboards.</span></li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>Infrastructure Handover & Sign-Off</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">A</span><span>Confirm access to Neon PostgreSQL (<code>DATABASE_URL</code>), GitHub OAuth credentials, <code>GEMINI_API_KEY</code>, and Sentry alerts.</span></li>
+                  <li><span class="step-num">B</span><span>Complete and print the Handover Verification Checklist in Section 6.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: INTERACTIVE PIPELINE SIMULATORS -->
+  <section id="simulators" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Section 04 — Automated System Workflows</div>
+          <h2 class="section-title">Repository Migration & Lecture RAG Pipelines</h2>
+          <p class="section-desc">
+            Interactive step-by-step walkthrough of the backend operations triggered during repository migration and lecture note indexing.
+          </p>
+        </div>
+      </div>
+
+      <div class="sim-grid">
+        <!-- Simulator 1 -->
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+            <div>
+              <div class="section-num">POST /api/v1/teams/:id/migrate-repo</div>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--text-primary);">1-Click GitHub Organization Migration</h3>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-primary" id="migRunBtn" onclick="runMigrateSim()">Step Through Migration</button>
+              <button class="btn-secondary" onclick="resetMigrateSim()">Reset</button>
+            </div>
+          </div>
+
+          <div class="sim-status-bar">
+            <code id="migRepoText">https://github.com/StudentLead/naijaweather-app</code>
+            <span id="migBadge" style="font-weight:700;color:var(--warning);">Personal Repository</span>
+          </div>
+
+          <div class="sim-steps-grid">
+            <div class="sim-step" id="mig0">
+              <div class="sim-step-num">Step 01</div>
+              <div class="sim-step-title">Load Team Roster</div>
+              <div class="sim-step-desc">Fetch team and member GitHub usernames</div>
+            </div>
+            <div class="sim-step" id="mig1">
+              <div class="sim-step-num">Step 02</div>
+              <div class="sim-step-title">Clear Placeholder</div>
+              <div class="sim-step-desc">Remove empty conflict repo in Org if present</div>
+            </div>
+            <div class="sim-step" id="mig2">
+              <div class="sim-step-num">Step 03</div>
+              <div class="sim-step-title">GitHub Transfer API</div>
+              <div class="sim-step-desc">POST /transfer (handles HTTP 202)</div>
+            </div>
+            <div class="sim-step" id="mig3">
+              <div class="sim-step-num">Step 04</div>
+              <div class="sim-step-title">Set Public Access</div>
+              <div class="sim-step-desc">PATCH Private: false on Org repository</div>
+            </div>
+            <div class="sim-step" id="mig4">
+              <div class="sim-step-num">Step 05</div>
+              <div class="sim-step-title">Restore Collaborators</div>
+              <div class="sim-step-desc">Re-invite all team members with push access</div>
+            </div>
+            <div class="sim-step" id="mig5">
+              <div class="sim-step-num">Step 06</div>
+              <div class="sim-step-title">Update Database</div>
+              <div class="sim-step-desc">Save new Org repository URL in PostgreSQL</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulator 2 -->
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;">
+            <div>
+              <div class="section-num">POST /api/v1/courses/:id/notes/upload</div>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--text-primary);">Lecture Note RAG Indexing Pipeline</h3>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-primary" id="ragRunBtn" onclick="runRagSim()">Step Through Indexing</button>
+              <button class="btn-secondary" onclick="resetRagSim()">Reset</button>
+            </div>
+          </div>
+
+          <div class="sim-status-bar">
+            <code id="ragFileText">Week_03_Async_REST_APIs.pdf (1.8 MB)</code>
+            <span id="ragBadge" style="font-weight:700;color:var(--accent);">Ready to Upload</span>
+          </div>
+
+          <div class="sim-steps-grid">
+            <div class="sim-step" id="rag0">
+              <div class="sim-step-num">Step 01</div>
+              <div class="sim-step-title">File Signature Check</div>
+              <div class="sim-step-desc">Verify %PDF or DOCX header (max 20 MB)</div>
+            </div>
+            <div class="sim-step" id="rag1">
+              <div class="sim-step-num">Step 02</div>
+              <div class="sim-step-title">Queue Background Job</div>
+              <div class="sim-step-desc">Create LectureNote record (processing)</div>
+            </div>
+            <div class="sim-step" id="rag2">
+              <div class="sim-step-num">Step 03</div>
+              <div class="sim-step-title">Extract Document Text</div>
+              <div class="sim-step-desc">Parse pages in asynchronous goroutine</div>
+            </div>
+            <div class="sim-step" id="rag3">
+              <div class="sim-step-num">Step 04</div>
+              <div class="sim-step-title">Store Text Chunks</div>
+              <div class="sim-step-desc">Insert LectureChunk rows into PostgreSQL</div>
+            </div>
+            <div class="sim-step" id="rag4">
+              <div class="sim-step-num">Step 05</div>
+              <div class="sim-step-title">Activate AI Tutor</div>
+              <div class="sim-step-desc">Mark status Ready & enable student chat</div>
+            </div>
+            <div class="sim-step" id="rag5">
+              <div class="sim-step-num">Step 06</div>
+              <div class="sim-step-title">Grounded Responses</div>
+              <div class="sim-step-desc">Gemini answers students using course notes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: SQL & GIT RUNBOOK -->
+  <section id="runbook" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Section 05 — Technical Custodian Reference</div>
+          <h2 class="section-title">SQL & Git Maintenance Runbook</h2>
+          <p class="section-desc">
+            Standard SQL queries and Git commands for routine departmental maintenance and edge-case recovery.
+          </p>
+        </div>
+      </div>
+
+      <div class="runbook-grid">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+            <h3 style="font-size:1.08rem;font-weight:700;">1. Departmental Super Admin Database Sync</h3>
+            <button class="btn-secondary" style="padding:5px 12px;font-size:0.82rem;" onclick="copyCode('codeSuper', this)">Copy SQL</button>
+          </div>
+          <p style="font-size:0.94rem;color:var(--text-body);margin-top:8px;">
+            Ensures <code>softwareng@futminna.edu.ng</code> and GitHub account <code>software-engineering-futminna</code> hold <code>super_admin</code> privileges:
+          </p>
+          <pre class="code-block" id="codeSuper">UPDATE users
+SET role = 'super_admin',
+    institutional_verified = true
+WHERE LOWER(email) = 'softwareng@futminna.edu.ng'
+   OR LOWER(username) = 'software-engineering-futminna';</pre>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+            <h3 style="font-size:1.08rem;font-weight:700;">2. Update Staff Who Logged In Before Email Verification</h3>
+            <button class="btn-secondary" style="padding:5px 12px;font-size:0.82rem;" onclick="copyCode('codeInst', this)">Copy SQL</button>
+          </div>
+          <p style="font-size:0.94rem;color:var(--text-body);margin-top:8px;">
+            If a lecturer signed in before verifying their <code>@futminna.edu.ng</code> email on GitHub, run this query once:
+          </p>
+          <pre class="code-block" id="codeInst">UPDATE users
+SET role = 'instructor',
+    institutional_verified = true
+WHERE LOWER(email) LIKE '%@futminna.edu.ng'
+  AND LOWER(email) NOT LIKE '%@st.futminna.edu.ng'
+  AND role != 'super_admin';</pre>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+            <h3 style="font-size:1.08rem;font-weight:700;">3. Reset Stale Repository Migration URL</h3>
+            <button class="btn-secondary" style="padding:5px 12px;font-size:0.82rem;" onclick="copyCode('codeStale', this)">Copy SQL</button>
+          </div>
+          <p style="font-size:0.94rem;color:var(--text-body);margin-top:8px;">
+            If a team repository URL points to a deleted placeholder in the organization, reset it to the student's personal repo before clicking <strong>Migrate to Org</strong>:
+          </p>
+          <pre class="code-block" id="codeStale">UPDATE teams
+SET repo_url = 'https://github.com/StudentOwner/repo-name',
+    repo_full_name = 'StudentOwner/repo-name'
+WHERE id = &lt;team_id&gt;;</pre>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+            <h3 style="font-size:1.08rem;font-weight:700;">4. Sync Personal Repository into Empty Org Repo</h3>
+            <button class="btn-secondary" style="padding:5px 12px;font-size:0.82rem;" onclick="copyCode('codeForceSync', this)">Copy Commands</button>
+          </div>
+          <p style="font-size:0.94rem;color:var(--text-body);margin-top:8px;">
+            If a team pushed their commits to a personal repo while their organization repo remained empty:
+          </p>
+          <pre class="code-block" id="codeForceSync">git clone https://github.com/StudentUsername/PERSONAL-REPO.git temp_sync
+cd temp_sync
+git remote set-url origin https://github.com/software-engineering-futminna/ORG-REPO.git
+git push origin main --force
+cd .. && rm -rf temp_sync</pre>
+        </div>
+      </div>
+
+      <!-- OFFICIAL DOCUMENTATION DIRECTORY (swemlab-docs) -->
+      <div class="card" style="margin-top:28px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px;">
+          <div>
+            <h3 style="font-size:1.2rem;font-weight:700;color:var(--text-primary);">Official Technical Documentation Directory (<code>swemlab-docs</code>)</h3>
+            <p style="font-size:0.95rem;color:var(--text-body);margin-top:4px;">
+              Complete architecture manuals, API specifications, database ERDs, and operational runbooks hosted at <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">github.com/software-engineering-futminna/swemlab-docs</a>.
+            </p>
+          </div>
+          <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/FULL_REPORT.md" target="_blank" rel="noopener noreferrer" class="btn-primary">Read Full Technical Report</a>
+        </div>
+
+        <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:90px;">Chapter</th>
+                <th style="width:280px;">Document</th>
+                <th>Scope & Contents</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>01</code></td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/01-pedagogical-framework.md" target="_blank" rel="noopener noreferrer"><strong>Pedagogical Framework</strong></a></td>
+                <td>Course curriculum structure, 4-sprint lifecycle, learning milestones, and evaluation rubrics.</td>
+              </tr>
+              <tr>
+                <td><code>02</code></td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/02-system-architecture.md" target="_blank" rel="noopener noreferrer"><strong>System Architecture</strong></a></td>
+                <td>Technical stack breakdown (React 18, Go 1.22, Gin, GORM, Neon Serverless PostgreSQL, Nginx, Docker).</td>
+              </tr>
+              <tr>
+                <td><code>03</code></td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/03-github-org-migration-pipeline.md" target="_blank" rel="noopener noreferrer"><strong>GitHub Migration Pipeline</strong></a></td>
+                <td>Deep dive into <code>TransferToOrg</code>, asynchronous HTTP 202 handling, and collaborator synchronization.</td>
+              </tr>
+              <tr>
+                <td><code>04</code></td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/04-api-specification.md" target="_blank" rel="noopener noreferrer"><strong>REST API Specification</strong></a></td>
+                <td>Complete endpoint catalog, authentication headers, request payloads, and response schemas.</td>
+              </tr>
+              <tr>
+                <td><code>05</code></td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/05-database-schema.md" target="_blank" rel="noopener noreferrer"><strong>Database Schema & ERD</strong></a></td>
+                <td>PostgreSQL data models, foreign-key relationships, and Entity-Relationship Diagram.</td>
+              </tr>
+              <tr>
+                <td><code>06</code></td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/06-user-guides.md" target="_blank" rel="noopener noreferrer"><strong>User Operation Manuals</strong></a></td>
+                <td>Step-by-step operational guides for Students, Instructors, and Super Administrators.</td>
+              </tr>
+              <tr>
+                <td><code>07</code></td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/07-deployment-devops.md" target="_blank" rel="noopener noreferrer"><strong>DevOps & Deployment</strong></a></td>
+                <td>Docker Compose configurations, production environment variables, Sentry telemetry, and cloud deployment.</td>
+              </tr>
+              <tr>
+                <td><code>08</code></td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/08-troubleshooting-runbook.md" target="_blank" rel="noopener noreferrer"><strong>Operational Troubleshooting</strong></a></td>
+                <td>Runbooks for GitHub API rate limits, stale migration records, and database maintenance.</td>
+              </tr>
+              <tr>
+                <td><code>Full</code></td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/FULL_REPORT.md" target="_blank" rel="noopener noreferrer"><strong>Complete Technical Report</strong></a></td>
+                <td>Consolidated publication-grade academic report and full system architecture dossier.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: OFFICIAL HANDOVER CHECKLIST -->
+  <section id="handover" class="section" style="border-bottom:none;">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Section 06 — Departmental Custody & Sign-Off</div>
+          <h2 class="section-title">Official SWE-MLAB Handover Checklist</h2>
+          <p class="section-desc">
+            Verify each operational subsystem with the incoming departmental custodian (<code>softwareng@futminna.edu.ng</code> / <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a>).
+          </p>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span id="progressLabel" style="font-weight:700;color:var(--success);">0 / 8 Verified (0%)</span>
+          <button class="btn-primary" onclick="window.print()">Print Handover Sheet</button>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+
+      <div class="checklist-wrap">
+        <div style="overflow-x:auto;">
+          <table class="checklist-table">
+            <thead>
+              <tr>
+                <th style="width:64px;">Status</th>
+                <th>Subsystem / Asset</th>
+                <th>Verification Requirement</th>
+                <th>Designated Custodian</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td><strong>1. Departmental Super Admin</strong><br><code>softwareng@futminna.edu.ng</code></td>
+                <td>Confirm <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a> signs into SWE-MLAB with <code>super_admin</code> privileges and global course visibility.</td>
+                <td><input type="text" class="text-input ho-input" value="softwareng@futminna.edu.ng" oninput="saveHandoverState()"></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td><strong>2. Staff Domain Onboarding</strong><br><code>*@futminna.edu.ng</code></td>
+                <td>Confirm lecturers with verified <code>@futminna.edu.ng</code> emails on GitHub automatically receive the <code>instructor</code> role.</td>
+                <td><input type="text" class="text-input ho-input" value="Departmental Academic Staff" oninput="saveHandoverState()"></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td><strong>3. GitHub Organization & OAuth App</strong><br><a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer">github.com/software-engineering-futminna</a></td>
+                <td>Verify Organization Owner access, OAuth App credentials (<code>GITHUB_CLIENT_ID</code> / <code>SECRET</code>), and repository transfer rights.</td>
+                <td><input type="text" class="text-input ho-input" value="software-engineering-futminna" oninput="saveHandoverState()"></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td><strong>4. Neon Serverless PostgreSQL</strong><br><code>DATABASE_URL</code></td>
+                <td>Confirm database project access and backup procedures with <code>softwareng@futminna.edu.ng</code>.</td>
+                <td><input type="text" class="text-input ho-input" placeholder="Database Custodian" oninput="saveHandoverState()"></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td><strong>5. Gemini AI & Lecture RAG</strong><br><code>GEMINI_API_KEY</code></td>
+                <td>Verify AI Activity Generator, AI Project Generator, AI Grader, and PDF/DOCX Lecture Note indexing.</td>
+                <td><input type="text" class="text-input ho-input" placeholder="System Custodian" oninput="saveHandoverState()"></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td><strong>6. Cloud Hosting & Environment</strong><br><code>Production .env</code></td>
+                <td>Transfer hosting dashboard access, <code>JWT_SECRET</code>, <code>GITHUB_WEBHOOK_SECRET</code>, and deployment settings.</td>
+                <td><input type="text" class="text-input ho-input" placeholder="DevOps Custodian" oninput="saveHandoverState()"></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td><strong>7. Error Monitoring & Telemetry</strong><br><code>SENTRY_DSN</code></td>
+                <td>Verify backend error alert notifications are routed to <code>softwareng@futminna.edu.ng</code>.</td>
+                <td><input type="text" class="text-input ho-input" value="softwareng@futminna.edu.ng" oninput="saveHandoverState()"></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="ho-check" onchange="saveHandoverState()" style="width:20px;height:20px;"></td>
+                <td><strong>8. Showcase & Technical Documentation</strong><br><a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer">Live Showcase</a> • <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">swemlab-docs</a></td>
+                <td>Verify access to the public showcase and the 8-chapter documentation repository (<a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer"><code>swemlab-docs</code></a>).</td>
+                <td><input type="text" class="text-input ho-input" placeholder="Course Coordinator" oninput="saveHandoverState()"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="signoff-grid">
+        <div class="signoff-card">
+          <div style="font-size:0.84rem;font-weight:700;text-transform:uppercase;color:var(--text-secondary);">Outgoing System Engineer</div>
+          <div style="border-bottom:1px solid var(--border-strong);height:48px;margin:12px 0;"></div>
+          <div style="font-size:0.88rem;color:var(--text-body);">Name, Signature & Date</div>
+        </div>
+        <div class="signoff-card">
+          <div style="font-size:0.84rem;font-weight:700;text-transform:uppercase;color:var(--text-secondary);">Incoming Custodian (softwareng@futminna.edu.ng)</div>
+          <div style="border-bottom:1px solid var(--border-strong);height:48px;margin:12px 0;"></div>
+          <div style="font-size:0.88rem;color:var(--text-body);">Name, Signature & Date</div>
+        </div>
+        <div class="signoff-card">
+          <div style="font-size:0.84rem;font-weight:700;text-transform:uppercase;color:var(--text-secondary);">Head of Department (Software Engineering)</div>
+          <div style="border-bottom:1px solid var(--border-strong);height:48px;margin:12px 0;"></div>
+          <div style="font-size:0.88rem;color:var(--text-body);">Official Stamp, Signature & Date</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULLSCREEN PRESENTATION SLIDE DECK -->
+  <div class="slide-overlay" id="slideOverlay" role="dialog" aria-modal="true" aria-label="Presentation Slide Deck">
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1120px;width:100%;margin:0 auto;flex-wrap:wrap;gap:12px;">
+      <div style="font-weight:700;color:var(--text-primary);">
+        SWE-MLAB Staff Onboarding & Handover Presentation
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div class="timer-widget" id="slideTimerWidget" role="region" aria-label="Slide Deck Timer">
+          <span class="timer-readout" id="slideTimerText">45:00</span>
+          <button class="timer-btn primary-action" id="slideTimerBtn" onclick="toggleTimer()">Start</button>
+          <button class="timer-btn" onclick="resetTimer(15)">15m</button>
+          <button class="timer-btn" onclick="resetTimer(45)">45m</button>
+          <button class="timer-btn" onclick="resetTimer(60)">60m</button>
+          <button class="timer-btn" onclick="playTimerSound('chime')" title="Test notification chime">Test Sound</button>
+        </div>
+        <span style="font-size:0.88rem;color:var(--text-secondary);">Use Left / Right Arrow Keys</span>
+        <button class="btn-secondary" onclick="closeSlides()">Exit Presentation (ESC)</button>
+      </div>
+    </div>
+
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;width:100%;padding:20px 0;">
+      <div class="slide-card" id="slideFrame"></div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1120px;width:100%;margin:0 auto;">
+      <span id="slidePager" style="font-family:var(--font-mono);font-size:0.95rem;font-weight:700;color:var(--text-primary);">Slide 01 / 12</span>
+      <div style="display:flex;gap:12px;">
+        <button class="btn-secondary" onclick="stepSlide(-1)">Previous Slide</button>
+        <button class="btn-primary" onclick="stepSlide(1)">Next Slide</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div>
+        <strong style="color:var(--text-primary);">SWE-MLAB — Software Engineering Machine Laboratory</strong><br>
+        Department of Software Engineering, SICT, Federal University of Technology Minna
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;font-weight:600;">
+        <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">Full Technical Docs</a>
+        <a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer">Live Showcase</a>
+        <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer">GitHub Organization</a>
+        <span><code>softwareng@futminna.edu.ng</code></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ==========================================================================
+       1. ACCESSIBILITY TEXT SIZE CONTROLLER
+       ========================================================================== */
+    function setFontScale(px, btn) {
+      document.documentElement.style.setProperty('--base-font-size', px + 'px');
+      document.querySelectorAll('.zoom-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      localStorage.setItem('swemlab_font_scale', String(px));
+    }
+
+    function initFontScale() {
+      const saved = localStorage.getItem('swemlab_font_scale');
+      if (saved) {
+        const px = parseInt(saved, 10);
+        if ([16, 18, 20, 22].includes(px)) {
+          document.documentElement.style.setProperty('--base-font-size', px + 'px');
+          document.querySelectorAll('.zoom-btn').forEach(b => {
+            b.classList.toggle('active', b.getAttribute('onclick').includes(String(px)));
+          });
+        }
+      }
+    }
+
+    /* ==========================================================================
+       2. LIVE OAUTH EMAIL / USERNAME ROLE RESOLVER
+       ========================================================================== */
+    function testOAuth(val) {
+      document.getElementById('oauthInput').value = val;
+      evaluateOAuthInput();
+    }
+
+    function evaluateOAuthInput() {
+      const raw = (document.getElementById('oauthInput').value || '').trim();
+      const lower = raw.toLowerCase();
+      const box = document.getElementById('oauthResultBox');
+
+      if (!raw) {
+        box.innerHTML = `<span style="color:var(--text-secondary);">Enter an email address or GitHub username above to test role assignment.</span>`;
+        return;
+      }
+
+      if (lower === 'softwareng@futminna.edu.ng' || lower === 'software-engineering-futminna') {
+        box.innerHTML = `
+          <div style="font-weight:700;color:var(--accent);margin-bottom:6px;">Assigned Role: super_admin (Verified)</div>
+          <div style="color:var(--text-primary);font-weight:700;margin-bottom:4px;">Departmental Super Admin Identity Matched</div>
+          <div style="color:var(--text-body);">
+            Grants global administrative access across all departmental courses, activities, project teams, and leaderboards in <code>/instructor</code>.
+          </div>
+        `;
+      } else if (lower.endsWith('@futminna.edu.ng') && !lower.endsWith('@st.futminna.edu.ng')) {
+        box.innerHTML = `
+          <div style="font-weight:700;color:var(--accent);margin-bottom:6px;">Assigned Role: instructor (Verified)</div>
+          <div style="color:var(--text-primary);font-weight:700;margin-bottom:4px;">Automatic Staff Instructor Onboarding</div>
+          <div style="color:var(--text-body);">
+            Verified <code>@futminna.edu.ng</code> staff domain detected via <code>client.Users.ListEmails()</code>. Automatically provisions <code>role = "instructor"</code> and unlocks the 7-tab Instructor Panel at <code>/instructor</code>.
+          </div>
+        `;
+      } else if (lower.endsWith('@st.futminna.edu.ng')) {
+        box.innerHTML = `
+          <div style="font-weight:700;color:var(--success);margin-bottom:6px;">Assigned Role: student (Verified)</div>
+          <div style="color:var(--text-primary);font-weight:700;margin-bottom:4px;">Verified Undergraduate Student Account</div>
+          <div style="color:var(--text-body);">
+            Redirects to <code>/dashboard</code>. Can enroll in courses, launch Codespaces ("Open Forge"), form project teams, and use the Lecture Note AI Tutor.
+          </div>
+        `;
+      } else {
+        box.innerHTML = `
+          <div style="font-weight:700;color:var(--danger);margin-bottom:6px;">Access Declined — Institutional Email Required</div>
+          <div style="color:var(--text-primary);font-weight:700;margin-bottom:4px;">Redirects to /?error=institutional_email_required</div>
+          <div style="color:var(--text-body);">
+            No verified <code>@futminna.edu.ng</code> or <code>@st.futminna.edu.ng</code> email found on GitHub profile. The user must add and verify their university email in <code>github.com/settings/emails</code>.
+          </div>
+        `;
+      }
+    }
+
+    /* ==========================================================================
+       3. INTERACTIVE 7-TAB INSTRUCTOR PANEL GUIDE
+       ========================================================================== */
+    const CONSOLE_TABS = [
+      {
+        title: "Tab 1: My Courses (Course Creation & Visibility Scope)",
+        summary: "Create semester courses and select an active course to manage its activities, notes, teams, and grades.",
+        steps: [
+          "Enter the Course Title (e.g., 'Individual Software Development Project I'), Course Code ('FUTM-SWE-221'), and Semester ('2025/2026 Second Semester'), then click 'Create Course'.",
+          "Course Visibility Scope: Regular instructors (role: 'instructor') manage courses where course.instructor_id === user.id. The Departmental Super Admin (softwareng@futminna.edu.ng) views and manages all courses across the department.",
+          "Empty Course Safeguard: Creating a course automatically opens Tab 2 (Weekly Activities). If you leave Tab 2 while a new course still has 0 activities, SWE-MLAB asks whether to delete the empty course. Always add at least one activity or click 'Plan Semester' immediately."
+        ],
+        endpoints: [
+          { method: "GET", path: "/api/v1/courses", desc: "List courses with activity counts and enrollment status" },
+          { method: "POST", path: "/api/v1/courses", desc: "Create a new semester course" },
+          { method: "DELETE", path: "/api/v1/courses/:id", desc: "Delete a course and its associated activities" }
+        ]
+      },
+      {
+        title: "Tab 2: Weekly Activities, AI Lab Generator & Codespaces",
+        summary: "Author weekly coding labs manually, generate specifications with Gemini AI, or bulk-create a 12-week semester schedule.",
+        steps: [
+          "AI Generate Button: Opens the AI Activity Generator modal. Enter the Topic, Learning Objectives, Programming Language (Go, Python, JavaScript, Java, or Rust), and an optional Lecture Excerpt. Click 'Apply to Form' to populate the activity fields.",
+          "Plan Semester Button: Prompts for the number of weeks (default 12) and creates sequential weekly activity placeholders in a single click.",
+          "Draft vs. Live Status: New activities start as 'Draft' (hidden from students). Click the 'Draft / Live' toggle on the activity card to publish it to students.",
+          "Student 'Open Forge' (GitHub Codespaces): When a student starts a Live activity, SWE-MLAB provisions their repository, injects .devcontainer/devcontainer.json and .github/workflows/autograde.yml, and launches GitHub Codespaces."
+        ],
+        endpoints: [
+          { method: "POST", path: "/api/v1/courses/:id/activities/generate", desc: "Generate weekly lab specification via Gemini AI" },
+          { method: "POST", path: "/api/v1/courses/:id/activities/bulk", desc: "Bulk-create N weekly activity slots" },
+          { method: "POST", path: "/api/v1/courses/:id/activities", desc: "Create a single weekly activity" },
+          { method: "PUT", path: "/api/v1/activities/:id", desc: "Toggle Draft/Live status or update due date" }
+        ]
+      },
+      {
+        title: "Tab 3: Grade Submissions (Automated, AI & Manual Grading)",
+        summary: "Monitor student submissions in real time (refreshes every 5 seconds) and grade via GitHub Actions, Gemini AI, or manual review.",
+        steps: [
+          "Click 'Grades' on any activity card in Tab 2 to load its submissions in Tab 3. The table refreshes automatically every 5 seconds.",
+          "Mode 1 — GitHub Actions Autograding: Every student git push runs .github/workflows/autograde.yml and reports to /api/v1/webhooks/github (awarding 100% of max_score on success or 50% partial credit on failure).",
+          "Mode 2 — Gemini AI Grading: Evaluates test logs and activity instructions to generate structured Strengths, Areas for Improvement, and a Bonus Score.",
+          "Mode 3 — Manual Instructor Grading: Enter a numeric Score and written Feedback directly on any student submission and click 'Submit Grade'."
+        ],
+        endpoints: [
+          { method: "GET", path: "/api/v1/activities/:id/submissions", desc: "Fetch submissions for an activity (polled every 5s)" },
+          { method: "PUT", path: "/api/v1/submissions/:id/grade", desc: "Record manual instructor score and feedback" },
+          { method: "POST", path: "/api/v1/submissions/:id/ai-grade", desc: "Trigger Gemini AI qualitative grading" },
+          { method: "POST", path: "/api/v1/webhooks/github", desc: "Receive HMAC-verified GitHub Actions workflow results" }
+        ]
+      },
+      {
+        title: "Tab 4: Course Leaderboard & Senate CSV Export",
+        summary: "Review cumulative student rankings, inspect individual repository submissions, and export grades to CSV.",
+        steps: [
+          "Displays the ranked roster of enrolled students with Full Name, Email, Matric Number, Completed Activities count, and Total Score.",
+          "Student Submission Drill-Down: Click the number under 'Completed Activities' for any student to open a modal showing all of their activity repositories, statuses, and scores.",
+          "Export CSV Button: Downloads '<COURSE_CODE>_leaderboard_<YYYY-MM-DD>.csv' containing Rank, Full Name, Matric Number, Username, Email, Completed Activities, and Total Score."
+        ],
+        endpoints: [
+          { method: "GET", path: "/api/v1/courses/:id/leaderboard", desc: "Compute ranked student leaderboard for the course" },
+          { method: "GET", path: "/api/v1/courses/:id/students/:uid/submissions", desc: "Fetch all activity submissions for a specific student" }
+        ]
+      },
+      {
+        title: "Tab 5: Lecture Notes & Course-Grounded AI Tutor",
+        summary: "Upload PDF or DOCX lecture handouts so students can ask questions to an AI tutor grounded in your course materials.",
+        steps: [
+          "Select a .pdf or .docx file (up to 20 MB), enter an optional Lecture Title, and click 'Upload & Index'.",
+          "File Validation: The backend verifies both the file extension and binary magic bytes (%PDF for PDF files; PK\\x03\\x04 ZIP header for DOCX files).",
+          "Asynchronous Indexing: A background goroutine extracts the text and stores semantic LectureChunk rows in PostgreSQL, updating the status from 'Processing' to 'Ready'.",
+          "Student AI Chat Tutor: Once at least one lecture note is Ready, enrolled students can use the AI Course Tutor on /dashboard to ask questions answered directly from your notes."
+        ],
+        endpoints: [
+          { method: "POST", path: "/api/v1/courses/:id/notes/upload", desc: "Upload and index PDF/DOCX lecture note (max 20 MB)" },
+          { method: "GET", path: "/api/v1/courses/:id/notes/stats", desc: "Retrieve note count, chunk count, and AI chat status" },
+          { method: "POST", path: "/api/v1/courses/:id/chat", desc: "Answer student questions using indexed lecture chunks" },
+          { method: "DELETE", path: "/api/v1/notes/:id", desc: "Delete a lecture note and its indexed chunks" }
+        ]
+      },
+      {
+        title: "Tab 6: Teams & Projects (Repo Launch & 1-Click Org Migration)",
+        summary: "Create collaborative project topics, manage student teams, and host or migrate repositories under github.com/software-engineering-futminna.",
+        steps: [
+          "Click '+ New Project' to create a project topic manually or use 'AI Generate' to draft the Title, Markdown Description, Details URL, and API Endpoint. Set Max Team Size between 2 and 6 students.",
+          "Team Management: View all student teams formed under each project, including the Team Lead and member Matric Numbers. Click the edit icon next to any team name to rename it inline.",
+          "Launch Repo Button: Shown when a team has no repository yet. Creates a new repository directly inside github.com/software-engineering-futminna and invites all team members.",
+          "Migrate to Org Button: Shown when a team created their repository under a personal GitHub account. Transfers the repository into github.com/software-engineering-futminna, sets visibility to Public, and re-invites all team members as collaborators."
+        ],
+        endpoints: [
+          { method: "POST", path: "/api/v1/courses/:id/projects/generate", desc: "Generate project topic specification via Gemini AI" },
+          { method: "POST", path: "/api/v1/courses/:id/projects", desc: "Create a new course project topic" },
+          { method: "POST", path: "/api/v1/teams/:id/launch-repo", desc: "Create a new team repository in the Department GitHub Org" },
+          { method: "POST", path: "/api/v1/teams/:id/migrate-repo", desc: "Transfer a personal student repo into the Department GitHub Org" }
+        ]
+      },
+      {
+        title: "Tab 7: Results Moderation & Manual Score Override",
+        summary: "Control when students can view their course grades and manually add or override scores by GitHub username.",
+        steps: [
+          "Hide Results from Students Checkbox: Toggles course.hide_results via POST /api/v1/courses/:id/toggle-results. Keep checked during grading moderation and uncheck when ready to release grades to students.",
+          "Add / Edit Result Modal: Click '+ Add Result' (or 'Edit' on any student row), select the Weekly Activity, enter the student's GitHub Username, input the numeric Score and optional Feedback, and click 'Save Result'."
+        ],
+        endpoints: [
+          { method: "POST", path: "/api/v1/courses/:id/toggle-results", desc: "Hide or release course results to students" },
+          { method: "PUT", path: "/api/v1/submissions/:id/grade", desc: "Create or override a student activity score" }
+        ]
+      }
+    ];
+
+    function selectConsoleTab(idx, btn) {
+      document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const t = CONSOLE_TABS[idx];
+      const stage = document.getElementById('consoleTabStage');
+      stage.innerHTML = `
+        <div style="margin-bottom:22px;">
+          <h3 style="font-size:1.3rem;font-weight:700;color:var(--text-primary);">${t.title}</h3>
+          <p style="font-size:0.98rem;color:var(--text-body);margin-top:4px;">${t.summary}</p>
+        </div>
+        <div class="two-col">
+          <div>
+            <h4 style="font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-secondary);margin-bottom:14px;">Instructor Workflow</h4>
+            <ul class="step-list">
+              ${t.steps.map((s, i) => `
+                <li>
+                  <span class="step-num">${i + 1}</span>
+                  <span>${s}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-secondary);margin-bottom:14px;">Backend API Endpoints</h4>
+            <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow:hidden;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${t.endpoints.map(ep => `
+                    <tr>
+                      <td style="font-family:var(--font-mono);font-weight:700;color:var(--accent);">${ep.method}</td>
+                      <td><code>${ep.path}</code></td>
+                      <td>${ep.desc}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /* ==========================================================================
+       4. MODULE ACCORDION & FILTER
+       ========================================================================== */
+    function toggleModCard(btn) {
+      const card = btn.closest('.module-item');
+      const open = card.classList.toggle('open');
+      btn.querySelector('.module-icon').textContent = open ? '−' : '+';
+    }
+
+    function toggleAllModules(open) {
+      document.querySelectorAll('.module-item').forEach(card => {
+        card.classList.toggle('open', open);
+        const icon = card.querySelector('.module-icon');
+        if (icon) icon.textContent = open ? '−' : '+';
+      });
+    }
+
+    function filterModules(role) {
+      document.querySelectorAll('.module-item').forEach(card => {
+        const roles = card.getAttribute('data-mod-roles').split(' ');
+        card.style.display = (role === 'all' || roles.includes(role)) ? '' : 'none';
+      });
+    }
+
+    /* ==========================================================================
+       5. INTERACTIVE PIPELINE SIMULATORS
+       ========================================================================== */
+    let migTimers = [];
+    let ragTimers = [];
+
+    function resetMigrateSim() {
+      migTimers.forEach(t => clearTimeout(t));
+      migTimers = [];
+      for (let i = 0; i < 6; i++) {
+        document.getElementById(`mig${i}`).classList.remove('active', 'done');
+      }
+      const txt = document.getElementById('migRepoText');
+      txt.textContent = 'https://github.com/StudentLead/naijaweather-app';
+      const badge = document.getElementById('migBadge');
+      badge.style.color = 'var(--warning)';
+      badge.textContent = 'Personal Repository';
+      document.getElementById('migRunBtn').disabled = false;
+    }
+
+    function runMigrateSim() {
+      resetMigrateSim();
+      document.getElementById('migRunBtn').disabled = true;
+      for (let i = 0; i < 6; i++) {
+        migTimers.push(setTimeout(() => {
+          if (i > 0) {
+            document.getElementById(`mig${i - 1}`).classList.remove('active');
+            document.getElementById(`mig${i - 1}`).classList.add('done');
+          }
+          document.getElementById(`mig${i}`).classList.add('active');
+          if (i === 5) {
+            migTimers.push(setTimeout(() => {
+              document.getElementById('mig5').classList.remove('active');
+              document.getElementById('mig5').classList.add('done');
+              const txt = document.getElementById('migRepoText');
+              txt.textContent = 'https://github.com/software-engineering-futminna/naijaweather-----weather-wizards';
+              const badge = document.getElementById('migBadge');
+              badge.style.color = 'var(--success)';
+              badge.textContent = 'Transferred to Department GitHub Org';
+              document.getElementById('migRunBtn').disabled = false;
+            }, 600));
+          }
+        }, i * 600));
+      }
+    }
+
+    function resetRagSim() {
+      ragTimers.forEach(t => clearTimeout(t));
+      ragTimers = [];
+      for (let i = 0; i < 6; i++) {
+        document.getElementById(`rag${i}`).classList.remove('active', 'done');
+      }
+      const badge = document.getElementById('ragBadge');
+      badge.style.color = 'var(--accent)';
+      badge.textContent = 'Ready to Upload';
+      document.getElementById('ragRunBtn').disabled = false;
+    }
+
+    function runRagSim() {
+      resetRagSim();
+      document.getElementById('ragRunBtn').disabled = true;
+      const badge = document.getElementById('ragBadge');
+      badge.style.color = 'var(--warning)';
+      badge.textContent = 'Indexing Chunks...';
+
+      for (let i = 0; i < 6; i++) {
+        ragTimers.push(setTimeout(() => {
+          if (i > 0) {
+            document.getElementById(`rag${i - 1}`).classList.remove('active');
+            document.getElementById(`rag${i - 1}`).classList.add('done');
+          }
+          document.getElementById(`rag${i}`).classList.add('active');
+          if (i === 5) {
+            ragTimers.push(setTimeout(() => {
+              document.getElementById('rag5').classList.remove('active');
+              document.getElementById('rag5').classList.add('done');
+              badge.style.color = 'var(--success)';
+              badge.textContent = '42 Chunks Indexed • Student AI Tutor Active';
+              document.getElementById('ragRunBtn').disabled = false;
+            }, 600));
+          }
+        }, i * 600));
+      }
+    }
+
+    function copyCode(id, btn) {
+      const txt = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(txt).then(() => {
+        const prev = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => { btn.textContent = prev; }, 1600);
+      });
+    }
+
+    /* ==========================================================================
+       5B. PRESENTATION TIMER WITH WEB AUDIO API SOUND NOTIFICATIONS
+       ========================================================================== */
+    let remainingSecs = 45 * 60;
+    let timerHandle = null;
+    let timerSoundEnabled = true;
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playTone(freq, startTimeOffset, duration, gainVal = 0.18, type = 'sine') {
+      if (!timerSoundEnabled) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime + startTimeOffset;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, now);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(gainVal, now + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + duration + 0.02);
+    }
+
+    function playTimerSound(kind) {
+      if (!timerSoundEnabled) return;
+      if (kind === 'start') {
+        // Crisp ascending two-note chime (C5 -> G5)
+        playTone(523.25, 0, 0.16, 0.14, 'sine');
+        playTone(783.99, 0.12, 0.24, 0.16, 'sine');
+      } else if (kind === 'pause') {
+        // Soft descending two-note tone (G5 -> C5)
+        playTone(659.25, 0, 0.14, 0.12, 'sine');
+        playTone(523.25, 0.1, 0.18, 0.12, 'sine');
+      } else if (kind === 'warning') {
+        // 5-minute / 1-minute warning double chime (E5 -> A5)
+        playTone(659.25, 0, 0.25, 0.2, 'triangle');
+        playTone(880.00, 0.22, 0.4, 0.22, 'triangle');
+      } else if (kind === 'chime' || kind === 'complete') {
+        // Full harmonic bell chime when session completes (C5 - E5 - G5 - C6)
+        playTone(523.25, 0.00, 0.35, 0.22, 'triangle');
+        playTone(659.25, 0.16, 0.35, 0.22, 'triangle');
+        playTone(783.99, 0.32, 0.40, 0.24, 'triangle');
+        playTone(1046.50, 0.50, 0.75, 0.26, 'sine');
+        if (kind === 'complete') {
+          playTone(523.25, 1.35, 0.35, 0.22, 'triangle');
+          playTone(659.25, 1.51, 0.35, 0.22, 'triangle');
+          playTone(783.99, 1.67, 0.40, 0.24, 'triangle');
+          playTone(1046.50, 1.85, 0.90, 0.28, 'sine');
+        }
+      }
+    }
+
+    function toggleTimerSound() {
+      timerSoundEnabled = !timerSoundEnabled;
+      const btn = document.getElementById('soundToggleBtn');
+      if (btn) {
+        btn.textContent = timerSoundEnabled ? 'Sound: On' : 'Sound: Off';
+        btn.classList.toggle('sound-on', timerSoundEnabled);
+      }
+      if (timerSoundEnabled) {
+        playTimerSound('chime');
+      }
+    }
+
+    function renderTimer() {
+      const m = String(Math.floor(remainingSecs / 60)).padStart(2, '0');
+      const s = String(remainingSecs % 60).padStart(2, '0');
+      const formatted = `${m}:${s}`;
+
+      const t1 = document.getElementById('timerText');
+      const t2 = document.getElementById('slideTimerText');
+      if (t1) t1.textContent = formatted;
+      if (t2) t2.textContent = formatted;
+
+      const w1 = document.getElementById('headerTimerWidget');
+      const w2 = document.getElementById('slideTimerWidget');
+      [w1, w2].forEach(w => {
+        if (!w) return;
+        w.classList.remove('warn', 'done');
+        if (remainingSecs === 0) {
+          w.classList.add('done');
+        } else if (remainingSecs <= 300) {
+          w.classList.add('warn');
+        }
+      });
+    }
+
+    function syncTimerButtons(label) {
+      const b1 = document.getElementById('timerBtn');
+      const b2 = document.getElementById('slideTimerBtn');
+      if (b1) b1.textContent = label;
+      if (b2) b2.textContent = label;
+    }
+
+    function toggleTimer() {
+      if (timerHandle) {
+        clearInterval(timerHandle);
+        timerHandle = null;
+        syncTimerButtons('Start');
+        playTimerSound('pause');
+      } else {
+        if (remainingSecs === 0) {
+          remainingSecs = 45 * 60;
+          renderTimer();
+        }
+        syncTimerButtons('Pause');
+        playTimerSound('start');
+        timerHandle = setInterval(() => {
+          if (remainingSecs > 0) {
+            remainingSecs--;
+            renderTimer();
+            // Sound notification at 5 minutes (300s) and 1 minute (60s) remaining
+            if (remainingSecs === 300 || remainingSecs === 60) {
+              playTimerSound('warning');
+            }
+            if (remainingSecs === 0) {
+              clearInterval(timerHandle);
+              timerHandle = null;
+              syncTimerButtons('Done');
+              playTimerSound('complete');
+            }
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer(mins) {
+      if (timerHandle) {
+        clearInterval(timerHandle);
+        timerHandle = null;
+      }
+      remainingSecs = mins * 60;
+      syncTimerButtons('Start');
+      renderTimer();
+      playTimerSound('start');
+    }
+
+    /* ==========================================================================
+       6. PERSISTENT HANDOVER CHECKLIST
+       ========================================================================== */
+    const HO_KEY = 'swemlab_clean_handover_v3';
+
+    function saveHandoverState() {
+      const checks = Array.from(document.querySelectorAll('.ho-check')).map(c => c.checked);
+      const inputs = Array.from(document.querySelectorAll('.ho-input')).map(i => i.value);
+      localStorage.setItem(HO_KEY, JSON.stringify({ checks, inputs }));
+      updateHandoverProgress();
+    }
+
+    function loadHandoverState() {
+      try {
+        const raw = localStorage.getItem(HO_KEY);
+        if (raw) {
+          const data = JSON.parse(raw);
+          document.querySelectorAll('.ho-check').forEach((c, i) => {
+            if (data.checks && typeof data.checks[i] === 'boolean') c.checked = data.checks[i];
+          });
+          document.querySelectorAll('.ho-input').forEach((inp, i) => {
+            if (data.inputs && typeof data.inputs[i] === 'string') inp.value = data.inputs[i];
+          });
+        }
+      } catch (_) {}
+      updateHandoverProgress();
+    }
+
+    function updateHandoverProgress() {
+      const checks = Array.from(document.querySelectorAll('.ho-check'));
+      let done = 0;
+      checks.forEach(c => {
+        const tr = c.closest('tr');
+        if (c.checked) {
+          done++;
+          tr.classList.add('done-row');
+        } else {
+          tr.classList.remove('done-row');
+        }
+      });
+      const pct = Math.round((done / checks.length) * 100);
+      document.getElementById('progressBar').style.width = `${pct}%`;
+      document.getElementById('progressLabel').textContent = `${done} / ${checks.length} Verified (${pct}%)`;
+    }
+
+    /* ==========================================================================
+       7. 12-SLIDE PRESENTATION DECK
+       ========================================================================== */
+    const DECK_SLIDES = [
+      {
+        kicker: "Slide 01 — Departmental Handover & Onboarding",
+        title: "SWE-MLAB: Software Engineering Machine Laboratory",
+        bullets: [
+          "Cloud laboratory platform engineered for the Department of Software Engineering, FUTMinna.",
+          "Unifies weekly coding labs, GitHub Codespaces, AI curriculum generation, lecture note RAG tutoring, and repository governance.",
+          "Live Departmental Showcase: https://software-engineering-futminna.github.io/showcase/",
+          "Department GitHub Organization: https://github.com/software-engineering-futminna/"
+        ]
+      },
+      {
+        kicker: "Slide 02 — Automatic Domain-Based Role Assignment",
+        title: "Zero-Friction Onboarding via GitHub OAuth",
+        bullets: [
+          "Super Admin (super_admin): Assigned to softwareng@futminna.edu.ng and GitHub account software-engineering-futminna.",
+          "Instructor (instructor): Automatically assigned to any staff member with a verified @futminna.edu.ng email on GitHub (excluding @st.futminna.edu.ng).",
+          "Student (student): Automatically assigned to any student with a verified @st.futminna.edu.ng email.",
+          "Secondary Email Support: Staff can keep personal emails as primary on GitHub — SWE-MLAB inspects all verified addresses automatically."
+        ]
+      },
+      {
+        kicker: "Slide 03 — Instructor Panel: Tab 1",
+        title: "My Courses & Departmental Visibility Scope",
+        bullets: [
+          "Lecturers create courses at /instructor with Course Title, Course Code (e.g., FUTM-SWE-221), and Semester.",
+          "Scoped View: Individual instructors manage their own courses, while softwareng@futminna.edu.ng has global visibility across all departmental courses.",
+          "Empty Course Safeguard: Always add at least one activity or click 'Plan Semester' right after creating a course."
+        ]
+      },
+      {
+        kicker: "Slide 04 — Instructor Panel: Tab 2",
+        title: "Weekly Activities, AI Lab Generator & Plan Semester",
+        bullets: [
+          "AI Activity Generator: Enter Topic, Learning Objectives, Programming Language, and optional Lecture Excerpt to generate complete lab instructions and test commands.",
+          "Plan Semester: Bulk-creates 12 weekly activity slots in a single click.",
+          "Draft vs. Live Toggle: Activities remain hidden in Draft mode until toggled to Live."
+        ]
+      },
+      {
+        kicker: "Slide 05 — Cloud IDE & Autograding",
+        title: "Student 'Open Forge' (GitHub Codespaces) & CI Workflows",
+        bullets: [
+          "When a student clicks 'Start Activity', SWE-MLAB provisions their repository from the activity template.",
+          "Automatically injects .devcontainer/devcontainer.json for instant cloud IDE setup in GitHub Codespaces.",
+          "Automatically injects .github/workflows/autograde.yml to run the instructor's test command on every git push."
+        ]
+      },
+      {
+        kicker: "Slide 06 — Instructor Panel: Tab 3",
+        title: "Grade Submissions: Three Integrated Grading Modes",
+        bullets: [
+          "Live Submission Monitor: Polls every 5 seconds to display Working, Ready to Grade, or Graded submissions.",
+          "1. GitHub Actions Webhook (/api/v1/webhooks/github): Awards 100% score on workflow pass or 50% partial credit on failure.",
+          "2. Gemini AI Grader (/api/v1/submissions/:id/ai-grade): Evaluates test logs and steps to suggest Strengths, Improvements, and Bonus Score.",
+          "3. Manual Instructor Grading: Direct numeric score and written feedback on any submission."
+        ]
+      },
+      {
+        kicker: "Slide 07 — Instructor Panel: Tab 4 & Tab 7",
+        title: "Course Leaderboards, Results Moderation & CSV Export",
+        bullets: [
+          "Tab 4 (Leaderboard): Ranks students by completed activities and total points; click any student's activity count to inspect all of their repositories.",
+          "Export CSV: One-click download of ranked student scores and Matric Numbers for Senate result compilation.",
+          "Tab 7 (Results): Check 'Hide Results from Students' during moderation, or use '+ Add Result' to manually record or override scores."
+        ]
+      },
+      {
+        kicker: "Slide 08 — Instructor Panel: Tab 5",
+        title: "Lecture Notes RAG Pipeline & Student AI Tutor",
+        bullets: [
+          "Instructors upload PDF or DOCX lecture notes (up to 20 MB, validated via binary file headers).",
+          "Background worker extracts text and indexes semantic LectureChunk rows in PostgreSQL.",
+          "Once indexed, students can ask course-specific questions in the AI Course Tutor on /dashboard."
+        ]
+      },
+      {
+        kicker: "Slide 09 — Instructor Panel: Tab 6",
+        title: "Teams & Projects: AI Project Generator & Team Rosters",
+        bullets: [
+          "Create collaborative project topics manually or with the AI Project Generator (Title, Markdown Description, Details URL, API Endpoint, Max Team Size 2–6).",
+          "Students form teams on /dashboard: the Team Lead invites classmates by GitHub username or Matric Number.",
+          "Instructors can monitor team rosters and rename teams inline from Tab 6."
+        ]
+      },
+      {
+        kicker: "Slide 10 — GitHub Organization Governance",
+        title: "Launch Repo vs. 1-Click Migrate to Org",
+        bullets: [
+          "Launch Repo (/api/v1/teams/:id/launch-repo): Creates a new repository directly inside github.com/software-engineering-futminna.",
+          "Migrate to Org (/api/v1/teams/:id/migrate-repo): Transfers an existing personal student repository into github.com/software-engineering-futminna.",
+          "Migration Pipeline: Cleans up empty placeholders, invokes GitHub Transfer API, sets Public visibility, and re-invites all team members as collaborators."
+        ]
+      },
+      {
+        kicker: "Slide 11 — Maintenance & Troubleshooting",
+        title: "Standard Recovery Procedures for System Custodians",
+        bullets: [
+          "1. Staff Signed In Before Email Verification: Run the SQL role update in Section 5 to promote verified @futminna.edu.ng accounts to instructor.",
+          "2. Stale Migration Record: Reset teams.repo_url in PostgreSQL to the student's personal repo, then click 'Migrate to Org'.",
+          "3. Empty Org Repo (0 Commits): Clone the student's personal repo and force-push to github.com/software-engineering-futminna/<repo>.",
+          "4. Live Showcase: Publish completed projects to https://software-engineering-futminna.github.io/showcase/."
+        ]
+      },
+      {
+        kicker: "Slide 12 — Official Handover Sign-Off",
+        title: "Departmental Custody Under softwareng@futminna.edu.ng",
+        bullets: [
+          "Super Admin Identity: softwareng@futminna.edu.ng & https://github.com/software-engineering-futminna/",
+          "Live Academic Showcase: https://software-engineering-futminna.github.io/showcase/",
+          "Complete and sign the 8-Point Departmental Handover Verification Checklist in Section 6."
+        ]
+      }
+    ];
+
+    let curSlide = 0;
+
+    function renderDeckSlide() {
+      const s = DECK_SLIDES[curSlide];
+      document.getElementById('slideFrame').innerHTML = `
+        <div class="section-num">${s.kicker}</div>
+        <h2 style="font-size:clamp(1.85rem,3vw,2.5rem);font-weight:800;color:var(--text-primary);margin-top:8px;line-height:1.25;">${s.title}</h2>
+        <ul class="slide-bullets">
+          ${s.bullets.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+      `;
+      document.getElementById('slidePager').textContent =
+        `Slide ${String(curSlide + 1).padStart(2, '0')} / ${String(DECK_SLIDES.length).padStart(2, '0')}`;
+    }
+
+    function openSlides() {
+      curSlide = 0;
+      renderDeckSlide();
+      document.getElementById('slideOverlay').classList.add('active');
+    }
+
+    function closeSlides() {
+      document.getElementById('slideOverlay').classList.remove('active');
+    }
+
+    function stepSlide(delta) {
+      curSlide = (curSlide + delta + DECK_SLIDES.length) % DECK_SLIDES.length;
+      renderDeckSlide();
+    }
+
+    document.addEventListener('keydown', e => {
+      const ov = document.getElementById('slideOverlay');
+      if (!ov.classList.contains('active')) return;
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        stepSlide(1);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        stepSlide(-1);
+      } else if (e.key === 'Escape') {
+        closeSlides();
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initFontScale();
+      evaluateOAuthInput();
+      selectConsoleTab(0, document.querySelector('.tab-button'));
+      loadHandoverState();
+    });
+  </script>
+</body>
+</html>
