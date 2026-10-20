@@ -5,6 +5,7 @@
 **School of Information and Communication Technology (SICT)**  
 **Federal University of Technology Minna (FUTMinna)**  
 *Academic Session: 2025/2026*  
+**Interactive Landing & Handover Portal:** [`docs/index.html`](./docs/index.html)  
 
 ---
 
@@ -237,7 +238,7 @@ sequenceDiagram
 - **Instructor Grading Console:** Instructors grade submissions across standardized rubric criteria (Functionality, UI/UX, API Integration, Code Quality) with direct markdown feedback delivery to students.
 
 ### 4.6 Academic Project Showcase Portal
-SWE-MLAB includes a standalone, production-ready showcase portal ([`showcase.html`](file:///Users/taiwrash/Documents/2026/swe-mlab/showcase.html)):
+SWE-MLAB includes a standalone, production-ready showcase portal ([`showcase.html`](https://software-engineering-futminna.github.io/showcase/)):
 - **Zero-Dependency Architecture:** Single self-contained HTML/CSS/JS file deployable directly to GitHub Pages, Netlify, or Vercel.
 - **Swiss Design System:** Clean typographic hierarchy, strict mathematical layout grids, and the official institutional palette (FUTMinna Navy `#0B132B`, SWE-MLAB Blue `#3B7DD8`, and Emerald `#10B981`).
 - **Interactive Search & Filtering:** Real-time multi-dimensional search across project titles, team names, student names, matric numbers, APIs, and tech stacks.
@@ -466,7 +467,7 @@ When student teams develop repositories under personal GitHub accounts, migrate 
 
 #### Step 6: Updating the Academic Showcase Portal
 1. Export the validated project rosters directly from the SWE-MLAB database.
-2. Update the standalone [`showcase.html`](file:///Users/taiwrash/Documents/2026/swe-mlab/showcase.html) file.
+2. Update the standalone [`showcase.html`](https://software-engineering-futminna.github.io/showcase/) file.
 3. Push changes to the public showcase repository ([`software-engineering-futminna/showcase`](https://github.com/software-engineering-futminna/showcase)) to refresh the public exhibition.
 
 ---

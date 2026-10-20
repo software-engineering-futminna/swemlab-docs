@@ -86,6 +86,8 @@ Detailed documentation is organized into modular chapters within the [`docs/`](.
 | **07** | [**DevOps & Deployment**](./docs/07-deployment-devops.md) | Docker Compose configurations, environment variables, Sentry, and cloud deployment. |
 | **08** | [**Operational Troubleshooting**](./docs/08-troubleshooting-runbook.md) | Runbooks for rate limits, stale migration records, and database maintenance. |
 | **Full** | [**Complete Technical Report**](./FULL_REPORT.md) | Consolidated, publication-grade academic report and architecture dossier. |
+| **Plan** | [**Staff Onboarding & Workshop Plan**](./SWEMLAB_WORKSHOP_PLAN.md) | Full-day departmental staff onboarding curriculum, instructor guide, and custody sign-off. |
+| **Portal** | [**Interactive Handover & Docs Landing (`docs/index.html`)**](./docs/index.html) | Interactive onboarding portal with parsed reports, simulators, slide deck, and scroll-spy navigation. |
 
 ---
 
@@ -122,11 +124,11 @@ SWE-MLAB eliminates manual file copying by transferring personal repositories di
 
 ```bash
 # Clone this documentation repository
-git clone https://github.com/software-engineering-futminna/docs.git
-cd docs
+git clone https://github.com/software-engineering-futminna/swemlab-docs.git
+cd swemlab-docs
 
 # View documentation locally
-open index.html   # or browse markdown files directly in docs/
+open docs/index.html   # or browse markdown files directly in docs/
 ```
 
 ---

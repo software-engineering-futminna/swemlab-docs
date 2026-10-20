@@ -1,5 +1,7 @@
 # 06. Operational User Manuals
 
+> **[← Back to Interactive Landing & Handover Portal (`index.html`)](./index.html)**
+
 ---
 
 ## 1. Student User Guide

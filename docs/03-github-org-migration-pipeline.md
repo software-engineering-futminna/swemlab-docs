@@ -1,5 +1,7 @@
 # 03. GitHub Organization Migration Pipeline
 
+> **[← Back to Interactive Landing & Handover Portal (`index.html`)](./index.html)**
+
 ---
 
 ## 1. The Migration Problem

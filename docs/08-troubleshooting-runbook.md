@@ -1,5 +1,7 @@
 # 08. Operational Troubleshooting & Runbook
 
+> **[← Back to Interactive Landing & Handover Portal (`index.html`)](./index.html)**
+
 ---
 
 ## 1. Rate Limit Handling (403 Forbidden)

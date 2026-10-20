@@ -199,6 +199,29 @@
       text-decoration: none;
     }
 
+    .nav-link.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      box-shadow: inset 0 -2px 0 var(--accent);
+    }
+
+    .scroll-progress-track {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .scroll-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.08s linear;
+    }
+
     .header-controls {
       display: flex;
       align-items: center;
@@ -504,6 +527,7 @@
     .section {
       padding: 48px 0;
       border-bottom: 1px solid var(--border-default);
+      scroll-margin-top: 96px;
     }
 
     .section-head {
@@ -1087,6 +1111,234 @@
       font-weight: 800;
     }
 
+    /* ==========================================================================
+       PARSED TECHNICAL REPORTS & STICKY SCROLL-SPY NAVIGATION
+       ========================================================================== */
+    .report-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .report-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .report-pill {
+      padding: 7px 13px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      color: var(--text-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .report-pill:hover {
+      background: var(--bg-muted);
+      color: var(--accent);
+      border-color: var(--accent-border);
+    }
+
+    .report-pill.active {
+      background: var(--accent);
+      color: #FFFFFF;
+      border-color: var(--accent);
+    }
+
+    .reports-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    @media (min-width: 1024px) {
+      .reports-layout {
+        grid-template-columns: 310px 1fr;
+      }
+    }
+
+    .reports-sidebar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 18px;
+    }
+
+    @media (min-width: 1024px) {
+      .reports-sidebar {
+        position: sticky;
+        top: 94px;
+        max-height: calc(100vh - 114px);
+        overflow-y: auto;
+      }
+    }
+
+    .reading-now-box {
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 14px;
+    }
+
+    .reading-now-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+    }
+
+    .reading-now-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 2px;
+      line-height: 1.35;
+    }
+
+    .toc-group {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .toc-group:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .toc-group-title {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      padding: 4px 8px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .toc-link {
+      display: block;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid transparent;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-body);
+      text-decoration: none;
+      line-height: 1.4;
+      transition: all 0.12s ease;
+    }
+
+    .toc-link:hover {
+      background: var(--bg-muted);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .toc-link.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      border-left-color: var(--accent);
+    }
+
+    .toc-link.sub-item {
+      padding-left: 20px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .toc-link.sub-item.active {
+      color: var(--accent);
+    }
+
+    .reports-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      min-width: 0;
+    }
+
+    .report-doc-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 32px;
+      scroll-margin-top: 100px;
+    }
+
+    .report-doc-header {
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--border-light);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .report-subblock {
+      padding-top: 22px;
+      margin-top: 22px;
+      border-top: 1px solid var(--border-light);
+      scroll-margin-top: 104px;
+    }
+
+    .report-subblock:first-of-type {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: none;
+    }
+
+    .report-subblock h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .report-subblock h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 16px 0 8px;
+    }
+
+    .report-subblock p {
+      font-size: 0.96rem;
+      color: var(--text-body);
+      margin-bottom: 12px;
+    }
+
     footer {
       padding: 36px 0;
       background: var(--bg-surface);
@@ -1116,7 +1368,8 @@
         Department of Software Engineering, SICT — Federal University of Technology Minna
       </div>
       <div class="top-bar-links">
-        <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">Full Technical Documentation</a>
+        <a href="#reports" onclick="jumpToReport('rep-full')">Parsed Technical Reports (All 11 Docs)</a>
+        <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">GitHub Documentation Repo</a>
         <a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer">Live Academic Showcase</a>
         <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer">Department GitHub Organization</a>
       </div>
@@ -1126,13 +1379,14 @@
   <!-- STICKY NAVIGATION & ACCESSIBILITY CONTROLS -->
   <header class="sticky-header">
     <div class="container header-inner">
-      <nav class="nav-links" aria-label="Workshop sections">
-        <a href="#rbac" class="nav-link">1. Staff Onboarding</a>
-        <a href="#console" class="nav-link">2. Instructor Panel</a>
-        <a href="#curriculum" class="nav-link">3. Workshop Schedule</a>
-        <a href="#simulators" class="nav-link">4. System Workflows</a>
-        <a href="#runbook" class="nav-link">5. SQL & Git Runbook</a>
-        <a href="#handover" class="nav-link">6. Handover Checklist</a>
+      <nav class="nav-links" id="mainStickyNav" aria-label="Workshop sections">
+        <a href="#rbac" class="nav-link" data-section="rbac">1. Staff Onboarding</a>
+        <a href="#console" class="nav-link" data-section="console">2. Instructor Panel</a>
+        <a href="#curriculum" class="nav-link" data-section="curriculum">3. Workshop Schedule</a>
+        <a href="#simulators" class="nav-link" data-section="simulators">4. System Workflows</a>
+        <a href="#runbook" class="nav-link" data-section="runbook">5. SQL & Git Runbook</a>
+        <a href="#reports" class="nav-link" data-section="reports">6. Technical Reports</a>
+        <a href="#handover" class="nav-link" data-section="handover">7. Handover Checklist</a>
       </nav>
 
       <div class="header-controls">
@@ -1155,6 +1409,9 @@
 
         <button class="btn-primary" onclick="openSlides()">Presentation Mode (12 Slides)</button>
       </div>
+    </div>
+    <div class="scroll-progress-track" aria-hidden="true">
+      <div class="scroll-progress-fill" id="scrollProgressBar"></div>
     </div>
   </header>
 
@@ -1189,7 +1446,7 @@
 
           <div style="display:flex;gap:12px;flex-wrap:wrap;">
             <button class="btn-primary" onclick="openSlides()">Open Presentation Slides</button>
-            <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer" class="btn-secondary">Full Technical Docs</a>
+            <a href="#reports" onclick="jumpToReport('rep-full')" class="btn-secondary">Read Parsed Technical Reports</a>
             <a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer" class="btn-secondary">View Live Student Showcase</a>
             <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Department GitHub Profile</a>
             <button class="btn-secondary" onclick="window.print()">Print Handover Guide</button>
@@ -1201,7 +1458,7 @@
           <ul class="summary-list">
             <li>
               <span class="summary-key">Full Documentation</span>
-              <span class="summary-val"><a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">swemlab-docs Repository</a></span>
+              <span class="summary-val"><a href="#reports" onclick="jumpToReport('rep-full')">11 Parsed Reports Below</a> • <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">GitHub</a></span>
             </li>
             <li>
               <span class="summary-key">Department GitHub Org</span>
@@ -1746,10 +2003,13 @@ cd .. && rm -rf temp_sync</pre>
           <div>
             <h3 style="font-size:1.2rem;font-weight:700;color:var(--text-primary);">Official Technical Documentation Directory (<code>swemlab-docs</code>)</h3>
             <p style="font-size:0.95rem;color:var(--text-body);margin-top:4px;">
-              Complete architecture manuals, API specifications, database ERDs, and operational runbooks hosted at <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">github.com/software-engineering-futminna/swemlab-docs</a>.
+              Every report in <a href="https://github.com/software-engineering-futminna/swemlab-docs" target="_blank" rel="noopener noreferrer">github.com/software-engineering-futminna/swemlab-docs</a> is linked below and parsed in full in <a href="#reports">Section 06</a>.
             </p>
           </div>
-          <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/FULL_REPORT.md" target="_blank" rel="noopener noreferrer" class="btn-primary">Read Full Technical Report</a>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a href="#rep-full" onclick="jumpToReport('rep-full')" class="btn-primary">Read Parsed Full Report</a>
+            <a href="#rep-workshop" onclick="jumpToReport('rep-workshop')" class="btn-secondary">Read Workshop Plan</a>
+          </div>
         </div>
 
         <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;">
@@ -1757,55 +2017,77 @@ cd .. && rm -rf temp_sync</pre>
             <thead>
               <tr>
                 <th style="width:90px;">Chapter</th>
-                <th style="width:280px;">Document</th>
+                <th style="width:270px;">Document (Jump to Parsed View)</th>
                 <th>Scope & Contents</th>
+                <th style="width:170px;">Source File</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><code>01</code></td>
-                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/01-pedagogical-framework.md" target="_blank" rel="noopener noreferrer"><strong>Pedagogical Framework</strong></a></td>
+                <td><a href="#rep-01" onclick="jumpToReport('rep-01')"><strong>Pedagogical Framework</strong></a></td>
                 <td>Course curriculum structure, 4-sprint lifecycle, learning milestones, and evaluation rubrics.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/01-pedagogical-framework.md" target="_blank" rel="noopener noreferrer"><code>01-pedagogical.md</code></a></td>
               </tr>
               <tr>
                 <td><code>02</code></td>
-                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/02-system-architecture.md" target="_blank" rel="noopener noreferrer"><strong>System Architecture</strong></a></td>
+                <td><a href="#rep-02" onclick="jumpToReport('rep-02')"><strong>System Architecture</strong></a></td>
                 <td>Technical stack breakdown (React 18, Go 1.22, Gin, GORM, Neon Serverless PostgreSQL, Nginx, Docker).</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/02-system-architecture.md" target="_blank" rel="noopener noreferrer"><code>02-architecture.md</code></a></td>
               </tr>
               <tr>
                 <td><code>03</code></td>
-                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/03-github-org-migration-pipeline.md" target="_blank" rel="noopener noreferrer"><strong>GitHub Migration Pipeline</strong></a></td>
+                <td><a href="#rep-03" onclick="jumpToReport('rep-03')"><strong>GitHub Migration Pipeline</strong></a></td>
                 <td>Deep dive into <code>TransferToOrg</code>, asynchronous HTTP 202 handling, and collaborator synchronization.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/03-github-org-migration-pipeline.md" target="_blank" rel="noopener noreferrer"><code>03-migration.md</code></a></td>
               </tr>
               <tr>
                 <td><code>04</code></td>
-                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/04-api-specification.md" target="_blank" rel="noopener noreferrer"><strong>REST API Specification</strong></a></td>
+                <td><a href="#rep-04" onclick="jumpToReport('rep-04')"><strong>REST API Specification</strong></a></td>
                 <td>Complete endpoint catalog, authentication headers, request payloads, and response schemas.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/04-api-specification.md" target="_blank" rel="noopener noreferrer"><code>04-api-spec.md</code></a></td>
               </tr>
               <tr>
                 <td><code>05</code></td>
-                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/05-database-schema.md" target="_blank" rel="noopener noreferrer"><strong>Database Schema & ERD</strong></a></td>
+                <td><a href="#rep-05" onclick="jumpToReport('rep-05')"><strong>Database Schema & ERD</strong></a></td>
                 <td>PostgreSQL data models, foreign-key relationships, and Entity-Relationship Diagram.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/05-database-schema.md" target="_blank" rel="noopener noreferrer"><code>05-db-schema.md</code></a></td>
               </tr>
               <tr>
                 <td><code>06</code></td>
-                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/06-user-guides.md" target="_blank" rel="noopener noreferrer"><strong>User Operation Manuals</strong></a></td>
+                <td><a href="#rep-06" onclick="jumpToReport('rep-06')"><strong>User Operation Manuals</strong></a></td>
                 <td>Step-by-step operational guides for Students, Instructors, and Super Administrators.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/06-user-guides.md" target="_blank" rel="noopener noreferrer"><code>06-user-guides.md</code></a></td>
               </tr>
               <tr>
                 <td><code>07</code></td>
-                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/07-deployment-devops.md" target="_blank" rel="noopener noreferrer"><strong>DevOps & Deployment</strong></a></td>
+                <td><a href="#rep-07" onclick="jumpToReport('rep-07')"><strong>DevOps & Deployment</strong></a></td>
                 <td>Docker Compose configurations, production environment variables, Sentry telemetry, and cloud deployment.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/07-deployment-devops.md" target="_blank" rel="noopener noreferrer"><code>07-devops.md</code></a></td>
               </tr>
               <tr>
                 <td><code>08</code></td>
-                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/08-troubleshooting-runbook.md" target="_blank" rel="noopener noreferrer"><strong>Operational Troubleshooting</strong></a></td>
+                <td><a href="#rep-08" onclick="jumpToReport('rep-08')"><strong>Operational Troubleshooting</strong></a></td>
                 <td>Runbooks for GitHub API rate limits, stale migration records, and database maintenance.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/08-troubleshooting-runbook.md" target="_blank" rel="noopener noreferrer"><code>08-runbook.md</code></a></td>
               </tr>
               <tr>
                 <td><code>Full</code></td>
-                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/FULL_REPORT.md" target="_blank" rel="noopener noreferrer"><strong>Complete Technical Report</strong></a></td>
-                <td>Consolidated publication-grade academic report and full system architecture dossier.</td>
+                <td><a href="#rep-full" onclick="jumpToReport('rep-full')"><strong>Complete Technical Report</strong></a></td>
+                <td>Consolidated 11-chapter publication-grade academic report and full system architecture dossier.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/FULL_REPORT.md" target="_blank" rel="noopener noreferrer"><code>FULL_REPORT.md</code></a></td>
+              </tr>
+              <tr>
+                <td><code>Plan</code></td>
+                <td><a href="#rep-workshop" onclick="jumpToReport('rep-workshop')"><strong>Staff Onboarding & Workshop Plan</strong></a></td>
+                <td>Complete 5-section departmental staff training agenda, module guides, and custody sign-off manual.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/SWEMLAB_WORKSHOP_PLAN.md" target="_blank" rel="noopener noreferrer"><code>SWEMLAB_WORKSHOP_PLAN.md</code></a></td>
+              </tr>
+              <tr>
+                <td><code>Index</code></td>
+                <td><a href="#rep-readme" onclick="jumpToReport('rep-readme')"><strong>Executive Overview & README</strong></a></td>
+                <td>Platform overview, system topology diagram, role summaries, migration flow, and local setup.</td>
+                <td><a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/README.md" target="_blank" rel="noopener noreferrer"><code>README.md</code></a></td>
               </tr>
             </tbody>
           </table>
@@ -1814,12 +2096,1284 @@ cd .. && rm -rf temp_sync</pre>
     </div>
   </section>
 
-  <!-- SECTION 6: OFFICIAL HANDOVER CHECKLIST -->
+  <!-- SECTION 6: COMPLETE PARSED TECHNICAL REPORTS & DOCUMENTATION READER -->
+  <section id="reports" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Section 06 — Complete Technical Documentation & Reports</div>
+          <h2 class="section-title">Parsed SWE-MLAB Reports & Architecture Dossiers</h2>
+          <p class="section-desc">
+            Every section, table, architecture diagram, API specification, database schema, and runbook from all 11 documentation files (<code>docs/01</code>–<code>08</code>, <code>FULL_REPORT.md</code>, <code>SWEMLAB_WORKSHOP_PLAN.md</code>, and <code>README.md</code>) is parsed below with scroll-synchronized navigation.
+          </p>
+        </div>
+      </div>
+
+      <!-- REPORT FILTER & SEARCH BAR -->
+      <div class="report-filter-bar">
+        <div class="report-pills" role="tablist" aria-label="Filter parsed reports">
+          <button class="report-pill active" data-rep-pill="all" onclick="filterParsedReports('all', this)">All 11 Reports (Continuous Scroll)</button>
+          <button class="report-pill" data-rep-pill="rep-full" onclick="filterParsedReports('rep-full', this)">Full Technical Report (11 Ch)</button>
+          <button class="report-pill" data-rep-pill="rep-workshop" onclick="filterParsedReports('rep-workshop', this)">Workshop & Handover Manual</button>
+          <button class="report-pill" data-rep-pill="rep-01" onclick="filterParsedReports('rep-01', this)">01. Pedagogical</button>
+          <button class="report-pill" data-rep-pill="rep-02" onclick="filterParsedReports('rep-02', this)">02. Architecture</button>
+          <button class="report-pill" data-rep-pill="rep-03" onclick="filterParsedReports('rep-03', this)">03. Migration</button>
+          <button class="report-pill" data-rep-pill="rep-04" onclick="filterParsedReports('rep-04', this)">04. REST API</button>
+          <button class="report-pill" data-rep-pill="rep-05" onclick="filterParsedReports('rep-05', this)">05. Database ERD</button>
+          <button class="report-pill" data-rep-pill="rep-06" onclick="filterParsedReports('rep-06', this)">06. User Guides</button>
+          <button class="report-pill" data-rep-pill="rep-07" onclick="filterParsedReports('rep-07', this)">07. DevOps</button>
+          <button class="report-pill" data-rep-pill="rep-08" onclick="filterParsedReports('rep-08', this)">08. Troubleshooting</button>
+          <button class="report-pill" data-rep-pill="rep-readme" onclick="filterParsedReports('rep-readme', this)">README Overview</button>
+        </div>
+        <div style="min-width:240px;flex:0 1 280px;">
+          <input type="search" id="reportSearchInput" class="text-input" style="padding:7px 12px;font-size:0.86rem;font-family:var(--font-sans);font-weight:500;" placeholder="Filter report sections..." oninput="searchParsedReports(this.value)" aria-label="Filter report sections">
+        </div>
+      </div>
+
+      <div class="reports-layout">
+        <!-- STICKY ON-SCROLL SIDEBAR TABLE OF CONTENTS -->
+        <aside class="reports-sidebar" id="reportsTocSidebar" aria-label="Reports Table of Contents">
+          <div class="reading-now-box">
+            <div class="reading-now-label">Active Section on Scroll</div>
+            <div class="reading-now-title" id="readingNowTitle">01. Pedagogical Framework</div>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-title">Modular Chapters (docs/01–08)</span>
+            <ul class="toc-list">
+              <li><a href="#rep-01" class="toc-link active" data-toc-target="rep-01" onclick="jumpToReport('rep-01')">01. Pedagogical Framework</a></li>
+              <li><a href="#rep-02" class="toc-link" data-toc-target="rep-02" onclick="jumpToReport('rep-02')">02. System Architecture</a></li>
+              <li><a href="#rep-03" class="toc-link" data-toc-target="rep-03" onclick="jumpToReport('rep-03')">03. GitHub Migration Pipeline</a></li>
+              <li><a href="#rep-04" class="toc-link" data-toc-target="rep-04" onclick="jumpToReport('rep-04')">04. REST API Specification</a></li>
+              <li><a href="#rep-05" class="toc-link" data-toc-target="rep-05" onclick="jumpToReport('rep-05')">05. Database Schema & ERD</a></li>
+              <li><a href="#rep-06" class="toc-link" data-toc-target="rep-06" onclick="jumpToReport('rep-06')">06. Operational User Manuals</a></li>
+              <li><a href="#rep-07" class="toc-link" data-toc-target="rep-07" onclick="jumpToReport('rep-07')">07. Deployment & DevOps</a></li>
+              <li><a href="#rep-08" class="toc-link" data-toc-target="rep-08" onclick="jumpToReport('rep-08')">08. Troubleshooting Runbook</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-title">Complete Technical Report (FULL_REPORT.md)</span>
+            <ul class="toc-list">
+              <li><a href="#rep-full" class="toc-link" data-toc-target="rep-full" onclick="jumpToReport('rep-full')">Full Technical Report Overview</a></li>
+              <li><a href="#fr-ch1" class="toc-link sub-item" data-toc-target="fr-ch1" onclick="jumpToSub('rep-full','fr-ch1')">1. Executive Summary & Context</a></li>
+              <li><a href="#fr-ch2" class="toc-link sub-item" data-toc-target="fr-ch2" onclick="jumpToSub('rep-full','fr-ch2')">2. Pedagogical Curriculum</a></li>
+              <li><a href="#fr-ch3" class="toc-link sub-item" data-toc-target="fr-ch3" onclick="jumpToSub('rep-full','fr-ch3')">3. System Architecture & Stack</a></li>
+              <li><a href="#fr-ch4" class="toc-link sub-item" data-toc-target="fr-ch4" onclick="jumpToSub('rep-full','fr-ch4')">4. Core Subsystems (4.1–4.6)</a></li>
+              <li><a href="#fr-ch5" class="toc-link sub-item" data-toc-target="fr-ch5" onclick="jumpToSub('rep-full','fr-ch5')">5. Database Architecture & ERD</a></li>
+              <li><a href="#fr-ch6" class="toc-link sub-item" data-toc-target="fr-ch6" onclick="jumpToSub('rep-full','fr-ch6')">6. API Specification Reference</a></li>
+              <li><a href="#fr-ch7" class="toc-link sub-item" data-toc-target="fr-ch7" onclick="jumpToSub('rep-full','fr-ch7')">7. User Manuals (7.1–7.3)</a></li>
+              <li><a href="#fr-ch8" class="toc-link sub-item" data-toc-target="fr-ch8" onclick="jumpToSub('rep-full','fr-ch8')">8. Deployment, DevOps & .env</a></li>
+              <li><a href="#fr-ch9" class="toc-link sub-item" data-toc-target="fr-ch9" onclick="jumpToSub('rep-full','fr-ch9')">9. Operational Troubleshooting</a></li>
+              <li><a href="#fr-ch10" class="toc-link sub-item" data-toc-target="fr-ch10" onclick="jumpToSub('rep-full','fr-ch10')">10. Future Roadmap & Research</a></li>
+              <li><a href="#fr-ch11" class="toc-link sub-item" data-toc-target="fr-ch11" onclick="jumpToSub('rep-full','fr-ch11')">11. Governance & Accreditation</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-title">Workshop & Handover Manual</span>
+            <ul class="toc-list">
+              <li><a href="#rep-workshop" class="toc-link" data-toc-target="rep-workshop" onclick="jumpToReport('rep-workshop')">SWEMLAB_WORKSHOP_PLAN.md</a></li>
+              <li><a href="#wp-s1" class="toc-link sub-item" data-toc-target="wp-s1" onclick="jumpToSub('rep-workshop','wp-s1')">1. Domain Onboarding & RBAC</a></li>
+              <li><a href="#wp-s2" class="toc-link sub-item" data-toc-target="wp-s2" onclick="jumpToSub('rep-workshop','wp-s2')">2. Full-Day Workshop Agenda</a></li>
+              <li><a href="#wp-s3" class="toc-link sub-item" data-toc-target="wp-s3" onclick="jumpToSub('rep-workshop','wp-s3')">3. Module Guides (Modules 01–06)</a></li>
+              <li><a href="#wp-s4" class="toc-link sub-item" data-toc-target="wp-s4" onclick="jumpToSub('rep-workshop','wp-s4')">4. Troubleshooting & SQL Runbook</a></li>
+              <li><a href="#wp-s5" class="toc-link sub-item" data-toc-target="wp-s5" onclick="jumpToSub('rep-workshop','wp-s5')">5. Official Handover Sign-Off</a></li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <span class="toc-group-title">Repository Index</span>
+            <ul class="toc-list">
+              <li><a href="#rep-readme" class="toc-link" data-toc-target="rep-readme" onclick="jumpToReport('rep-readme')">README.md — Overview & Topology</a></li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- PARSED REPORTS STREAM -->
+        <div class="reports-stream" id="reportsStream">
+
+          <!-- ==============================================================
+               REPORT 01: docs/01-pedagogical-framework.md
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-01" data-report-card="rep-01" data-toc-label="01. Pedagogical Framework & Academic Curriculum">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">docs/01-pedagogical-framework.md</div>
+                <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);">01. Pedagogical Framework & Academic Curriculum</h3>
+                <p style="font-size:0.92rem;color:var(--text-secondary);margin-top:4px;">
+                  <strong>Course:</strong> FUTM-SWE-221: Individual Software Development Project I • <strong>Semester:</strong> Second Semester • <strong>Department:</strong> Department of Software Engineering, FUTMinna
+                </p>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/01-pedagogical-framework.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View Markdown Source</a>
+            </div>
+
+            <div class="report-subblock">
+              <h4>1. Pedagogical Vision</h4>
+              <p>
+                SWE-MLAB was engineered to bridge academic classroom theory and commercial software engineering practice. Rather than submitting static code zip files, students develop and deploy cloud-native applications across structured agile sprints.
+              </p>
+            </div>
+
+            <div class="report-subblock">
+              <h4>2. 4-Sprint Lifecycle</h4>
+              <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;margin-top:10px;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:120px;">Sprint</th>
+                      <th style="width:140px;">Timeline</th>
+                      <th>Objectives & Learning Outcomes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Sprint 1</strong></td>
+                      <td>Weeks 1–3</td>
+                      <td><strong>Architecture & Wireframing:</strong> Problem formulation, public REST API evaluation, component tree planning, and role allocation.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Sprint 2</strong></td>
+                      <td>Weeks 4–7</td>
+                      <td><strong>Async API Integration:</strong> Asynchronous JavaScript (<code>fetch</code>, <code>async/await</code>), JSON schema validation, error boundaries, and rate limit resilience.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Sprint 3</strong></td>
+                      <td>Weeks 8–10</td>
+                      <td><strong>Client-Side Resilience & UX:</strong> Offline storage (<code>localStorage</code>/Service Workers), PWA manifests, Swiss typography, and accessibility contrast.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Sprint 4</strong></td>
+                      <td>Weeks 11–13</td>
+                      <td><strong>Cloud Deployment & Defense:</strong> Continuous delivery on Netlify/Vercel/Railway, semantic commit review, and oral defense.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="report-subblock">
+              <h4>3. Evaluation Rubrics</h4>
+              <p>Submissions are scored on a standardized 100-point rubric:</p>
+              <ul class="clean-list">
+                <li><strong>Core Functionality & Business Logic (40%):</strong> Feature completeness, dynamic state management, filtering, and responsive interactivity.</li>
+                <li><strong>API Integration & Resilience (20%):</strong> Robust asynchronous fetching, error fallback states, and defensive JSON schema parsing.</li>
+                <li><strong>UI/UX & Swiss Design Standards (20%):</strong> Strict grid alignment, typographic contrast, mobile touch responsiveness, and zero visual clutter.</li>
+                <li><strong>Git Hygiene & Collaboration (20%):</strong> Commit distribution among team members, meaningful pull requests, and repository README documentation.</li>
+              </ul>
+            </div>
+
+            <div class="report-subblock">
+              <h4>4. Student Developmental Context</h4>
+              <p>
+                These submissions represent foundational 200-level undergraduate coursework. They demonstrate practical mastery of core web and API principles rather than hardened commercial platforms.
+              </p>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               REPORT 02: docs/02-system-architecture.md
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-02" data-report-card="rep-02" data-toc-label="02. System Architecture & Technology Stack">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">docs/02-system-architecture.md</div>
+                <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);">02. System Architecture & Technology Stack</h3>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/02-system-architecture.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View Markdown Source</a>
+            </div>
+
+            <div class="report-subblock">
+              <h4>1. Architecture Overview</h4>
+              <p>SWE-MLAB uses a containerized micro-monolith architecture designed for high availability, low latency, and zero build friction.</p>
+              <pre class="code-block">[CLIENT PRESENTATION LAYER]
+React 18 SPA + Vite 5 + Swiss Design Tokens + Vanilla CSS Custom Properties
+          │
+          │  HTTPS / JSON REST API
+          ▼
+[INGRESS & REVERSE PROXY]
+Nginx Alpine (Gzip Compression, Security Headers, SPA Fallback Routing)
+          │
+          ▼
+[APPLICATION SERVER (Golang 1.22+)]
+├── Gin HTTP Router & Middleware (RBAC, Rate Limiting, Auth Context)
+├── GORM ORM Layer (Transactions, Auto-Migrations, Model Associations)
+├── GitHub API Client (OAuth2 Token Source, Org Repo Transfers, Webhooks)
+└── Sentry Go SDK (Telemetry, Panic Recovery, Error Tracking)
+          │
+          ├──▶ [PERSISTENCE TIER] Neon Serverless PostgreSQL Cloud (SSL Pooled)
+          └──▶ [ORGANIZATION TIER] GitHub Org: software-engineering-futminna</pre>
+            </div>
+
+            <div class="report-subblock">
+              <h4>2. Technology Stack Breakdown</h4>
+              <div class="module-cols" style="margin-top:12px;">
+                <div class="module-col-box">
+                  <h4>Backend (Golang)</h4>
+                  <ul class="clean-list">
+                    <li><strong>Language:</strong> Go (Golang) 1.22+</li>
+                    <li><strong>HTTP Routing:</strong> Gin Framework (<code>github.com/gin-gonic/gin</code>)</li>
+                    <li><strong>ORM & Database Client:</strong> GORM (<code>gorm.io/gorm</code>) with <code>postgres</code> driver</li>
+                    <li><strong>GitHub Client:</strong> <code>go-github</code> (<code>github.com/google/go-github/v60/github</code>)</li>
+                    <li><strong>OAuth2:</strong> <code>golang.org/x/oauth2</code></li>
+                    <li><strong>Error Tracking:</strong> Sentry Go SDK (<code>github.com/getsentry/sentry-go</code>)</li>
+                  </ul>
+                </div>
+                <div class="module-col-box">
+                  <h4>Frontend (React 18 & Swiss Design) & Cloud</h4>
+                  <ul class="clean-list">
+                    <li><strong>Framework:</strong> React 18 + Vite 5</li>
+                    <li><strong>Routing:</strong> React Router v6</li>
+                    <li><strong>Design Tokens:</strong> Pure Vanilla CSS custom properties based on Swiss International Typographic Style (zero Tailwind dependency).</li>
+                    <li><strong>Icons:</strong> Lucide Icons</li>
+                    <li><strong>Database:</strong> Neon Serverless PostgreSQL with SSL connection pooling</li>
+                    <li><strong>Containers & Proxy:</strong> Multi-stage Alpine Docker containers + Nginx with SPA fallback rules</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               REPORT 03: docs/03-github-org-migration-pipeline.md
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-03" data-report-card="rep-03" data-toc-label="03. GitHub Organization Migration Pipeline">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">docs/03-github-org-migration-pipeline.md</div>
+                <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);">03. GitHub Organization Migration Pipeline</h3>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/03-github-org-migration-pipeline.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View Markdown Source</a>
+            </div>
+
+            <div class="report-subblock">
+              <h4>1. The Migration Problem</h4>
+              <p>
+                Students often begin team projects in personal GitHub repositories (<code>Taiwrash/project-name</code> or <code>Student/repo</code>). Manually copying code via file uploads destroys commit histories, pull request discussions, and author attribution.
+              </p>
+            </div>
+
+            <div class="report-subblock">
+              <h4>2. The SWE-MLAB Automated Transfer Pipeline</h4>
+              <p>SWE-MLAB implements an automated 1-click migration pipeline leveraging GitHub's Repository Transfer API:</p>
+              <pre class="code-block">[Instructor Dashboard]
+        │  Click "Migrate to Org"
+        ▼
+[SWE-MLAB Backend (/api/v1/teams/:id/migrate-repo)]
+        │
+        ├── 1. Load team members & GitHub usernames from DB
+        ├── 2. Clean up any stale placeholder repository in the organization
+        ├── 3. Execute GitHub Transfer API: POST /repos/{source_owner}/{source_repo}/transfer
+        │      └── Handle HTTP 202 Accepted via go-github (*github.AcceptedError)
+        ├── 4. Set repository visibility to Public: PATCH /repos/software-engineering-futminna/{repo}
+        ├── 5. Add all team members as collaborators: PUT /repos/{org}/{repo}/collaborators/{username}
+        └── 6. Save updated organization repo URL in PostgreSQL</pre>
+            </div>
+
+            <div class="report-subblock">
+              <h4>3. Asynchronous 202 Handling</h4>
+              <p>
+                When GitHub schedules repository transfers, it returns <code>HTTP 202 Accepted</code>. SWE-MLAB intercepts <code>*github.AcceptedError</code>, extracts the destination URL, and updates the database without treating the asynchronous scheduling as a failure.
+              </p>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               REPORT 04: docs/04-api-specification.md
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-04" data-report-card="rep-04" data-toc-label="04. REST API Specification">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">docs/04-api-specification.md</div>
+                <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);">04. REST API Specification</h3>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/04-api-specification.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View Markdown Source</a>
+            </div>
+
+            <div class="module-cols">
+              <div class="module-col-box">
+                <h4>1. Authentication Endpoints</h4>
+                <ul class="clean-list">
+                  <li><code>GET /auth/github</code>: Initiates GitHub OAuth authentication.</li>
+                  <li><code>GET /auth/github/callback</code>: Exchanges OAuth authorization code for session token and verifies student profile.</li>
+                  <li><code>GET /api/v1/user/profile</code>: Retrieves authenticated user data and enrolled courses.</li>
+                  <li><code>POST /auth/logout</code>: Invalidates active session token.</li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>2. Course & Activity Endpoints</h4>
+                <ul class="clean-list">
+                  <li><code>GET /api/v1/courses</code>: Lists all available courses.</li>
+                  <li><code>POST /api/v1/courses</code>: Creates a new course (Instructor/Admin only).</li>
+                  <li><code>GET /api/v1/courses/:id</code>: Retrieves course details, syllabus, and enrolled students.</li>
+                  <li><code>POST /api/v1/courses/:id/enroll</code>: Enrolls student into course.</li>
+                  <li><code>GET /api/v1/courses/:id/activities</code>: Lists activities and milestones for a course.</li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>3. Team & Repository Migration Endpoints</h4>
+                <ul class="clean-list">
+                  <li><code>POST /api/v1/projects/:id/teams</code>: Creates a new project team.</li>
+                  <li><code>POST /api/v1/teams/:id/invitations</code>: Invites a student into a team.</li>
+                  <li><code>POST /api/v1/invitations/:id/accept</code>: Accepts pending team invitation.</li>
+                  <li><code>POST /api/v1/teams/:id/migrate-repo</code>: Transfers team repo into the institutional organization (Instructor only).</li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>4. Submissions & Grading</h4>
+                <ul class="clean-list">
+                  <li><code>POST /api/v1/activities/:id/submit</code>: Submits repository and live deployment URLs.</li>
+                  <li><code>POST /api/v1/webhooks/github</code>: Ingests GitHub push/PR events for telemetry.</li>
+                  <li><code>POST /api/v1/submissions/:id/grade</code>: Submits rubric score and markdown feedback.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               REPORT 05: docs/05-database-schema.md
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-05" data-report-card="rep-05" data-toc-label="05. Database Architecture & Data Model Reference">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">docs/05-database-schema.md</div>
+                <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);">05. Database Architecture & Data Model Reference</h3>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/05-database-schema.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View Markdown Source</a>
+            </div>
+
+            <div class="report-subblock">
+              <h4>1. Entity-Relationship Overview</h4>
+              <p>The SWE-MLAB database schema is fully normalized and managed via GORM migrations on Neon Serverless PostgreSQL.</p>
+              <pre class="code-block">  +-------------+       +---------------+       +------------------+
+  |    USERS    | &lt;---&gt; |  ENROLLMENTS  | &lt;---&gt; |     COURSES      |
+  +-------------+       +---------------+       +------------------+
+         │                                               │
+         │ (1:N)                                         │ (1:N)
+         ▼                                               ▼
+  +-------------+       +---------------+       +------------------+
+  |TEAM_MEMBERS | &lt;---&gt; |     TEAMS     | &lt;---&gt; |     PROJECTS     |
+  +-------------+       +---------------+       +------------------+
+                                │
+                                ▼
+                        +---------------+       +------------------+
+                        |  SUBMISSIONS  | &lt;---&gt; |    FEEDBACKS     |
+                        +---------------+       +------------------+</pre>
+            </div>
+
+            <div class="report-subblock">
+              <h4>2. Core Tables & Schemas</h4>
+              <div class="module-cols" style="margin-top:12px;">
+                <div class="module-col-box">
+                  <h4><code>users</code></h4>
+                  <ul class="clean-list">
+                    <li><code>id</code> (PK, Serial)</li>
+                    <li><code>github_id</code> (BigInt, Unique)</li>
+                    <li><code>username</code> (VarChar, Unique)</li>
+                    <li><code>email</code> (VarChar, Unique)</li>
+                    <li><code>full_name</code> (VarChar)</li>
+                    <li><code>matric_number</code> (VarChar)</li>
+                    <li><code>role</code> (VarChar: <code>student</code>, <code>instructor</code>, <code>super_admin</code>)</li>
+                    <li><code>institutional_verified</code> (Boolean)</li>
+                    <li><code>session_token</code> (VarChar)</li>
+                  </ul>
+                </div>
+                <div class="module-col-box">
+                  <h4><code>teams</code> & <code>team_members</code></h4>
+                  <ul class="clean-list">
+                    <li><code>teams.id</code> (PK, Serial)</li>
+                    <li><code>teams.project_id</code> (FK &rarr; <code>projects.id</code>)</li>
+                    <li><code>teams.name</code> (VarChar), <code>status</code> (VarChar)</li>
+                    <li><code>teams.repo_url</code> (VarChar), <code>repo_full_name</code> (VarChar)</li>
+                    <li><code>team_members.id</code> (PK, Serial)</li>
+                    <li><code>team_members.team_id</code> (FK &rarr; <code>teams.id</code>)</li>
+                    <li><code>team_members.user_id</code> (FK &rarr; <code>users.id</code>)</li>
+                    <li><code>team_members.role</code> (VarChar: <code>lead</code>, <code>member</code>)</li>
+                  </ul>
+                </div>
+                <div class="module-col-box">
+                  <h4><code>submissions</code></h4>
+                  <ul class="clean-list">
+                    <li><code>id</code> (PK, Serial)</li>
+                    <li><code>activity_id</code> (FK &rarr; <code>activities.id</code>)</li>
+                    <li><code>team_id</code> (FK &rarr; <code>teams.id</code>)</li>
+                    <li><code>repo_url</code> (VarChar)</li>
+                    <li><code>live_url</code> (VarChar)</li>
+                    <li><code>score</code> (Float)</li>
+                    <li><code>status</code> (VarChar)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               REPORT 06: docs/06-user-guides.md
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-06" data-report-card="rep-06" data-toc-label="06. Operational User Manuals">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">docs/06-user-guides.md</div>
+                <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);">06. Operational User Manuals</h3>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/06-user-guides.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View Markdown Source</a>
+            </div>
+
+            <div class="module-cols">
+              <div class="module-col-box">
+                <h4>1. Student User Guide</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">1</span><span><strong>Sign In & Verify:</strong> Sign in with GitHub. Add and verify your <code>@st.futminna.edu.ng</code> email in GitHub settings.</span></li>
+                  <li><span class="step-num">2</span><span><strong>Enroll in Course:</strong> Select <code>FUTM-SWE-221</code> from the dashboard.</span></li>
+                  <li><span class="step-num">3</span><span><strong>Form a Team:</strong> Create a team or accept an invitation from your team lead.</span></li>
+                  <li><span class="step-num">4</span><span><strong>Develop & Deploy:</strong> Push commits using your verified GitHub account and deploy live to Netlify/Vercel/Railway.</span></li>
+                  <li><span class="step-num">5</span><span><strong>Submit & Review:</strong> Submit repository and live URLs. Review instructor rubric feedback in the Feedback Console.</span></li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>2. Instructor Operation Manual</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">1</span><span><strong>Create Courses & Projects:</strong> Configure syllabus, project specifications, expected REST APIs, and rubric weights.</span></li>
+                  <li><span class="step-num">2</span><span><strong>Monitor Telemetry:</strong> View formed teams, member rosters, and live commit analytics.</span></li>
+                  <li><span class="step-num">3</span><span><strong>1-Click Org Migration:</strong> Click <strong>"Migrate to Org"</strong> to transfer student repositories into <code>software-engineering-futminna</code>.</span></li>
+                  <li><span class="step-num">4</span><span><strong>Grade Submissions:</strong> Test live URLs, inspect source code, enter rubric scores, and publish feedback.</span></li>
+                  <li><span class="step-num">5</span><span><strong>Update Showcase:</strong> Export validated dossiers to <code>showcase.html</code> and publish to the public repository.</span></li>
+                </ul>
+              </div>
+              <div class="module-col-box">
+                <h4>3. Super Administrator Runbook</h4>
+                <ul class="step-list">
+                  <li><span class="step-num">1</span><span><strong>OAuth Setup:</strong> Maintain GitHub OAuth App client credentials and organization permissions.</span></li>
+                  <li><span class="step-num">2</span><span><strong>Database Management:</strong> Monitor Neon Serverless PostgreSQL connection pools and SSL certificates.</span></li>
+                  <li><span class="step-num">3</span><span><strong>Observability:</strong> Inspect error rates and panic recoveries via Sentry (<code>SENTRY_DSN</code>).</span></li>
+                  <li><span class="step-num">4</span><span><strong>Disaster Recovery:</strong> Execute stale migration resets and force-sync scripts when needed.</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               REPORT 07: docs/07-deployment-devops.md
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-07" data-report-card="rep-07" data-toc-label="07. Deployment, DevOps & Environment Configuration">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">docs/07-deployment-devops.md</div>
+                <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);">07. Deployment, DevOps & Environment Configuration</h3>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/07-deployment-devops.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View Markdown Source</a>
+            </div>
+
+            <div class="report-subblock">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+                <h4>1. Environment Configuration (<code>.env</code>)</h4>
+                <button class="btn-secondary" style="padding:5px 12px;font-size:0.82rem;" onclick="copyCode('codeRep07Env', this)">Copy .env</button>
+              </div>
+              <pre class="code-block" id="codeRep07Env"># Database — Neon Serverless PostgreSQL (Cloud)
+DATABASE_URL=postgresql://user:password@ep-falling-darkness-al1utzuu-pooler.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require&amp;channel_binding=require
+
+# GitHub OAuth Credentials
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+GITHUB_REDIRECT_URL=http://localhost:82/auth/github/callback
+
+# Institutional Governance
+GITHUB_ORG=software-engineering-futminna
+INSTITUTIONAL_DOMAIN=@st.futminna.edu.ng
+
+# Telemetry
+SENTRY_DSN=https://your_sentry_dsn_here</pre>
+            </div>
+
+            <div class="report-subblock">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+                <h4>2. Docker Compose Specification (<code>docker-compose.yml</code>)</h4>
+                <button class="btn-secondary" style="padding:5px 12px;font-size:0.82rem;" onclick="copyCode('codeRep07Docker', this)">Copy YAML</button>
+              </div>
+              <pre class="code-block" id="codeRep07Docker">version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+      - GITHUB_ORG=${GITHUB_ORG}
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped</pre>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               REPORT 08: docs/08-troubleshooting-runbook.md
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-08" data-report-card="rep-08" data-toc-label="08. Operational Troubleshooting & Runbook">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">docs/08-troubleshooting-runbook.md</div>
+                <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);">08. Operational Troubleshooting & Runbook</h3>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/docs/08-troubleshooting-runbook.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View Markdown Source</a>
+            </div>
+
+            <div class="report-subblock">
+              <h4>1. Rate Limit Handling (403 Forbidden)</h4>
+              <ul class="clean-list">
+                <li><strong>Problem:</strong> GitHub API calls fail with <code>rate limit exceeded (60/hr)</code>.</li>
+                <li><strong>Solution:</strong> Pass the user's active <code>SessionToken</code> via <code>oauth2.StaticTokenSource</code>, which expands rate limits to <strong>5,000 req/hr</strong>.</li>
+              </ul>
+            </div>
+
+            <div class="report-subblock">
+              <h4>2. Stale Migration Recovery</h4>
+              <ul class="clean-list">
+                <li><strong>Problem:</strong> <code>"The recorded repo URL points to the org but the repo no longer exists."</code></li>
+                <li><strong>Solution:</strong> Reset the team's <code>repo_url</code> in the database to point to the actual source repo (<code>Taiwrash/repo</code> or <code>Student/repo</code>), then re-run migration.</li>
+              </ul>
+            </div>
+
+            <div class="report-subblock">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+                <h4>3. Syncing Empty Org Repositories</h4>
+                <button class="btn-secondary" style="padding:5px 12px;font-size:0.82rem;" onclick="copyCode('codeRep08Sync', this)">Copy Script</button>
+              </div>
+              <p><strong>Problem:</strong> An organization repository was initialized empty while student code exists in a personal repository.</p>
+              <pre class="code-block" id="codeRep08Sync">git clone https://github.com/StudentLead/PERSONAL-REPO.git /tmp/sync_repo
+cd /tmp/sync_repo
+git remote set-url origin https://github.com/software-engineering-futminna/ORG-REPO.git
+git push origin main --force
+rm -rf /tmp/sync_repo</pre>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               COMPLETE TECHNICAL REPORT: FULL_REPORT.md (Chapters 1 – 11)
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-full" data-report-card="rep-full" data-toc-label="Complete Technical Report (FULL_REPORT.md)">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">FULL_REPORT.md — Complete 11-Chapter Technical Dossier</div>
+                <h3 style="font-size:1.5rem;font-weight:800;color:var(--text-primary);">SWE-MLAB: Comprehensive Technical Report, Pedagogical Architecture & System Documentation</h3>
+                <p style="font-size:0.92rem;color:var(--text-secondary);margin-top:4px;">
+                  Department of Software Engineering • School of Information and Communication Technology (SICT) • Federal University of Technology Minna (FUTMinna) • Academic Session: 2025/2026
+                </p>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/FULL_REPORT.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View FULL_REPORT.md</a>
+            </div>
+
+            <pre class="code-block" style="margin-top:0;margin-bottom:20px;">  ____  _      __ _____       __  __ _        _     ____  
+ / ___|| | /\ / /| ____|     |  \/  | |      / \   | __ ) 
+ \___ \| |/  / / |  _|  _____| |\/| | |     / _ \  |  _ \ 
+  ___) |   /  \  | |___|_____| |  | | |___ / ___ \ | |_) |
+ |____/ \_/    \_\_____|     |_|  |_|_____/_/   \_\|____/ 
+                                                           
+ Automated Pedagogical Cloud for Software Engineering Education</pre>
+
+            <!-- Chapter 1 -->
+            <div class="report-subblock" id="fr-ch1" data-toc-label="Full Report — 1. Executive Summary & Context">
+              <h4>1. Executive Summary & Institutional Context</h4>
+              <h5>1.1 The Challenge in Modern Software Engineering Pedagogy</h5>
+              <p>Undergraduate software engineering education at scale faces significant systemic bottlenecks:</p>
+              <ul class="clean-list">
+                <li><strong>Dispersed Code Repositories:</strong> Students frequently host coursework on disparate personal accounts, making code audit, plagiarism detection, and institutional archival difficult.</li>
+                <li><strong>Asymmetric Team Contributions:</strong> Assessing individual participation within collaborative student teams is often opaque without commit telemetry and automated tracking.</li>
+                <li><strong>Delayed Feedback Loops:</strong> Manual evaluation of projects by instructors causes evaluation lag, denying students rapid formative feedback during sprint cycles.</li>
+                <li><strong>Friction in Cloud Deployment:</strong> Moving student code from local development environments to live web deployments involves non-trivial configuration hurdles.</li>
+              </ul>
+
+              <h5>1.2 The SWE-MLAB Solution</h5>
+              <p><strong>SWE-MLAB (Software Engineering Machine Laboratory)</strong> is an integrated pedagogical cloud platform engineered specifically for the Department of Software Engineering at FUTMinna. SWE-MLAB bridges the gap between academic theory and industry practices by providing:</p>
+              <ul class="step-list" style="margin-top:10px;">
+                <li><span class="step-num">1</span><span><strong>Automated GitHub Organization Management:</strong> All student coursework, labs, and group projects are automatically created, permissioned, or transferred into the institutional GitHub organization (<code>software-engineering-futminna</code>).</span></li>
+                <li><span class="step-num">2</span><span><strong>Institutional Verification:</strong> Restricts enrollment to authorized institutional email domains (<code>@st.futminna.edu.ng</code> for students; <code>@futminna.edu.ng</code> for instructors).</span></li>
+                <li><span class="step-num">3</span><span><strong>Continuous Activity Tracking:</strong> Ingests Git commits, pull requests, and co-author tags to provide real-time contribution analytics.</span></li>
+                <li><span class="step-num">4</span><span><strong>Instantaneous Repository Migration:</strong> Allows instructors to transfer student repositories into the central organization in milliseconds while preserving full Git history.</span></li>
+                <li><span class="step-num">5</span><span><strong>Interactive Academic Showcase:</strong> Automatically indexes student deliverables, public live URLs, and team dossiers into a responsive, accessible public showcase.</span></li>
+              </ul>
+
+              <h5>End-to-End Platform Architecture Flowchart</h5>
+              <div class="module-cols" style="margin-top:10px;">
+                <div class="module-col-box">
+                  <h4>1. Student Tier (<code>@st.futminna.edu.ng</code>)</h4>
+                  <p style="font-size:0.9rem;color:var(--text-body);"><code>S1: Student Login via GitHub</code> &rarr; <code>S2: Institutional Verification</code> &rarr; <code>S3: Join / Create Project Teams</code> &rarr; <code>S4: Push Code to Workspace</code></p>
+                </div>
+                <div class="module-col-box">
+                  <h4>2. SWE-MLAB Core Platform</h4>
+                  <p style="font-size:0.9rem;color:var(--text-body);"><code>B1: Golang API Server</code> &rarr; <code>B2: Team Formation & Roster Sync</code>, <code>B3: Automated Migration Engine</code>, <code>B4: Telemetry & Grading Engine</code>, <code>DB: Neon PostgreSQL Cloud</code></p>
+                </div>
+                <div class="module-col-box">
+                  <h4>3. Institutional Org & Public Showcase</h4>
+                  <p style="font-size:0.9rem;color:var(--text-body);"><code>GitHub Org (software-engineering-futminna)</code>: Automated Repo Creation, Instant Transfer API, Collaborator Permissions &bull; <code>Public Portal</code>: <code>showcase.html</code> Standalone Portal &amp; Live Web Demos</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="report-subblock" id="fr-ch2" data-toc-label="Full Report — 2. Pedagogical Framework">
+              <h4>2. Pedagogical Framework & Academic Curriculum</h4>
+              <h5>2.1 Course Alignment: FUTM-SWE-221</h5>
+              <p>SWE-MLAB was piloted during the 2025/2026 academic session for <strong>FUTM-SWE-221: Individual Software Development Project I</strong> (Second Semester). The course is structured around real-world software engineering learning milestones:</p>
+              <ul class="clean-list">
+                <li><strong>Sprint 1 — Proposal & Architectural Wireframing:</strong> System design, REST API selection, and component breakdown.</li>
+                <li><strong>Sprint 2 — Asynchronous Data Integration:</strong> Asynchronous JavaScript (<code>fetch</code>, <code>async/await</code>), schema validation, and handling rate limits / network dropouts.</li>
+                <li><strong>Sprint 3 — Client-Side Resilience & Offline-First UX:</strong> Progressive Web App (PWA) asset caching, <code>localStorage</code> / <code>IndexedDB</code> persistence, and Swiss design principles.</li>
+                <li><strong>Sprint 4 — Production Cloud Deployment & Oral Defense:</strong> Automated staging on Netlify/Vercel/Railway, continuous integration, and technical defense.</li>
+              </ul>
+
+              <h5>2.2 Academic Scope & Student Developmental Expectations</h5>
+              <ul class="clean-list">
+                <li><strong>Focus Areas:</strong> Real-time data consumption, responsive UI composition, client-side caching, and team Git branching hygiene.</li>
+                <li><strong>Developmental Context:</strong> Projects represent foundational milestones for 200-level undergraduates; they are academic demonstrations rather than hardened enterprise platforms.</li>
+              </ul>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="report-subblock" id="fr-ch3" data-toc-label="Full Report — 3. System Architecture & Stack">
+              <h4>3. System Architecture & Technology Stack</h4>
+              <p>SWE-MLAB is built on a high-performance, containerized micro-monolith architecture designed for high availability, low latency, and zero build friction.</p>
+              <div class="module-cols" style="margin-top:12px;">
+                <div class="module-col-box">
+                  <h4>3.1 Backend Specifications</h4>
+                  <ul class="clean-list">
+                    <li><strong>Language:</strong> Go (Golang) 1.22+</li>
+                    <li><strong>HTTP Routing:</strong> Gin Framework (<code>github.com/gin-gonic/gin</code>)</li>
+                    <li><strong>ORM & Database Client:</strong> GORM (<code>gorm.io/gorm</code>) with <code>postgres</code> driver (<code>gorm.io/driver/postgres</code>)</li>
+                    <li><strong>Third-Party API Client:</strong> <code>go-github</code> (<code>github.com/google/go-github/v60/github</code>)</li>
+                    <li><strong>Authentication:</strong> OAuth2 (<code>golang.org/x/oauth2</code>) with GitHub Provider</li>
+                    <li><strong>Monitoring & Crash Reporting:</strong> Sentry Go SDK (<code>github.com/getsentry/sentry-go</code>)</li>
+                  </ul>
+                </div>
+                <div class="module-col-box">
+                  <h4>3.2 Frontend Specifications</h4>
+                  <ul class="clean-list">
+                    <li><strong>Core Library:</strong> React 18</li>
+                    <li><strong>Bundler & Tooling:</strong> Vite 5</li>
+                    <li><strong>Routing:</strong> React Router v6</li>
+                    <li><strong>UI Architecture:</strong> Custom Swiss International Typographic Design System (pure Vanilla CSS with CSS custom properties, zero Tailwind dependency)</li>
+                    <li><strong>Typography:</strong> Inter (General Text), JetBrains Mono (Code &amp; Telemetry)</li>
+                  </ul>
+                </div>
+                <div class="module-col-box">
+                  <h4>3.3 Infrastructure & Cloud Persistence</h4>
+                  <ul class="clean-list">
+                    <li><strong>Production Database:</strong> Neon Serverless PostgreSQL with connection pooling (<code>ep-falling-darkness-al1utzuu-pooler.c-3.eu-central-1.aws.neon.tech</code>)</li>
+                    <li><strong>Containerization:</strong> Multi-stage Docker containers with Alpine Linux base</li>
+                    <li><strong>Reverse Proxy:</strong> Nginx with gzip compression, security headers, and Single Page Application fallback routing</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="report-subblock" id="fr-ch4" data-toc-label="Full Report — 4. Core Subsystems (4.1–4.6)">
+              <h4>4. Core Subsystems & Technical Deep Dives</h4>
+
+              <h5>4.1 Institutional Authentication & RBAC</h5>
+              <ul class="clean-list">
+                <li><strong>1. GitHub OAuth Handshake:</strong> The user initiates login via GitHub OAuth.</li>
+                <li><strong>2. Institutional Domain Enforcement:</strong> The backend inspects verified GitHub email addresses. If the email matches <code>@st.futminna.edu.ng</code> or <code>@futminna.edu.ng</code>, the account is flagged as <code>institutional_verified: true</code>.</li>
+                <li><strong>3. Role-Based Access Control (RBAC):</strong>
+                  <code>student</code> (view enrolled courses, join/create teams, push submissions, view grades);
+                  <code>instructor</code> (create courses, define activities/projects, trigger repository migrations, configure grading rubrics, publish showcases);
+                  <code>super_admin</code> (full system configuration, organization API credential management, global visibility across all courses).
+                </li>
+              </ul>
+
+              <h5>4.2 Course & Activity Management</h5>
+              <ul class="clean-list">
+                <li><strong>Course Enrollment Management:</strong> Students enroll in courses via course codes or institutional invitation links.</li>
+                <li><strong>Activity Specification Engine:</strong> Define deliverables, wireframe requirements, expected API endpoints, and markdown guidelines.</li>
+                <li><strong>Submission Windows & Grace Periods:</strong> Automated deadline enforcement with timestamped Git commit verification.</li>
+              </ul>
+
+              <h5>4.3 Team Formation & Collaboration Engine</h5>
+              <ul class="clean-list">
+                <li><strong>Team Creation & Cap Enforcement:</strong> Students create teams with a strictly enforced <code>max_team_size</code> parameter.</li>
+                <li><strong>Invitation Protocol:</strong> Team leads issue invitations via student matric numbers or GitHub usernames; invitees can accept or decline.</li>
+                <li><strong>Team Roster Synchronization:</strong> Team member profiles, matriculation numbers, and roles (Lead / Member) are tracked in the database and synchronized with GitHub repository collaborator permissions.</li>
+              </ul>
+
+              <h5>4.4 GitHub Organization Provisioning & Migration Pipeline (<code>TransferToOrg</code>)</h5>
+              <p>Students often start projects in personal GitHub repositories (<code>Taiwrash/project-name</code> or <code>MoTaC1/LIVE-WEATHER-APP</code>). Manually copying code via file uploads loses commit history and author attribution. SWE-MLAB solves this via GitHub's Repository Transfer API:</p>
+              <ul class="clean-list" style="margin-bottom:14px;">
+                <li><strong>1. Single API Transfer:</strong> Executes <code>client.Repositories.Transfer(ctx, owner, repo, TransferRequest{NewOwner: org})</code>.</li>
+                <li><strong>2. Asynchronous 202 Handling:</strong> GitHub returns HTTP <code>202 Accepted</code> when scheduling large repository transfers. The SWE-MLAB backend captures <code>*github.AcceptedError</code> and resolves the target URL immediately without failing.</li>
+                <li><strong>3. Stale Repository Cleanup:</strong> If an empty placeholder repo exists in the org from a previous attempt, SWE-MLAB detects and deletes it prior to initiating the transfer.</li>
+                <li><strong>4. Visibility & Permissions Enforcement:</strong> Automatically updates repository visibility to <code>Public</code> and re-invites all registered team members as repository collaborators.</li>
+              </ul>
+
+              <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:70px;">Step</th>
+                      <th style="width:240px;">Actor / Component</th>
+                      <th>Sequence Action &amp; API Call</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>01</code></td><td>Instructor &rarr; Frontend</td><td>Click <strong>"Migrate to Org"</strong> in Instructor Dashboard</td></tr>
+                    <tr><td><code>02</code></td><td>Frontend &rarr; Backend</td><td><code>POST /api/v1/teams/:id/migrate-repo</code></td></tr>
+                    <tr><td><code>03</code></td><td>Backend &rarr; PostgreSQL DB</td><td>Load Team &amp; Member GitHub Usernames</td></tr>
+                    <tr><td><code>04</code></td><td>Backend &rarr; GitHub API</td><td>Check if Org Repo exists; if stale/empty placeholder exists, <code>DELETE /repos/software-engineering-futminna/{repo}</code></td></tr>
+                    <tr><td><code>05</code></td><td>Backend &rarr; GitHub API</td><td><code>POST /repos/{source_owner}/{source_repo}/transfer</code> (<code>NewOwner: software-engineering-futminna</code>)</td></tr>
+                    <tr><td><code>06</code></td><td>GitHub API &rarr; Backend</td><td><code>HTTP 202 Accepted</code> (Transfer Scheduled — handled via <code>*github.AcceptedError</code>)</td></tr>
+                    <tr><td><code>07</code></td><td>Backend &rarr; GitHub API</td><td><code>PATCH /repos/software-engineering-futminna/{repo}</code> (<code>Private: false</code>)</td></tr>
+                    <tr><td><code>08</code></td><td>Backend &rarr; GitHub API</td><td>Loop for each team member: <code>PUT /repos/software-engineering-futminna/{repo}/collaborators/{username}</code></td></tr>
+                    <tr><td><code>09</code></td><td>Backend &rarr; PostgreSQL DB</td><td>Update <code>team.repo_url</code> &amp; <code>team.repo_full_name</code></td></tr>
+                    <tr><td><code>10</code></td><td>Backend &rarr; Frontend</td><td><code>HTTP 200 OK</code> (Migration Completed — Show Success Toast &amp; Updated Org Link)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h5>4.5 Evaluation, Submission & Automated Feedback Engine</h5>
+              <ul class="clean-list">
+                <li><strong>Submission Webhooks:</strong> SWE-MLAB listens to GitHub webhook push events on student repositories.</li>
+                <li><strong>Commit Telemetry:</strong> Parses commit authors, timestamps, and commit messages to verify continuous integration rather than single large dump commits.</li>
+                <li><strong>Instructor Grading Console:</strong> Instructors grade submissions across standardized rubric criteria (Functionality, UI/UX, API Integration, Code Quality) with direct markdown feedback delivery to students.</li>
+              </ul>
+
+              <h5>4.6 Academic Project Showcase Portal (<code>showcase.html</code>)</h5>
+              <ul class="clean-list">
+                <li><strong>Zero-Dependency Architecture:</strong> Single self-contained HTML/CSS/JS file deployable directly to GitHub Pages, Netlify, or Vercel.</li>
+                <li><strong>Swiss Design System:</strong> Clean typographic hierarchy, strict mathematical layout grids, and the official institutional palette (FUTMinna Navy <code>#0B132B</code>, SWE-MLAB Blue <code>#3B7DD8</code>, and Emerald <code>#10B981</code>).</li>
+                <li><strong>Interactive Search &amp; Filtering:</strong> Real-time multi-dimensional search across project titles, team names, student names, matric numbers, APIs, and tech stacks.</li>
+                <li><strong>Dual View Modes &amp; Academic Dossier Modals:</strong> Toggle between modular card grid view and academic tabular data list view, plus deep-dive modals showing problem statements, system architectures, live deployment links, and complete student engineering rosters.</li>
+              </ul>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="report-subblock" id="fr-ch5" data-toc-label="Full Report — 5. Database Architecture & ERD">
+              <h4>5. Database Architecture & Data Model Reference</h4>
+              <p>Normalized Entity-Relationship associations managed via GORM auto-migrations:</p>
+              <ul class="clean-list" style="margin-bottom:14px;">
+                <li><code>USERS ||--o{ ENROLLMENTS</code> &amp; <code>COURSES ||--o{ ENROLLMENTS</code></li>
+                <li><code>COURSES ||--o{ ACTIVITIES</code> &amp; <code>COURSES ||--o{ PROJECTS</code></li>
+                <li><code>PROJECTS ||--o{ TEAMS</code> &amp; <code>TEAMS ||--o{ TEAM_MEMBERS</code> &amp; <code>USERS ||--o{ TEAM_MEMBERS</code></li>
+                <li><code>TEAMS ||--o{ TEAM_INVITATIONS</code> &amp; <code>USERS ||--o{ TEAM_INVITATIONS</code></li>
+                <li><code>ACTIVITIES ||--o{ SUBMISSIONS</code>, <code>TEAMS ||--o{ SUBMISSIONS</code>, &amp; <code>SUBMISSIONS ||--o{ FEEDBACKS</code></li>
+              </ul>
+              <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:170px;">Entity Table</th>
+                      <th>Columns, Types &amp; Keys</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>USERS</code></td>
+                      <td><code>id</code> (uint PK), <code>github_id</code> (int64 UK), <code>username</code> (string), <code>email</code> (string UK), <code>full_name</code> (string), <code>matric_number</code> (string), <code>role</code> (string), <code>institutional_verified</code> (boolean), <code>session_token</code> (string), <code>created_at</code> (timestamp)</td>
+                    </tr>
+                    <tr>
+                      <td><code>COURSES</code></td>
+                      <td><code>id</code> (uint PK), <code>title</code> (string), <code>code</code> (string UK), <code>description</code> (string), <code>instructor_id</code> (uint FK), <code>semester</code> (string), <code>hide_results</code> (boolean), <code>created_at</code> (timestamp)</td>
+                    </tr>
+                    <tr>
+                      <td><code>PROJECTS</code></td>
+                      <td><code>id</code> (uint PK), <code>course_id</code> (uint FK), <code>title</code> (string), <code>description</code> (string), <code>api_endpoint</code> (string), <code>max_team_size</code> (int), <code>repo_url</code> (string), <code>repo_full_name</code> (string), <code>created_at</code> (timestamp)</td>
+                    </tr>
+                    <tr>
+                      <td><code>TEAMS</code></td>
+                      <td><code>id</code> (uint PK), <code>project_id</code> (uint FK), <code>name</code> (string), <code>status</code> (string), <code>repo_url</code> (string), <code>repo_full_name</code> (string), <code>created_at</code> (timestamp)</td>
+                    </tr>
+                    <tr>
+                      <td><code>TEAM_MEMBERS</code></td>
+                      <td><code>id</code> (uint PK), <code>team_id</code> (uint FK), <code>user_id</code> (uint FK), <code>role</code> (string), <code>joined_at</code> (timestamp)</td>
+                    </tr>
+                    <tr>
+                      <td><code>SUBMISSIONS</code></td>
+                      <td><code>id</code> (uint PK), <code>activity_id</code> (uint FK), <code>team_id</code> (uint FK), <code>repo_url</code> (string), <code>live_url</code> (string), <code>status</code> (string), <code>score</code> (float), <code>submitted_at</code> (timestamp)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Chapter 6 -->
+            <div class="report-subblock" id="fr-ch6" data-toc-label="Full Report — 6. API Specification Reference">
+              <h4>6. API Specification Reference</h4>
+              <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:160px;">Subsystem</th>
+                      <th style="width:90px;">Method</th>
+                      <th style="width:270px;">Endpoint</th>
+                      <th>Description</th>
+                      <th style="width:150px;">Auth / Role</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>6.1 Auth &amp; Profile</td><td><code>GET</code></td><td><code>/auth/github</code></td><td>Redirects to GitHub OAuth consent screen</td><td>No</td></tr>
+                    <tr><td>6.1 Auth &amp; Profile</td><td><code>GET</code></td><td><code>/auth/github/callback</code></td><td>Exchanges code for session token and verifies student profile</td><td>No</td></tr>
+                    <tr><td>6.1 Auth &amp; Profile</td><td><code>GET</code></td><td><code>/api/v1/user/profile</code></td><td>Retrieves authenticated user record with course enrollments</td><td>Yes</td></tr>
+                    <tr><td>6.1 Auth &amp; Profile</td><td><code>POST</code></td><td><code>/auth/logout</code></td><td>Invalidates active user session token</td><td>Yes</td></tr>
+                    <tr><td>6.2 Courses</td><td><code>GET</code></td><td><code>/api/v1/courses</code></td><td>Lists all active courses</td><td>Student / Instructor</td></tr>
+                    <tr><td>6.2 Courses</td><td><code>POST</code></td><td><code>/api/v1/courses</code></td><td>Creates a new academic course</td><td>Instructor / Admin</td></tr>
+                    <tr><td>6.2 Courses</td><td><code>GET</code></td><td><code>/api/v1/courses/:id</code></td><td>Retrieves course syllabus, activities, and enrolled student roster</td><td>Enrolled User</td></tr>
+                    <tr><td>6.2 Courses</td><td><code>POST</code></td><td><code>/api/v1/courses/:id/enroll</code></td><td>Enrolls student into course</td><td>Student</td></tr>
+                    <tr><td>6.2 Activities</td><td><code>GET</code></td><td><code>/api/v1/courses/:id/activities</code></td><td>Lists all activity deliverables for a course</td><td>Enrolled User</td></tr>
+                    <tr><td>6.3 Teams</td><td><code>POST</code></td><td><code>/api/v1/projects/:id/teams</code></td><td>Creates a new student project team</td><td>Student</td></tr>
+                    <tr><td>6.3 Teams</td><td><code>POST</code></td><td><code>/api/v1/teams/:id/invitations</code></td><td>Invites a student into a team</td><td>Team Lead</td></tr>
+                    <tr><td>6.3 Teams</td><td><code>POST</code></td><td><code>/api/v1/invitations/:id/accept</code></td><td>Accepts pending team invitation</td><td>Invitee Student</td></tr>
+                    <tr><td>6.3 Migration</td><td><code>POST</code></td><td><code>/api/v1/teams/:id/migrate-repo</code></td><td>Migrates team repo into the institutional GitHub organization</td><td>Instructor / Admin</td></tr>
+                    <tr><td>6.4 Submissions</td><td><code>POST</code></td><td><code>/api/v1/activities/:id/submit</code></td><td>Records project repository &amp; live URL submission</td><td>Student</td></tr>
+                    <tr><td>6.4 Webhooks</td><td><code>POST</code></td><td><code>/api/v1/webhooks/github</code></td><td>Ingests GitHub push/PR events for commit tracking</td><td>HMAC Signature</td></tr>
+                    <tr><td>6.4 Grading</td><td><code>POST</code></td><td><code>/api/v1/submissions/:id/grade</code></td><td>Submits score and rubric feedback for a submission</td><td>Instructor</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Chapter 7 -->
+            <div class="report-subblock" id="fr-ch7" data-toc-label="Full Report — 7. User Manuals (7.1–7.3)">
+              <h4>7. User Manuals: Students, Instructors & Super Administrators</h4>
+
+              <h5>7.1 Student User Guide</h5>
+              <pre class="code-block" style="margin-top:6px;margin-bottom:12px;">[GitHub Login] &rarr; [Institutional Verify] &rarr; [Enroll in Course] &rarr; [Create / Join Team] &rarr; [Push Code &amp; Deploy] &rarr; [Submit URLs]</pre>
+              <ul class="step-list">
+                <li><span class="step-num">1</span><span><strong>Authentication &amp; Institutional Verification:</strong> Navigate to SWE-MLAB, click "Sign in with GitHub", and ensure your official university email (<code>&lt;username&gt;@st.futminna.edu.ng</code>) is added and marked as verified in <code>github.com/settings/emails</code>.</span></li>
+                <li><span class="step-num">2</span><span><strong>Course Enrollment:</strong> Locate your course (e.g., <code>FUTM-SWE-221: Individual Software Development Project I</code>) on the Student Dashboard or click "Join Course" to review the syllabus, activity milestones, and rubric weights.</span></li>
+                <li><span class="step-num">3</span><span><strong>Team Formation &amp; Role Assignment:</strong> Switch to the Projects tab and select a domain (e.g., <em>NaijaWeather</em>, <em>NutriFlow</em>, <em>Cinemaflix</em>, <em>DevJokes</em>). Team Leads click "Create Team" and invite teammates by Matric Number or GitHub handle (up to <code>max_team_size</code>). Team Members accept invites in the Invitations widget.</span></li>
+                <li><span class="step-num">4</span><span><strong>Development, Collaboration &amp; Deployment:</strong> Commit and push using verified GitHub accounts for telemetry tracking; connect third-party REST APIs with async error handling, responsive Swiss UI layouts, and client-side persistence (<code>localStorage</code> / PWA caching); deploy to Netlify, Vercel, Railway, or GitHub Pages.</span></li>
+                <li><span class="step-num">5</span><span><strong>Deliverable Submission &amp; Grade Review:</strong> Submit your Live Application URL and Source Code Repository in the Submissions tab before cutoff, then review rubric breakdowns and instructor commentary in the Feedback Console.</span></li>
+              </ul>
+
+              <h5>7.2 Instructor Operation Manual</h5>
+              <pre class="code-block" style="margin-top:6px;margin-bottom:12px;">[Create Course] &rarr; [Define Activities &amp; Rubrics] &rarr; [Monitor Teams] &rarr; [1-Click Org Migration] &rarr; [Grade &amp; Publish Feedback]</pre>
+              <ul class="step-list">
+                <li><span class="step-num">1</span><span><strong>Accessing the Instructor Console:</strong> Log in with your authorized GitHub instructor account (<code>role: instructor</code> or <code>role: super_admin</code>) and open the Instructor Dashboard.</span></li>
+                <li><span class="step-num">2</span><span><strong>Course &amp; Activity Provisioning:</strong> Click "Create Course" (Title, Code <code>FUTM-SWE-221</code>, Semester) and "Add Activity / Project" (guidelines, REST API spec, max team size, deadlines, and rubric weights: Functionality 40%, UI/UX 20%, API Integration 20%, Code Quality 20%).</span></li>
+                <li><span class="step-num">3</span><span><strong>Real-Time Team &amp; Telemetry Monitoring:</strong> Inspect student full names, matriculation numbers, team lead designations, invitation statuses, and commit distribution in the Teams Management Matrix.</span></li>
+                <li><span class="step-num">4</span><span><strong>One-Click Organization Migration (<code>Migrate to Org</code>):</strong> Click "Migrate to Org" on any team entry to transfer the personal repo to <code>software-engineering-futminna</code>, preserve commit history, enforce <code>Public</code> visibility, and invite all team members as collaborators.</span></li>
+                <li><span class="step-num">5</span><span><strong>Evaluating Submissions &amp; Publishing Feedback:</strong> Test live URLs, inspect source code, enter rubric scores and markdown feedback, and toggle "Publish Grades".</span></li>
+                <li><span class="step-num">6</span><span><strong>Updating the Academic Showcase Portal:</strong> Export validated project rosters, update <code>showcase.html</code>, and push to <code>software-engineering-futminna/showcase</code>.</span></li>
+              </ul>
+
+              <h5>7.3 Super Administrator &amp; DevOps Runbook</h5>
+              <pre class="code-block" style="margin-top:6px;margin-bottom:12px;">[OAuth &amp; Org Config] &rarr; [Cloud DB Provisioning] &rarr; [Telemetry Monitoring] &rarr; [Disaster Recovery &amp; Sync Scripts] &rarr; [Audit &amp; Governance]</pre>
+              <ul class="step-list">
+                <li><span class="step-num">1</span><span><strong>Initial System Provisioning &amp; Organization Setup:</strong> Maintain GitHub Org <code>software-engineering-futminna</code>, register OAuth App (<code>SWE-MLAB FUTMinna</code>, callback <code>/auth/github/callback</code>), store <code>GITHUB_CLIENT_ID</code> and <code>GITHUB_CLIENT_SECRET</code>, and approve organization access.</span></li>
+                <li><span class="step-num">2</span><span><strong>Database Lifecycle &amp; Configuration Management:</strong> Provision Neon Serverless PostgreSQL with SSL connection pooling (<code>sslmode=require&amp;channel_binding=require</code>); GORM auto-migrates <code>users</code>, <code>courses</code>, <code>projects</code>, <code>teams</code>, and <code>submissions</code> on boot.</span></li>
+                <li><span class="step-num">3</span><span><strong>Error Telemetry &amp; Health Monitoring:</strong> Monitor backend panics and slow queries via Sentry (<code>SENTRY_DSN</code>), check Neon connection pool limits, and monitor GitHub API rate limits (5,000 req/hr per authenticated token).</span></li>
+                <li><span class="step-num">4</span><span><strong>Maintenance &amp; Operational Disaster Recovery:</strong> Execute SQL stale migration resets and Git force-sync scripts when required.</span></li>
+              </ul>
+            </div>
+
+            <!-- Chapter 8 -->
+            <div class="report-subblock" id="fr-ch8" data-toc-label="Full Report — 8. Deployment, DevOps & .env">
+              <h4>8. Deployment, DevOps & Environment Configuration</h4>
+              <h5>8.1 Environment Variables Reference (<code>.env</code>)</h5>
+              <pre class="code-block"># Database — Neon Serverless PostgreSQL (Cloud)
+DATABASE_URL=postgresql://user:password@ep-falling-darkness-al1utzuu-pooler.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require&amp;channel_binding=require
+
+# GitHub OAuth Credentials
+GITHUB_CLIENT_ID=Ov23lifo4cN06RMi11w8
+GITHUB_CLIENT_SECRET=022447ab1d08e72b516c9e2314a7efea3f284bee
+GITHUB_REDIRECT_URL=http://localhost:82/auth/github/callback
+
+# Institutional Organization Governance
+GITHUB_ORG=software-engineering-futminna
+INSTITUTIONAL_DOMAIN=@st.futminna.edu.ng
+
+# Webhook Security
+GITHUB_WEBHOOK_SECRET=your_production_webhook_secret_here
+
+# Sentry Telemetry &amp; Crash Reporting
+SENTRY_DSN=https://1b233cac06fc0ba6233c347ca5d11933@o4510844875440128.ingest.de.sentry.io/4510844896477264</pre>
+
+              <h5>8.2 Containerized Deployment with Docker Compose</h5>
+              <pre class="code-block">version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+      - GITHUB_ORG=${GITHUB_ORG}
+      - SENTRY_DSN=${SENTRY_DSN}
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped</pre>
+            </div>
+
+            <!-- Chapter 9 -->
+            <div class="report-subblock" id="fr-ch9" data-toc-label="Full Report — 9. Operational Troubleshooting">
+              <h4>9. Operational Troubleshooting & Failure Recovery</h4>
+              <ul class="clean-list">
+                <li><strong>9.1 Handling GitHub API Rate Limits (403 Forbidden):</strong> Anonymous calls hit <code>60/hr</code>. All methods in <code>github_service.go</code> pass the active <code>SessionToken</code> via <code>oauth2.StaticTokenSource</code> to guarantee <strong>5,000 requests/hour</strong>.</li>
+                <li><strong>9.2 Resolving Stale Migration Records:</strong> If a previous migration recorded an org URL that was later deleted on GitHub, update <code>teams.repo_url</code> and <code>teams.repo_full_name</code> in PostgreSQL to the student's personal repo and click <em>Migrate to Org</em> again.</li>
+                <li><strong>9.3 Syncing Unmigrated Student Codebases:</strong> If an org repository has 0 commits because the student pushed to a personal repo, clone the personal repo, set <code>origin</code> to <code>https://github.com/software-engineering-futminna/ORG-REPO-NAME.git</code>, and run <code>git push origin main --force</code>.</li>
+              </ul>
+            </div>
+
+            <!-- Chapter 10 -->
+            <div class="report-subblock" id="fr-ch10" data-toc-label="Full Report — 10. Future Roadmap & Research">
+              <h4>10. Future Roadmap & Research Directions</h4>
+              <ul class="step-list">
+                <li><span class="step-num">1</span><span><strong>Automated CI/CD Test Harness Integration:</strong> Incorporate GitHub Actions workflows that automatically execute Jest, PyTest, and Cypress test suites on student pull requests and report grading metrics back to SWE-MLAB.</span></li>
+                <li><span class="step-num">2</span><span><strong>AI-Assisted Code Quality &amp; Refactoring Advisor:</strong> Integrate an LLM-assisted code review assistant to provide students with pedagogical feedback on cyclomatic complexity, code smells, and security anti-patterns.</span></li>
+                <li><span class="step-num">3</span><span><strong>Plagiarism &amp; Code Authorship Verification:</strong> Implement AST-based (Abstract Syntax Tree) code similarity analysis across student cohorts to identify duplicate logic while respecting open-source library usage.</span></li>
+                <li><span class="step-num">4</span><span><strong>Peer Review &amp; Continuous Assessment Module:</strong> Enable structured peer review rounds where student teams evaluate peer UI/UX prototypes against course rubrics.</span></li>
+              </ul>
+            </div>
+
+            <!-- Chapter 11 -->
+            <div class="report-subblock" id="fr-ch11" data-toc-label="Full Report — 11. Governance & Accreditation">
+              <h4>11. Authors, Governance & Institutional Accreditation</h4>
+              <p><strong>SWE-MLAB</strong> is maintained by the Department of Software Engineering, School of Information and Communication Technology (SICT), Federal University of Technology Minna.</p>
+              <ul class="clean-list">
+                <li><strong>Institution:</strong> Federal University of Technology Minna (FUTMinna), Niger State, Nigeria</li>
+                <li><strong>Department:</strong> Department of Software Engineering</li>
+                <li><strong>Course:</strong> FUTM-SWE-221 (Individual Software Development Project I)</li>
+                <li><strong>GitHub Organization:</strong> <a href="https://github.com/software-engineering-futminna" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a></li>
+                <li><strong>Academic Showcase:</strong> <a href="https://software-engineering-futminna.github.io/showcase/" target="_blank" rel="noopener noreferrer"><code>https://software-engineering-futminna.github.io/showcase/</code></a></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               WORKSHOP & HANDOVER PLAN: SWEMLAB_WORKSHOP_PLAN.md (Sections 1 – 5)
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-workshop" data-report-card="rep-workshop" data-toc-label="Workshop & Handover Manual (SWEMLAB_WORKSHOP_PLAN.md)">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">SWEMLAB_WORKSHOP_PLAN.md — Departmental Handover Curriculum</div>
+                <h3 style="font-size:1.5rem;font-weight:800;color:var(--text-primary);">SWE-MLAB Staff Onboarding & System Handover Workshop Manual</h3>
+                <p style="font-size:0.92rem;color:var(--text-secondary);margin-top:4px;">
+                  Departmental Super Admin Account: <code>softwareng@futminna.edu.ng</code> • GitHub Org: <code>software-engineering-futminna</code>
+                </p>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/SWEMLAB_WORKSHOP_PLAN.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View SWEMLAB_WORKSHOP_PLAN.md</a>
+            </div>
+
+            <!-- Section 1 -->
+            <div class="report-subblock" id="wp-s1" data-toc-label="Workshop Plan — 1. Domain Onboarding & RBAC">
+              <h4>1. Executive Context & Domain-Based Onboarding Architecture</h4>
+              <p>
+                SWE-MLAB uses automated email-domain role resolution via GitHub OAuth2 (<code>Scopes: ["user:email", "repo"]</code>). During login (<code>GET /auth/github/callback</code>), <code>backend/pkg/api/auth.go</code> calls <code>client.Users.ListEmails()</code> to inspect all verified email addresses (primary or secondary) attached to the user's GitHub account:
+              </p>
+              <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;margin-top:12px;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:180px;">Role</th>
+                      <th style="width:280px;">Institutional Rule / Identity</th>
+                      <th>Assigned Capabilities in SWE-MLAB</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Super Admin</strong> (<code>super_admin</code>)</td>
+                      <td>Email: <code>softwareng@futminna.edu.ng</code><br>GitHub: <code>software-engineering-futminna</code></td>
+                      <td>Full departmental oversight across all courses and all leaderboards (<code>canSeeAllLeaderboards()</code>); GitHub Organization ownership; bypasses individual course ownership restrictions (<code>RequireRole</code> middleware).</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Instructor</strong> (<code>instructor</code>)</td>
+                      <td>Any verified staff email ending in <code>@futminna.edu.ng</code> (excluding <code>@st.futminna.edu.ng</code>)</td>
+                      <td>Automatic onboarding with no manual DB query required; full access to <code>/instructor</code>; create courses, generate weekly activities &amp; projects with Gemini AI, upload RAG lecture notes, launch/migrate team repos, grade submissions, and export CSV results.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Student</strong> (<code>student</code>)</td>
+                      <td>Any verified student email ending in <code>@st.futminna.edu.ng</code></td>
+                      <td>Access to <code>/dashboard</code>; browse &amp; enroll in courses, launch GitHub Codespaces ("Open Forge"), chat with the AI Lecture Note Tutor, create/join project teams, and view published results.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Rejected</strong> (<code>guest</code>)</td>
+                      <td>No verified <code>@futminna.edu.ng</code> or <code>@st.futminna.edu.ng</code> email</td>
+                      <td>Strictly blocked by domain gatekeeper and redirected to <code>/?error=institutional_email_required</code>.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout-note">
+                <strong>Key Takeaway for Staff Onboarding:</strong> Lecturers and Lab Technologists do not need manual database edits to become instructors. They simply add their official <code>&lt;name&gt;@futminna.edu.ng</code> email as a primary or secondary email in <code>github.com/settings/emails</code>, click the verification link in their staff inbox, and sign in to SWE-MLAB with GitHub.
+              </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="report-subblock" id="wp-s2" data-toc-label="Workshop Plan — 2. Full-Day Workshop Agenda">
+              <h4>2. Intensive Full-Day Workshop Agenda (6 Modules — 5.5 Hours)</h4>
+              <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;margin-top:10px;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:130px;">Time</th>
+                      <th style="width:95px;">Duration</th>
+                      <th style="width:110px;">Module</th>
+                      <th>Core Focus &amp; Codebase Subsystem</th>
+                      <th style="width:180px;">Target Staff</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>09:00 – 09:45</strong></td><td>45 mins</td><td>Module 01</td><td>Platform Architecture, Domain RBAC &amp; Staff Account Onboarding (<code>auth.go</code>, <code>middleware.go</code>)</td><td>HOD, All Lecturers, TAs</td></tr>
+                    <tr><td><strong>09:45 – 10:45</strong></td><td>60 mins</td><td>Module 02</td><td>Courses, Weekly Activities, Gemini AI Generation &amp; Codespaces Autograding (<code>activity.go</code>, <code>ai.go</code>, <code>webhook.go</code>)</td><td>Course Instructors, TAs</td></tr>
+                    <tr><td><strong>10:45 – 11:00</strong></td><td>15 mins</td><td><em>Break</em></td><td><em>Staff GitHub <code>@futminna.edu.ng</code> Verification Check</em></td><td>All Participants</td></tr>
+                    <tr><td><strong>11:00 – 12:00</strong></td><td>60 mins</td><td>Module 03</td><td>Lecture Notes RAG Pipeline &amp; Student AI Tutor (<code>chat.go</code>, <code>rag_service.go</code>, <code>AIChatWidget.jsx</code>)</td><td>Course Instructors, TAs</td></tr>
+                    <tr><td><strong>12:00 – 13:00</strong></td><td>60 mins</td><td>Module 04</td><td>Teams, Projects, Repo Launch &amp; 1-Click Org Migration Pipeline (<code>team.go</code>, <code>github_service.go</code>)</td><td>Course Instructors, TAs</td></tr>
+                    <tr><td><strong>13:00 – 13:45</strong></td><td>45 mins</td><td>Module 05</td><td>Grading Engine, Results Moderation, CSV Export &amp; Academic Showcase (<code>InstructorDashboard.jsx</code>, <code>showcase.html</code>)</td><td>HOD, Instructors, Exam Officers</td></tr>
+                    <tr><td><strong>13:45 – 14:30</strong></td><td>45 mins</td><td>Module 06</td><td>Departmental Super Admin Handover (<code>softwareng@futminna.edu.ng</code>), DevOps &amp; Sign-Off</td><td>HOD, Incoming Custodian</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="report-subblock" id="wp-s3" data-toc-label="Workshop Plan — 3. Module-by-Module Technical Guide">
+              <h4>3. Comprehensive Module-by-Module Technical Guide</h4>
+
+              <h5>Module 01: Platform Architecture, Domain RBAC &amp; Staff Account Onboarding (45 Mins)</h5>
+              <p><strong>3.1.1 Live Onboarding Walkthrough for Departmental Staff (15 Mins):</strong></p>
+              <ul class="step-list" style="margin-bottom:12px;">
+                <li><span class="step-num">1</span><span>Log into GitHub and open <a href="https://github.com/settings/emails" target="_blank" rel="noopener noreferrer"><code>https://github.com/settings/emails</code></a>.</span></li>
+                <li><span class="step-num">2</span><span>Under <strong>Add email address</strong>, enter your official university staff email (<code>&lt;username&gt;@futminna.edu.ng</code>). Staff can keep their personal Gmail/email as primary—SWE-MLAB inspects all verified emails (<code>client.Users.ListEmails</code>).</span></li>
+                <li><span class="step-num">3</span><span>Open your FUTMinna staff webmail and click the GitHub verification link so the email displays a green <code>Verified</code> badge on GitHub.</span></li>
+                <li><span class="step-num">4</span><span>Navigate to the SWE-MLAB portal, click <strong>Sign in with GitHub</strong>, and verify that <code>/dashboard</code> shows the <strong>Instructor Panel</strong> button and <code>/instructor</code> displays <code>INSTRUCTOR</code> (or <code>SUPER ADMIN</code> for <code>softwareng@futminna.edu.ng</code>).</span></li>
+              </ul>
+              <p><strong>3.1.2 Important Edge Case — Existing Account Role Preservation:</strong> When a user logs in for the first time, <code>backend/pkg/api/auth.go</code> creates their record in <code>users</code> with the detected <code>role</code>; subsequent logins preserve their existing <code>role</code> column. If a staff member previously logged in before verifying their <code>@futminna.edu.ng</code> email, update their role once in PostgreSQL:</p>
+              <pre class="code-block">UPDATE users
+SET role = 'instructor', institutional_verified = true
+WHERE email LIKE '%@futminna.edu.ng' AND email NOT LIKE '%@st.futminna.edu.ng';</pre>
+
+              <h5>Module 02: Courses, Weekly Activities, Gemini AI Generation &amp; Codespaces Autograding (60 Mins)</h5>
+              <ul class="clean-list">
+                <li><strong>3.2.1 Managing Courses (<code>Tab 1: My Courses</code>):</strong> Regular instructors (<code>role = 'instructor'</code>) see courses they created (<code>course.instructor_id === user.id</code>); the Departmental Super Admin (<code>softwareng@futminna.edu.ng</code> / <code>software-engineering-futminna</code>) sees all courses across the department. Enter Course Title, Course Code, and Semester, then click Create Course. <em>Empty Course Safeguard:</em> Navigating away from Weekly Activities while a course has <code>0</code> activities prompts <code>Course "&lt;Title&gt;" has no activities. Delete it?</code>—always add at least one activity or click Plan Semester immediately.</li>
+                <li><strong>3.2.2 Creating Weekly Lab Activities (<code>Tab 2: Weekly Activities</code>):</strong>
+                  <br>&bull; <strong>Method A — AI Activity Generator (<code>POST /api/v1/courses/:id/activities/generate</code>):</strong> Click <code>AI Generate</code>, enter Topic, Learning Objectives, Language (<code>go</code>, <code>python</code>, <code>javascript</code>, <code>java</code>, <code>rust</code>), and optional Lecture Excerpt; Gemini AI generates title, description, Markdown instructions, step-by-step tasks, <code>dependencies</code>, <code>test_command</code>, <code>max_score</code>, and <code>industry_skills</code>.
+                  <br>&bull; <strong>Method B — Plan Semester Bulk Provisioning (<code>POST /api/v1/courses/:id/activities/bulk</code>):</strong> Generates 12 sequential weekly activity slots (<code>Week 1</code> to <code>Week 12</code>).
+                  <br>&bull; <strong>Method C — Manual Step-by-Step Builder:</strong> Configure Basic Info, Environment (<code>language</code>, <code>dependencies</code>, <code>template_repo</code>), dynamic Step-by-Step Instructions (<code>+ Add Step</code>), Autograding (<code>Enable Autograding</code> + <code>Test Command</code> e.g. <code>go test ./...</code> or <code>npm test</code>), <code>Max Score</code>, <code>Due Date</code>, and <code>Industry Skills</code>.
+                </li>
+                <li><strong>3.2.3 Draft vs. Live Publishing &amp; Student "Open Forge" (Codespaces):</strong> New activities default to <code>Draft</code> (<code>is_published: false</code>) until toggled to <code>Live</code>. Clicking "Start Activity / Open Forge" (<code>POST /api/v1/activities/:id/start</code>) provisions the student repository, injects <code>.devcontainer/devcontainer.json</code> and <code>.github/workflows/autograde.yml</code>, launches GitHub Codespaces, and records <code>status = 'started'</code>.</li>
+              </ul>
+
+              <h5>Module 03: Lecture Notes RAG Pipeline &amp; Student AI Tutor (60 Mins)</h5>
+              <ul class="clean-list">
+                <li><strong>1. Strict File Validation (<code>UploadLectureNote</code>):</strong> Instructors upload a <code>.pdf</code> or <code>.docx</code> file (up to 20 MB); backend verifies file extension and binary magic bytes (<code>%PDF</code> for PDFs; <code>PK\x03\x04</code> ZIP header for DOCX).</li>
+                <li><strong>2. Asynchronous Background Indexing (<code>go h.rag.ProcessLectureNote</code>):</strong> Sets status to <code>Processing</code>, extracts text in a background goroutine, splits into semantic <code>LectureChunk</code> records in PostgreSQL, and transitions status to <code>Ready</code>.</li>
+                <li><strong>3. Live RAG Telemetry Bar:</strong> Displays <code>Notes Uploaded</code> (<code>total_notes</code>), <code>Ready for AI</code> (<code>ready_notes</code>), <code>Knowledge Chunks</code> (<code>total_chunks</code>), and <code>Student Chat</code> (enabled when <code>ready_notes &gt; 0</code>).</li>
+                <li><strong>4. Student AI Chat Experience (<code>AIChatWidget.jsx</code>):</strong> Enrolled students open the AI Chat widget on <code>/dashboard</code> and ask questions (up to 2,000 characters) answered from retrieved <code>LectureChunk</code> passages.</li>
+              </ul>
+
+              <h5>Module 04: Teams, Projects, Repo Launch &amp; 1-Click Org Migration Pipeline (60 Mins)</h5>
+              <ul class="clean-list">
+                <li><strong>3.4.1 Creating Course Projects:</strong> Click <code>+ New Project</code> in Tab 6; use <strong>Option A — AI Generate</strong> (<code>POST /api/v1/courses/:id/projects/generate</code> with Topic &amp; Additional Context) or <strong>Option B — Manual Configuration</strong> (Project Title, Markdown Description, Details URL Link, API Endpoint URL, Max Team Size 2–6).</li>
+                <li><strong>3.4.2 How Students Form Teams on <code>/dashboard</code>:</strong> Team Lead clicks Create Team (<code>role = 'lead'</code>), searches classmates by GitHub Username or Matriculation Number, and sends invites (<code>POST /api/v1/teams/:id/invite</code>); invitees accept in their dashboard (<code>POST /api/v1/invites/:id/respond</code>, polled every 30s).</li>
+                <li><strong>3.4.3 Managing Team Repositories in <code>software-engineering-futminna</code>:</strong>
+                  <br>&bull; <strong>Launch (<code>POST /api/v1/teams/:id/launch-repo</code>):</strong> Creates a brand-new repository inside <code>software-engineering-futminna</code> and invites all team members.
+                  <br>&bull; <strong>Migrate to Org (<code>POST /api/v1/teams/:id/migrate-repo</code>):</strong> Deletes any empty placeholder repo in the org, invokes <code>Repositories.Transfer</code> (preserving 100% of commit history, branches, and PRs), handles asynchronous <code>HTTP 202 Accepted</code>, enforces <code>Public</code> visibility, adds all team members with <code>push</code> access, and updates <code>repo_url</code> and <code>repo_full_name</code> in PostgreSQL.
+                </li>
+              </ul>
+
+              <h5>Module 05: Grading Engine, Results Moderation, CSV Export &amp; Academic Showcase (45 Mins)</h5>
+              <ul class="clean-list">
+                <li><strong>3.5.1 Three Ways Submissions Are Graded (<code>Tab 3: Grade Submissions</code>):</strong>
+                  (1) <em>Automated GitHub Actions Webhook</em> (<code>POST /api/v1/webhooks/github</code> — awards <code>100%</code> of <code>max_score</code> on <code>success</code> or <code>50%</code> partial credit on <code>failure</code>);
+                  (2) <em>AI-Assisted Grading</em> (<code>POST /api/v1/submissions/:id/ai-grade</code> — appends Strengths, Areas for Improvement, and Bonus Score);
+                  (3) <em>Instructor Manual Grading &amp; Override</em> (in Tab 3 or via <code>+ Add Result</code> / <code>Edit</code> in Tab 7).
+                </li>
+                <li><strong>3.5.2 Results Moderation &amp; CSV Export:</strong> Toggle <code>Hide Results from Students</code> (<code>POST /api/v1/courses/:id/toggle-results</code>) in Tab 7 during moderation; click <code>Export CSV</code> in Tab 4 to download <code>&lt;COURSE_CODE&gt;_leaderboard_&lt;YYYY-MM-DD&gt;.csv</code> (<code>Rank, Full Name, Matric Number, Username, Email, Completed Activities, Total Score</code>).</li>
+                <li><strong>3.5.3 Updating the Public Academic Showcase:</strong> Update the <code>PROJECTS</code> array in <code>showcase.html</code> and push to <a href="https://github.com/software-engineering-futminna/showcase" target="_blank" rel="noopener noreferrer"><code>github.com/software-engineering-futminna/showcase</code></a>.</li>
+              </ul>
+
+              <h5>Module 06: Departmental Super Admin Handover (<code>softwareng@futminna.edu.ng</code>), DevOps &amp; Sign-Off (45 Mins)</h5>
+              <p><strong>3.6.2 Production Environment Variables Checklist (<code>.env</code>):</strong></p>
+              <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;margin-top:8px;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:230px;">Variable</th>
+                      <th>Purpose</th>
+                      <th>Handover Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>DATABASE_URL</code></td><td>Neon Serverless PostgreSQL connection string (<code>sslmode=require</code>)</td><td>Transfer Neon project ownership to <code>softwareng@futminna.edu.ng</code></td></tr>
+                    <tr><td><code>GITHUB_CLIENT_ID</code></td><td>GitHub OAuth App Client ID</td><td>Verify OAuth App is owned by <code>software-engineering-futminna</code> Org</td></tr>
+                    <tr><td><code>GITHUB_CLIENT_SECRET</code></td><td>GitHub OAuth App Client Secret</td><td>Store in Render/Docker production environment</td></tr>
+                    <tr><td><code>GITHUB_REDIRECT_URL</code></td><td>OAuth callback (<code>/auth/github/callback</code>)</td><td>Match production backend URL</td></tr>
+                    <tr><td><code>GITHUB_ORG</code></td><td><code>software-engineering-futminna</code></td><td>Departmental GitHub Organization</td></tr>
+                    <tr><td><code>GITHUB_WEBHOOK_SECRET</code></td><td>HMAC-SHA256 secret for GitHub Actions autograding webhooks</td><td>Keep synchronized with Org/Repo webhook settings</td></tr>
+                    <tr><td><code>GEMINI_API_KEY</code></td><td>Google Gemini API key for AI Activity/Project generation &amp; RAG Lecture Tutor</td><td>Provision under <code>softwareng@futminna.edu.ng</code> Google Cloud account</td></tr>
+                    <tr><td><code>JWT_SECRET</code></td><td>Secret key for signing 24-hour user JWT tokens</td><td>Maintain in production <code>.env</code></td></tr>
+                    <tr><td><code>SENTRY_DSN</code></td><td>Sentry error &amp; crash telemetry endpoint</td><td>Invite <code>softwareng@futminna.edu.ng</code> to Sentry project</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="report-subblock" id="wp-s4" data-toc-label="Workshop Plan — 4. Troubleshooting & SQL/Git Runbook">
+              <h4>4. Operational Troubleshooting & SQL/Git Runbook</h4>
+              <div class="module-cols">
+                <div class="module-col-box">
+                  <h4>4.1 Staff Logged In Before Email Verification &amp; 4.2 Super Admin DB Sync</h4>
+                  <pre class="code-block" style="margin-top:8px;">-- 4.1 Promote verified @futminna.edu.ng staff
+UPDATE users
+SET role = 'instructor',
+    institutional_verified = true
+WHERE email LIKE '%@futminna.edu.ng'
+  AND email NOT LIKE '%@st.futminna.edu.ng';
+
+-- 4.2 Ensure Departmental Super Admin
+UPDATE users
+SET role = 'super_admin',
+    institutional_verified = true
+WHERE LOWER(email) = 'softwareng@futminna.edu.ng'
+   OR LOWER(username) = 'software-engineering-futminna';</pre>
+                </div>
+                <div class="module-col-box">
+                  <h4>4.3 Reset Stale Migration Record &amp; 4.4 Force-Sync Empty Org Repo</h4>
+                  <pre class="code-block" style="margin-top:8px;">-- 4.3 Reset stale repo_url before Migrate to Org
+UPDATE teams
+SET repo_url = 'https://github.com/StudentOwner/repo-name',
+    repo_full_name = 'StudentOwner/repo-name'
+WHERE id = &lt;team_id&gt;;
+
+# 4.4 Force-sync personal repo into empty Org repo
+git clone https://github.com/StudentUsername/PERSONAL-REPO.git temp_sync
+cd temp_sync
+git remote set-url origin https://github.com/software-engineering-futminna/ORG-REPO.git
+git push origin main --force
+cd .. &amp;&amp; rm -rf temp_sync</pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="report-subblock" id="wp-s5" data-toc-label="Workshop Plan — 5. Official Handover Sign-Off">
+              <h4>5. Official Departmental Handover Sign-Off</h4>
+              <div style="border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow-x:auto;margin-top:10px;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th style="width:60px;">#</th>
+                      <th style="width:280px;">Asset / Credential</th>
+                      <th>Target Custodian Identity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>1</code></td><td><strong>Departmental GitHub Account &amp; Org</strong></td><td><code>software-engineering-futminna</code> (<code>softwareng@futminna.edu.ng</code>)</td></tr>
+                    <tr><td><code>2</code></td><td><strong>SWE-MLAB Super Admin Access</strong></td><td>Verified in <code>auth.go</code>, <code>middleware.go</code> &amp; PostgreSQL <code>users</code> table</td></tr>
+                    <tr><td><code>3</code></td><td><strong>Staff Instructor Auto-Onboarding</strong></td><td>Verified <code>@futminna.edu.ng</code> OAuth domain rule tested with staff</td></tr>
+                    <tr><td><code>4</code></td><td><strong>Neon Serverless PostgreSQL Database</strong></td><td>Admin ownership transferred to <code>softwareng@futminna.edu.ng</code></td></tr>
+                    <tr><td><code>5</code></td><td><strong>Gemini AI (<code>GEMINI_API_KEY</code>) &amp; RAG Pipeline</strong></td><td>Tested AI Activity Generator, AI Project Generator &amp; Lecture Note RAG</td></tr>
+                    <tr><td><code>6</code></td><td><strong>Cloud Hosting (Render / Vercel / Docker <code>.env</code>)</strong></td><td>Production environment variables &amp; webhook secrets documented</td></tr>
+                    <tr><td><code>7</code></td><td><strong>Public Showcase (<code>software-engineering-futminna/showcase</code>)</strong></td><td>Live showcase &amp; dossier update workflow demonstrated</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+
+          <!-- ==============================================================
+               REPOSITORY OVERVIEW: README.md (All 6 Sections)
+               ============================================================== -->
+          <article class="report-doc-card" id="rep-readme" data-report-card="rep-readme" data-toc-label="Executive Overview & Repository Index (README.md)">
+            <div class="report-doc-header">
+              <div>
+                <div class="section-num">README.md — Repository Overview & Setup</div>
+                <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);">SWE-MLAB Technical Documentation & Architecture Report Index</h3>
+              </div>
+              <a href="https://github.com/software-engineering-futminna/swemlab-docs/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:6px 12px;font-size:0.82rem;">View README.md</a>
+            </div>
+
+            <div class="report-subblock">
+              <h4>1. Executive Summary</h4>
+              <p><strong>SWE-MLAB (Software Engineering Machine Laboratory)</strong> is an integrated pedagogical cloud platform engineered for the Department of Software Engineering at the <strong>Federal University of Technology Minna (FUTMinna)</strong>. The platform automates the software engineering educational lifecycle by providing:</p>
+              <ul class="step-list" style="margin-top:10px;">
+                <li><span class="step-num">1</span><span><strong>Automated GitHub Organization Management:</strong> All coursework and student teams are provisioned and governed under the institutional organization (<code>software-engineering-futminna</code>).</span></li>
+                <li><span class="step-num">2</span><span><strong>Institutional Identity Enforcement:</strong> Verification of student emails under the <code>@st.futminna.edu.ng</code> domain (and staff instructors under <code>@futminna.edu.ng</code>).</span></li>
+                <li><span class="step-num">3</span><span><strong>Continuous Telemetry &amp; Activity Tracking:</strong> Tracking individual commit contributions, branch hygiene, and milestone progress.</span></li>
+                <li><span class="step-num">4</span><span><strong>Instantaneous Repository Migration (<code>TransferToOrg</code>):</strong> Transferring personal repositories into the institutional organization in milliseconds with preserved commit histories.</span></li>
+                <li><span class="step-num">5</span><span><strong>Interactive Public Showcase:</strong> Live exhibition of student project deliverables, API integrations, and team rosters.</span></li>
+              </ul>
+            </div>
+
+            <div class="report-subblock">
+              <h4>2. System Topology &amp; Architecture</h4>
+              <pre class="code-block">+-----------------------------------------------------------------------------------+
+|                              SWE-MLAB SYSTEM TOPOLOGY                             |
++-----------------------------------------------------------------------------------+
+
+  [CLIENT TIER]
+  React 18 SPA + Vite 5 + Swiss Design Tokens + Vanilla CSS Custom Properties
+          │
+          │  HTTPS / JSON REST API
+          ▼
+  [INGRESS &amp; REVERSE PROXY]
+  Nginx Alpine (Gzip Compression, Security Headers, SPA Fallback Routing)
+          │
+          ▼
+  [BACKEND APPLICATION SERVER (Golang 1.22+)]
+  ├── Gin HTTP Router &amp; Middleware (RBAC, Rate Limiting, Auth Context)
+  ├── GORM ORM Layer (Transactions, Auto-Migrations, Model Associations)
+  ├── GitHub API Client (OAuth2 Token Source, Org Repo Transfers, Webhooks)
+  └── Sentry Go SDK (Telemetry, Panic Recovery, Error Tracking)
+          │
+          ├──▶ [PERSISTENCE TIER] Neon Serverless PostgreSQL Cloud (SSL Pooled)
+          └──▶ [ORGANIZATION TIER] GitHub Org: software-engineering-futminna</pre>
+            </div>
+
+            <div class="report-subblock">
+              <h4>3. Role-Based User Manuals &amp; 4. Repository Migration Pipeline</h4>
+              <ul class="clean-list" style="margin-bottom:12px;">
+                <li><strong>Students (<code>@st.futminna.edu.ng</code>):</strong> Sign in with GitHub, verify institutional email, join course <code>FUTM-SWE-221</code>, create/join project teams, push code, deploy to cloud staging, and submit project URLs.</li>
+                <li><strong>Instructors (<code>@futminna.edu.ng</code>):</strong> Provision courses, define project rubrics, monitor real-time student team telemetry, execute 1-click repository migrations into <code>software-engineering-futminna</code>, grade submissions with markdown feedback, and update public showcases.</li>
+                <li><strong>Super Administrators (<code>softwareng@futminna.edu.ng</code>):</strong> Manage GitHub Organization OAuth applications, configure Neon Serverless PostgreSQL connection pooling, monitor Sentry error traces, and execute disaster recovery runbooks.</li>
+              </ul>
+            </div>
+
+            <div class="report-subblock">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+                <h4>5. Development &amp; Local Setup &amp; 6. Institutional Governance</h4>
+                <button class="btn-secondary" style="padding:5px 12px;font-size:0.82rem;" onclick="copyCode('codeReadmeSetup', this)">Copy Commands</button>
+              </div>
+              <pre class="code-block" id="codeReadmeSetup"># Clone this documentation repository
+git clone https://github.com/software-engineering-futminna/swemlab-docs.git
+cd swemlab-docs
+
+# View documentation locally
+open docs/index.html   # or browse markdown files directly in docs/</pre>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: OFFICIAL HANDOVER CHECKLIST -->
   <section id="handover" class="section" style="border-bottom:none;">
     <div class="container">
       <div class="section-head">
         <div>
-          <div class="section-num">Section 06 — Departmental Custody & Sign-Off</div>
+          <div class="section-num">Section 07 — Departmental Custody & Sign-Off</div>
           <h2 class="section-title">Official SWE-MLAB Handover Checklist</h2>
           <p class="section-desc">
             Verify each operational subsystem with the incoming departmental custodian (<code>softwareng@futminna.edu.ng</code> / <a href="https://github.com/software-engineering-futminna/" target="_blank" rel="noopener noreferrer"><code>software-engineering-futminna</code></a>).
@@ -2688,11 +4242,140 @@ cd .. && rm -rf temp_sync</pre>
       }
     });
 
+    /* ==========================================================================
+       8. SCROLL-SPY NAVIGATION & PARSED REPORTS CONTROLLER
+       ========================================================================== */
+    function filterParsedReports(targetId, pillBtn) {
+      document.querySelectorAll('.report-pill').forEach(b => b.classList.remove('active'));
+      if (pillBtn) {
+        pillBtn.classList.add('active');
+      } else {
+        const match = document.querySelector(`.report-pill[data-rep-pill="${targetId}"]`);
+        if (match) match.classList.add('active');
+      }
+
+      const searchInput = document.getElementById('reportSearchInput');
+      if (searchInput) searchInput.value = '';
+
+      document.querySelectorAll('.report-doc-card').forEach(card => {
+        const id = card.getAttribute('data-report-card');
+        card.style.display = (targetId === 'all' || id === targetId) ? '' : 'none';
+      });
+      updateScrollSpy();
+    }
+
+    function jumpToReport(reportId) {
+      const targetCard = document.getElementById(reportId);
+      if (targetCard && targetCard.style.display === 'none') {
+        filterParsedReports('all');
+      }
+      setTimeout(() => {
+        const el = document.getElementById(reportId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 20);
+    }
+
+    function jumpToSub(reportId, subId) {
+      const parentCard = document.getElementById(reportId);
+      if (parentCard && parentCard.style.display === 'none') {
+        filterParsedReports('all');
+      }
+      setTimeout(() => {
+        const el = document.getElementById(subId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 20);
+    }
+
+    function searchParsedReports(query) {
+      const q = (query || '').trim().toLowerCase();
+      document.querySelectorAll('.report-pill').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-rep-pill') === 'all');
+      });
+      document.querySelectorAll('.report-doc-card').forEach(card => {
+        if (!q) {
+          card.style.display = '';
+        } else {
+          const text = card.innerText.toLowerCase();
+          card.style.display = text.includes(q) ? '' : 'none';
+        }
+      });
+      updateScrollSpy();
+    }
+
+    function updateScrollSpy() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pct = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+      const bar = document.getElementById('scrollProgressBar');
+      if (bar) bar.style.width = `${pct}%`;
+
+      // 1. Main sticky header section scroll-spy
+      const mainSections = ['rbac', 'console', 'curriculum', 'simulators', 'runbook', 'reports', 'handover'];
+      let currentMain = mainSections[0];
+      const offsetTrigger = scrollTop + 150;
+
+      for (const secId of mainSections) {
+        const el = document.getElementById(secId);
+        if (el && el.offsetTop <= offsetTrigger) {
+          currentMain = secId;
+        }
+      }
+
+      document.querySelectorAll('#mainStickyNav .nav-link').forEach(link => {
+        const isMatch = link.getAttribute('data-section') === currentMain;
+        link.classList.toggle('active', isMatch);
+      });
+
+      // 2. Reports sidebar TOC scroll-spy
+      const tocTargets = [
+        'rep-01', 'rep-02', 'rep-03', 'rep-04', 'rep-05', 'rep-06', 'rep-07', 'rep-08',
+        'rep-full', 'fr-ch1', 'fr-ch2', 'fr-ch3', 'fr-ch4', 'fr-ch5', 'fr-ch6', 'fr-ch7', 'fr-ch8', 'fr-ch9', 'fr-ch10', 'fr-ch11',
+        'rep-workshop', 'wp-s1', 'wp-s2', 'wp-s3', 'wp-s4', 'wp-s5',
+        'rep-readme'
+      ];
+
+      let activeTocId = 'rep-01';
+      let activeLabel = '01. Pedagogical Framework & Academic Curriculum';
+
+      for (const tid of tocTargets) {
+        const el = document.getElementById(tid);
+        if (!el) continue;
+        const parentCard = el.closest('.report-doc-card');
+        if (parentCard && parentCard.style.display === 'none') continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 180) {
+          activeTocId = tid;
+          activeLabel = el.getAttribute('data-toc-label') || el.querySelector('h3, h4')?.innerText || activeLabel;
+        }
+      }
+
+      const nowTitle = document.getElementById('readingNowTitle');
+      if (nowTitle) nowTitle.textContent = activeLabel;
+
+      const sidebar = document.getElementById('reportsTocSidebar');
+      document.querySelectorAll('#reportsTocSidebar .toc-link').forEach(link => {
+        const isActive = link.getAttribute('data-toc-target') === activeTocId;
+        const wasActive = link.classList.contains('active');
+        link.classList.toggle('active', isActive);
+        if (isActive && !wasActive && sidebar) {
+          const linkTop = link.offsetTop;
+          const sideScroll = sidebar.scrollTop;
+          const sideH = sidebar.clientHeight;
+          if (linkTop < sideScroll + 40 || linkTop > sideScroll + sideH - 60) {
+            sidebar.scrollTo({ top: Math.max(0, linkTop - sideH / 2), behavior: 'smooth' });
+          }
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateScrollSpy, { passive: true });
+
     window.addEventListener('DOMContentLoaded', () => {
       initFontScale();
       evaluateOAuthInput();
       selectConsoleTab(0, document.querySelector('.tab-button'));
       loadHandoverState();
+      updateScrollSpy();
     });
   </script>
 </body>

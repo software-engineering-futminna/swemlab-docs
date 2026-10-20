@@ -1,5 +1,7 @@
 # 04. REST API Specification
 
+> **[← Back to Interactive Landing & Handover Portal (`index.html`)](./index.html)**
+
 ---
 
 ## 1. Authentication Endpoints

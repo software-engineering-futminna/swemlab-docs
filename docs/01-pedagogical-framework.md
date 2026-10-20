@@ -1,5 +1,7 @@
 # 01. Pedagogical Framework & Academic Curriculum
 
+> **[← Back to Interactive Landing & Handover Portal (`index.html`)](./index.html)**
+
 **Course:** FUTM-SWE-221: Individual Software Development Project I  
 **Semester:** Second Semester  
 **Department:** Department of Software Engineering, FUTMinna  

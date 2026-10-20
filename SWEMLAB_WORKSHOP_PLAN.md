@@ -7,6 +7,7 @@
 **Departmental Super Admin Account:** `softwareng@futminna.edu.ng` | GitHub Profile & Org: [`https://github.com/software-engineering-futminna/`](https://github.com/software-engineering-futminna/)  
 **Live Academic Showcase:** [`https://software-engineering-futminna.github.io/showcase/`](https://software-engineering-futminna.github.io/showcase/)  
 **Full Technical Documentation:** [`https://github.com/software-engineering-futminna/swemlab-docs`](https://github.com/software-engineering-futminna/swemlab-docs)  
+**Interactive Landing & Handover Portal:** [`docs/index.html`](./docs/index.html)  
 
 ---
 
@@ -60,7 +61,7 @@ Every participating staff member performs these 4 steps at the start of the work
    - Clicking **Instructor Panel** (`/instructor`) displays `INSTRUCTOR` (or `SUPER ADMIN` for `softwareng@futminna.edu.ng`) in the top-right header alongside your `@futminna.edu.ng` email.
 
 #### 3.1.2 Important Edge Case: Existing Account Role Preservation
-- Look at [`backend/pkg/api/auth.go`](file:///Users/taiwrash/Documents/2026/swe-mlab/backend/pkg/api/auth.go#L153-L163): When a user logs in for the **first time**, SWE-MLAB creates their record in `users` with the detected `role`. On subsequent logins, it updates `github_id`, `username`, `email`, `avatar_url`, `institutional_verified`, and `session_token`, **preserving** their existing `role` column.
+- Look at `backend/pkg/api/auth.go` (lines 153–163): When a user logs in for the **first time**, SWE-MLAB creates their record in `users` with the detected `role`. On subsequent logins, it updates `github_id`, `username`, `email`, `avatar_url`, `institutional_verified`, and `session_token`, **preserving** their existing `role` column.
 - Therefore, if a staff member previously logged in *before* verifying their `@futminna.edu.ng` email (or tested with a student email), update their role once in PostgreSQL:
   ```sql
   UPDATE users
@@ -72,7 +73,7 @@ Every participating staff member performs these 4 steps at the start of the work
 
 ### Module 02: Courses, Weekly Activities, Gemini AI Generation & Codespaces Autograding (60 Mins)
 
-This module covers **Tab 1 (`My Courses`)** and **Tab 2 (`Weekly Activities`)** in [`InstructorDashboard.jsx`](file:///Users/taiwrash/Documents/2026/swe-mlab/frontend/src/pages/InstructorDashboard.jsx).
+This module covers **Tab 1 (`My Courses`)** and **Tab 2 (`Weekly Activities`)** in `frontend/src/pages/InstructorDashboard.jsx`.
 
 #### 3.2.1 Managing Courses (`Tab 1: My Courses`)
 - **Course Visibility Rule:**
@@ -111,7 +112,7 @@ Instructors have **three ways** to populate weekly activities:
 
 ### Module 03: Lecture Notes RAG Pipeline & Student AI Tutor (60 Mins)
 
-This module covers **Tab 5 (`Lecture Notes`)** in [`InstructorDashboard.jsx`](file:///Users/taiwrash/Documents/2026/swe-mlab/frontend/src/pages/InstructorDashboard.jsx#L685-L788) and [`backend/pkg/api/chat.go`](file:///Users/taiwrash/Documents/2026/swe-mlab/backend/pkg/api/chat.go).
+This module covers **Tab 5 (`Lecture Notes`)** in `frontend/src/pages/InstructorDashboard.jsx` (lines 685–788) and `backend/pkg/api/chat.go`.
 
 #### 3.3.1 How the Course-Grounded RAG Tutor Works
 SWE-MLAB includes a Retrieval-Augmented Generation (RAG) study assistant so students can ask questions directly against official course lecture notes:
@@ -134,7 +135,7 @@ SWE-MLAB includes a Retrieval-Augmented Generation (RAG) study assistant so stud
 
 ### Module 04: Teams, Projects, Repo Launch & 1-Click Org Migration Pipeline (60 Mins)
 
-This module covers **Tab 6 (`Teams & Projects`)** in [`InstructorDashboard.jsx`](file:///Users/taiwrash/Documents/2026/swe-mlab/frontend/src/pages/InstructorDashboard.jsx#L790-L1274) and [`backend/pkg/api/team.go`](file:///Users/taiwrash/Documents/2026/swe-mlab/backend/pkg/api/team.go).
+This module covers **Tab 6 (`Teams & Projects`)** in `frontend/src/pages/InstructorDashboard.jsx` (lines 790–1274) and `backend/pkg/api/team.go`.
 
 #### 3.4.1 Creating Course Projects (Manual & ✨ AI Project Generator)
 1. Open the **Teams & Projects** tab and click **`+ New Project`**.
@@ -169,7 +170,7 @@ On each project card in the Instructor Panel, instructors see every formed team 
 
 ### Module 05: Grading Engine, Results Moderation, CSV Export & Academic Showcase (45 Mins)
 
-This module covers **Tab 3 (`Grade Submissions`)**, **Tab 4 (`Leaderboard`)**, **Tab 7 (`Results`)**, and [`showcase.html`](file:///Users/taiwrash/Documents/2026/swe-mlab/showcase.html).
+This module covers **Tab 3 (`Grade Submissions`)**, **Tab 4 (`Leaderboard`)**, **Tab 7 (`Results`)**, and [`showcase.html`](https://software-engineering-futminna.github.io/showcase/).
 
 #### 3.5.1 Three Ways Submissions Are Graded (`Tab 3: Grade Submissions`)
 1. **Automated GitHub Actions Webhook (`POST /api/v1/webhooks/github`):**
@@ -187,15 +188,15 @@ This module covers **Tab 3 (`Grade Submissions`)**, **Tab 4 (`Leaderboard`)**, *
 - **Exporting Official CSV Sheets (`Tab 4: Leaderboard`):**
   - Click **`⬇ Export CSV`** to download `<COURSE_CODE>_leaderboard_<YYYY-MM-DD>.csv` containing `Rank, Full Name, Matric Number, Username, Email, Completed Activities, Total Score`.
 
-#### 3.5.3 Updating the Public Academic Showcase ([`showcase.html`](file:///Users/taiwrash/Documents/2026/swe-mlab/showcase.html))
-- At the end of each semester, update the `PROJECTS` array in [`showcase.html`](file:///Users/taiwrash/Documents/2026/swe-mlab/showcase.html) and push to [`https://github.com/software-engineering-futminna/showcase`](https://github.com/software-engineering-futminna/showcase) to publish the cohort's live web deployments and team dossiers.
+#### 3.5.3 Updating the Public Academic Showcase ([`showcase.html`](https://software-engineering-futminna.github.io/showcase/))
+- At the end of each semester, update the `PROJECTS` array in [`showcase.html`](https://software-engineering-futminna.github.io/showcase/) and push to [`https://github.com/software-engineering-futminna/showcase`](https://github.com/software-engineering-futminna/showcase) to publish the cohort's live web deployments and team dossiers.
 
 ---
 
 ### Module 06: Departmental Super Admin Handover (`softwareng@futminna.edu.ng`), DevOps & Sign-Off (45 Mins)
 
 #### 3.6.1 Transitioning Super Admin Custody to the Department
-The codebase ([`backend/pkg/api/auth.go`](file:///Users/taiwrash/Documents/2026/swe-mlab/backend/pkg/api/auth.go) and [`backend/pkg/api/middleware.go`](file:///Users/taiwrash/Documents/2026/swe-mlab/backend/pkg/api/middleware.go)) has been updated so that the official departmental identity is automatically recognized as **`super_admin`**:
+The codebase (`backend/pkg/api/auth.go` and `backend/pkg/api/middleware.go`) has been updated so that the official departmental identity is automatically recognized as **`super_admin`**:
 - **Departmental Email:** `softwareng@futminna.edu.ng`
 - **Departmental GitHub Account / Organization:** `software-engineering-futminna`
 

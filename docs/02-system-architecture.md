@@ -1,5 +1,7 @@
 # 02. System Architecture & Technology Stack
 
+> **[← Back to Interactive Landing & Handover Portal (`index.html`)](./index.html)**
+
 ---
 
 ## 1. Architecture Overview
